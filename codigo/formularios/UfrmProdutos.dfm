@@ -477,7 +477,6 @@ object frmProdutos: TfrmProdutos
     end
   end
   object tblProdutos: TFDTable
-    Active = True
     BeforePost = tblProdutosBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
