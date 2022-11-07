@@ -62,9 +62,9 @@ object frmProdutos: TfrmProdutos
     object lblCadastroProduto: TLabel
       Left = 8
       Top = 16
-      Width = 221
+      Width = 194
       Height = 25
-      Caption = 'Cadastro de Comandas'
+      Caption = 'Cadastro de Produto'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
       Font.Height = -21
