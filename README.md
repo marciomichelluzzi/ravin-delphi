@@ -1,10 +1,10 @@
-# devs2Blu-private
-Repositorio dos materiais privados do curso Devs2Blu
+# Ravin
+Projeto modelo para os alunos do curso Dev2Blu
 
 ## Grade
 
 ## Projeto
-O projeto desenvolvido nesse curso é um sistema para gestão de mesas de restaurante. O sistema contará com uma aplicação desktop para controle de das mesas, pedidos e comandas que será usado pela frente de caixa e também com um app para a realização dos pedidos
+O projeto desenvolvido nesse curso é um sistema para gestão de mesas de restaurante. O sistema contará com uma aplicação desktop para controle de das mesas e comandas que será usado pela frente de caixa e também com um app para a realização dos pedidos
 
 ### Entidades
 <br/>
@@ -125,7 +125,7 @@ O projeto desenvolvido nesse curso é um sistema para gestão de mesas de restau
 * Tela de login;
 
 
-## MER - Modelo Entidade Relacionamentp
+## MER - Modelo Entidade Relacionamento
 <img alt="" title="" src="documentacao/mer.png">
 <br/>
 <br/>
