@@ -2330,7 +2330,7 @@ object frmPainelGestao: TfrmPainelGestao
         end
       end
     end
-    inline frmMenuItemPedidos: TfrmMenuItem
+    inline frmMenuItemPessoas: TfrmMenuItem
       Left = 0
       Top = 252
       Width = 175
@@ -2339,7 +2339,7 @@ object frmPainelGestao: TfrmPainelGestao
       ExplicitTop = 252
       inherited pnlFundo: TPanel
         inherited lblTitulo: TLabel
-          Caption = 'Pedidos'
+          Caption = 'Pessoas'
         end
       end
     end
@@ -5721,27 +5721,5 @@ object frmPainelGestao: TfrmPainelGestao
         end
       end
     end
-  end
-  object chtQtdPedidosPorDia: TChart
-    Left = 189
-    Top = 139
-    Width = 436
-    Height = 191
-    Title.Font.Color = 4227072
-    Title.Font.Height = -21
-    Title.Font.Name = 'Roboto'
-    Title.Text.Strings = (
-      'M'#233'dia de Pedidos por dia')
-    BevelOuter = bvNone
-    Color = clWhite
-    TabOrder = 1
-    Anchors = [akLeft, akTop, akRight]
-    DefaultCanvas = 'TGDIPlusCanvas'
-    PrintMargins = (
-      15
-      29
-      15
-      29)
-    ColorPaletteIndex = 13
   end
 end

@@ -3,11 +3,21 @@ unit UfrmPainelGestao;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, VclTee.TeeGDIPlus,
-  VclTee.TeEngine, VclTee.TeeProcs, VclTee.Chart, UfrmItemMenu;
+  Winapi.Windows,
+  Winapi.Messages,
+
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.Imaging.pngimage,
+  UfrmItemMenu;
 
 type
   TfrmPainelGestao = class(TForm)
@@ -20,10 +30,9 @@ type
     Shape5: TShape;
     imgLogomarca: TImage;
     lblNomeUsuario: TLabel;
-    chtQtdPedidosPorDia: TChart;
     frmMenuItemMesas: TfrmMenuItem;
     frmMenuItemComandas: TfrmMenuItem;
-    frmMenuItemPedidos: TfrmMenuItem;
+    frmMenuItemPessoas: TfrmMenuItem;
     frmMenuItemProdutos: TfrmMenuItem;
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;

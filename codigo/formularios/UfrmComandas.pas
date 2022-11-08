@@ -3,12 +3,36 @@ unit UfrmComandas;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Mask,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+  Winapi.Windows,
+  Winapi.Messages,
+
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+
+  Vcl.DBCtrls,
+  Vcl.Mask,
+  Vcl.ExtCtrls,
+  Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   TfrmComandas = class(TForm)
@@ -43,7 +67,7 @@ type
     tblComandaslookupClienteNome: TStringField;
     dbgComandas: TDBGrid;
     pnlItensComanda: TPanel;
-    DBGridProdutosComanda: TDBGrid;
+    dbgComandaProdutos: TDBGrid;
     dtsComandaProdutos: TDataSource;
     lblListaMesas: TLabel;
     lblListaProdutosComanda: TLabel;
@@ -64,7 +88,7 @@ type
     tblProdutos: TFDTable;
     dtsProdutos: TDataSource;
     tblComandaProdutoslookupProdutoNome: TStringField;
-    DBNavigator1: TDBNavigator;
+    dbnComandaProdutos: TDBNavigator;
     tblComandaProdutoscomandaId: TIntegerField;
     tblComandaProdutoslookupComandaCodigo: TStringField;
     pnlComanda: TPanel;
@@ -93,6 +117,7 @@ uses UdmRavin;
 
 procedure TfrmComandas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  Action := caFree;
   tblComandas.Active := false;
   tblComandaProdutos.Active := false;
   tblMesas.Active := false;
@@ -100,6 +125,7 @@ begin
   tblPessoas.Active := false;
   tblStatusComanda.Active := false;
   tblStatusComandaProduto.Active := false;
+  frmComandas := nil;
 end;
 
 procedure TfrmComandas.FormCreate(Sender: TObject);

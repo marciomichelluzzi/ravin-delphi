@@ -45,7 +45,7 @@ object frmComandas: TfrmComandas
       Font.Style = []
       ParentFont = False
     end
-    object DBGridProdutosComanda: TDBGrid
+    object dbgComandaProdutos: TDBGrid
       Left = 8
       Top = 93
       Width = 574
@@ -99,7 +99,7 @@ object frmComandas: TfrmComandas
           Visible = True
         end>
     end
-    object DBNavigator1: TDBNavigator
+    object dbnComandaProdutos: TDBNavigator
       AlignWithMargins = True
       Left = 8
       Top = 47
@@ -533,6 +533,7 @@ object frmComandas: TfrmComandas
     Top = 632
   end
   object tblComandaProdutos: TFDTable
+    Active = True
     BeforePost = tblComandaProdutosBeforePost
     IndexFieldNames = 'comandaId'
     MasterSource = dtsComandas
