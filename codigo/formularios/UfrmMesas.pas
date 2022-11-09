@@ -69,6 +69,8 @@ type
     tblMesaslookupStatusMesa: TStringField;
     tblMesasstatusMesaId: TIntegerField;
     pnlMesas: TPanel;
+    tblStatusMesaid: TFDAutoIncField;
+    tblStatusMesanome: TStringField;
     procedure tblMesasBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -92,6 +94,7 @@ procedure TfrmMesas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
   tblMesas.Active := false;
+  tblStatusMesa.Active := false;
   qryPessoas.Active := false;
   frmMesas := nil;
 end;
@@ -99,6 +102,7 @@ end;
 procedure TfrmMesas.FormCreate(Sender: TObject);
 begin
   tblMesas.Active := true;
+  tblStatusMesa.Active := true;
   qryPessoas.Active := true;
 end;
 
