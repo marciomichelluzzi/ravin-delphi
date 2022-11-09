@@ -191,8 +191,8 @@ object frmMesas: TfrmMesas
     end
     object edtId: TDBEdit
       AlignWithMargins = True
-      Left = 35
-      Top = 92
+      Left = 36
+      Top = 94
       Width = 966
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -319,7 +319,7 @@ object frmMesas: TfrmMesas
         end>
     end
     object cbxAtendente: TDBLookupComboBox
-      Left = 93
+      Left = 95
       Top = 148
       Width = 908
       Height = 23
@@ -338,7 +338,7 @@ object frmMesas: TfrmMesas
       TabOrder = 6
     end
     object cbxStatus: TDBLookupComboBox
-      Left = 68
+      Left = 70
       Top = 119
       Width = 933
       Height = 23
@@ -369,20 +369,22 @@ object frmMesas: TfrmMesas
     end
   end
   object tblMesas: TFDTable
+    Active = True
     BeforePost = tblMesasBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
     UpdateOptions.UpdateMode = upWhereAll
+    UpdateOptions.KeyFields = 'id'
     TableName = 'ravin.mesa'
     Left = 848
     Top = 8
     object tblMesasid: TFDAutoIncField
-      Alignment = taLeftJustify
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+      Required = True
     end
     object tblMesasnome: TStringField
       AutoGenerateValue = arDefault
@@ -470,8 +472,10 @@ object frmMesas: TfrmMesas
     Top = 8
   end
   object qryPessoas: TFDQuery
-    Active = True
     Connection = dmRavin.cnxBancoDeDados
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
+    UpdateOptions.KeyFields = 'id'
     SQL.Strings = (
       'select * from pessoa where tipoPessoa = '#39'F'#39)
     Left = 736
@@ -481,6 +485,7 @@ object frmMesas: TfrmMesas
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+      Required = True
     end
     object qryPessoasnome: TStringField
       FieldName = 'nome'
@@ -538,9 +543,25 @@ object frmMesas: TfrmMesas
     Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
+    UpdateOptions.KeyFields = 'id'
     TableName = 'ravin.statusmesa'
     Left = 968
     Top = 8
+    object tblStatusMesaid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+      Required = True
+    end
+    object tblStatusMesanome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 255
+    end
   end
   object dsStatusMesa: TDataSource
     DataSet = tblStatusMesa
