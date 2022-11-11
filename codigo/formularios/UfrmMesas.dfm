@@ -263,7 +263,6 @@ object frmMesas: TfrmMesas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ReadOnly = True
       TabOrder = 5
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -375,6 +374,7 @@ object frmMesas: TfrmMesas
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.KeyFields = 'id'
     TableName = 'ravin.mesa'
     Left = 848
@@ -467,14 +467,14 @@ object frmMesas: TfrmMesas
     Top = 8
   end
   object dsPessoas: TDataSource
-    DataSet = tblPessoas
-    Left = 672
+    DataSet = qryPessoas
+    Left = 688
     Top = 8
   end
   object qryPessoas: TFDQuery
-    Active = True
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.KeyFields = 'id'
     SQL.Strings = (
       'select * from pessoa where tipoPessoa = '#39'F'#39)
@@ -544,6 +544,7 @@ object frmMesas: TfrmMesas
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.KeyFields = 'id'
     TableName = 'ravin.statusmesa'
     Left = 968
@@ -566,69 +567,5 @@ object frmMesas: TfrmMesas
     DataSet = tblStatusMesa
     Left = 912
     Top = 8
-  end
-  object tblPessoas: TFDTable
-    Active = True
-    IndexFieldNames = 'id'
-    Connection = dmRavin.cnxBancoDeDados
-    TableName = 'ravin.pessoa'
-    Left = 608
-    Top = 8
-    object tblPessoasid: TFDAutoIncField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-    end
-    object tblPessoasnome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Required = True
-      Size = 255
-    end
-    object tblPessoastipoPessoa: TStringField
-      FieldName = 'tipoPessoa'
-      Origin = 'tipoPessoa'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object tblPessoascpf: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'cpf'
-      Origin = 'cpf'
-      Size = 11
-    end
-    object tblPessoastelefone: TLongWordField
-      AutoGenerateValue = arDefault
-      FieldName = 'telefone'
-      Origin = 'telefone'
-    end
-    object tblPessoasativo: TBooleanField
-      FieldName = 'ativo'
-      Origin = 'ativo'
-      Required = True
-    end
-    object tblPessoascriadoEm: TDateTimeField
-      FieldName = 'criadoEm'
-      Origin = 'criadoEm'
-      Required = True
-    end
-    object tblPessoascriadoPor: TStringField
-      FieldName = 'criadoPor'
-      Origin = 'criadoPor'
-      Required = True
-      Size = 255
-    end
-    object tblPessoasalteradoEm: TDateTimeField
-      FieldName = 'alteradoEm'
-      Origin = 'alteradoEm'
-      Required = True
-    end
-    object tblPessoasalteradoPor: TStringField
-      FieldName = 'alteradoPor'
-      Origin = 'alteradoPor'
-      Required = True
-      Size = 255
-    end
   end
 end
