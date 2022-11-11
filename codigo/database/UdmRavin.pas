@@ -47,7 +47,7 @@ begin
   end
   else
   begin
-    // CriarTabelas();
+    CriarTabelas();
   end;
 end;
 
@@ -105,11 +105,11 @@ end;
 procedure TdmRavin.PopularTabelas;
 var
   LSql: TStringList;
-  LCaminhoCreateTables: String;
+  LCaminhoAquivoScripts: String;
 begin
   LSql := TStringList.Create();
-  LCaminhoCreateTables := 'C:\projects\ravin\database\insertValues.sql';
-  LSql.LoadFromFile(LCaminhoCreateTables);
+  LCaminhoAquivoScripts := 'C:\projects\ravin\database\insertValues.sql';
+  LSql.LoadFromFile(LCaminhoAquivoScripts);
 
   cnxBancoDeDados.StartTransaction;
 
