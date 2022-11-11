@@ -1,28 +1,30 @@
+START TRANSACTION;
+
 CREATE SCHEMA `ravin`;
 USE `ravin`;
 
-CREATE TABLE IF NOT EXISTS `statusMesa` (
+CREATE TABLE `statusMesa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `statusComanda` (
+CREATE TABLE `statusComanda` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `statusComandaProduto` (
+CREATE TABLE `statusComandaProduto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 	
-CREATE TABLE IF NOT EXISTS `pessoa` (
+CREATE TABLE `pessoa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255) NOT NULL,
 	`tipoPessoa` CHAR(1) NOT NULL,
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `mesa` (
+CREATE TABLE `mesa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`atendenteId` int,
 	`statusMesaId` int,
@@ -56,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `mesa` (
 	FOREIGN KEY (statusMesaId) REFERENCES statusMesa(id)
 );
 
-CREATE TABLE IF NOT EXISTS `comanda` (
+CREATE TABLE `comanda` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`mesaId` int,	
 	`clienteId` int,	
@@ -74,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `comanda` (
 	FOREIGN KEY (statusComandaId) REFERENCES statusComanda(id)
 );
 
-CREATE TABLE IF NOT EXISTS `produto` (
+CREATE TABLE `produto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255) NOT NULL,
 	`descricao` VARCHAR(255),
@@ -92,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `comandaProduto` (
+CREATE TABLE `comandaProduto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`comandaId` int NOT NULL,
 	`produtoId` int NOT NULL,	
@@ -108,5 +110,4 @@ CREATE TABLE IF NOT EXISTS `comandaProduto` (
 	FOREIGN KEY (produtoId) REFERENCES produto(id),
 	FOREIGN KEY (statusComandaProdutoId) REFERENCES statusComandaProduto(id)
 );
-
-ALTER TABLE PESSOA ADD COLUMN dataNascimento DATE;
+COMMIT;
