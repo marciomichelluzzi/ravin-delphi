@@ -71,6 +71,17 @@ type
     pnlMesas: TPanel;
     tblStatusMesaid: TFDAutoIncField;
     tblStatusMesanome: TStringField;
+    tblPessoas: TFDTable;
+    tblPessoasid: TFDAutoIncField;
+    tblPessoasnome: TStringField;
+    tblPessoastipoPessoa: TStringField;
+    tblPessoascpf: TStringField;
+    tblPessoastelefone: TLongWordField;
+    tblPessoasativo: TBooleanField;
+    tblPessoascriadoEm: TDateTimeField;
+    tblPessoascriadoPor: TStringField;
+    tblPessoasalteradoEm: TDateTimeField;
+    tblPessoasalteradoPor: TStringField;
     procedure tblMesasBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -94,6 +105,7 @@ procedure TfrmMesas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
   tblMesas.Active := false;
+  tblPessoas.Active := false;
   tblStatusMesa.Active := false;
   qryPessoas.Active := false;
   frmMesas := nil;
@@ -101,9 +113,10 @@ end;
 
 procedure TfrmMesas.FormCreate(Sender: TObject);
 begin
-  tblMesas.Active := true;
   tblStatusMesa.Active := true;
   qryPessoas.Active := true;
+  tblPessoas.Active := true;
+  tblMesas.Active := true;
 end;
 
 procedure TfrmMesas.FormShow(Sender: TObject);
@@ -114,7 +127,6 @@ begin
     if Self.Components[i] is TDBEdit then
       TDBEdit(Self.Components[i]).Field.Alignment := taLeftJustify;
 end;
-
 
 procedure TfrmMesas.tblMesasBeforePost(DataSet: TDataSet);
 begin
