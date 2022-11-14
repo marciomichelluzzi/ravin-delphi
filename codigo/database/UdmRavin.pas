@@ -3,12 +3,31 @@ unit UdmRavin;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Comp.UI, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, Vcl.Dialogs;
+  System.SysUtils,
+  System.Classes,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.UI,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+
+  Vcl.Dialogs;
 
 type
   TdmRavin = class(TDataModule)
@@ -33,6 +52,8 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UResourceUtils;
 {$R *.dfm}
 
 procedure TdmRavin.cnxBancoDeDadosAfterConnect(Sender: TObject);
@@ -44,10 +65,6 @@ begin
   begin
     CriarTabelas();
     PopularTabelas();
-  end
-  else
-  begin
-    CriarTabelas();
   end;
 end;
 
@@ -83,15 +100,9 @@ begin
 end;
 
 procedure TdmRavin.CriarTabelas;
-var
-  LSql: TStringList;
-  LCaminhoAquivoScripts: String;
 begin
-  LSql := TStringList.Create();
-  LCaminhoAquivoScripts := 'C:\projects\ravin\database\createTables.sql';
-  LSql.LoadFromFile(LCaminhoAquivoScripts);
-  cnxBancoDeDados.ExecSQL(LSql.Text);
-  LSql.Free;
+  cnxBancoDeDados.ExecSQL(TResourcesUtils.CarregarResourcesTexto
+    ('createTables.sql', 'ravin'));
 end;
 
 procedure TdmRavin.DataModuleCreate(Sender: TObject);
@@ -103,28 +114,9 @@ begin
 end;
 
 procedure TdmRavin.PopularTabelas;
-var
-  LSql: TStringList;
-  LCaminhoAquivoScripts: String;
 begin
-  LSql := TStringList.Create();
-  LCaminhoAquivoScripts := 'C:\projects\ravin\database\insertValues.sql';
-  LSql.LoadFromFile(LCaminhoAquivoScripts);
-
-  cnxBancoDeDados.StartTransaction;
-
-  try
-    cnxBancoDeDados.ExecSQL(LSql.Text);
-    cnxBancoDeDados.Commit;
-  except
-    on E: Exception do
-    begin
-      ShowMessage('Não conseguiu inserir os dados no banco');
-      cnxBancoDeDados.Rollback;
-    end;
-  end;
-
-  LSql.Free;
+  cnxBancoDeDados.ExecSQL(TResourcesUtils.CarregarResourcesTexto
+    ('insertValues.sql', 'ravin'));
 end;
 
 end.

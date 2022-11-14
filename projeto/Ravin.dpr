@@ -11,7 +11,8 @@ uses
   UfrmSobre in '..\codigo\formularios\UfrmSobre.pas' {frmSobre},
   UfrmProdutos in '..\codigo\formularios\UfrmProdutos.pas' {frmProdutos},
   UfrmPainelGestao in '..\codigo\formularios\UfrmPainelGestao.pas' {frmPainelGestao},
-  UfrmComandas in '..\codigo\formularios\UfrmComandas.pas' {frmComandas};
+  UfrmComandas in '..\codigo\formularios\UfrmComandas.pas' {frmComandas},
+  UResourceUtils in '..\codigo\util\UResourceUtils.pas';
 
 {$R *.res}
 

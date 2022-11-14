@@ -1,4 +1,4 @@
-CREATE SCHEMA `ravin`;
+CREATE SCHEMA IF NOT EXISTS `ravin`;
 USE `ravin`;
 
 CREATE TABLE IF NOT EXISTS `statusMesa` (
@@ -110,3 +110,5 @@ CREATE TABLE IF NOT EXISTS `comandaProduto` (
 );
 
 ALTER TABLE PESSOA ADD COLUMN dataNascimento DATE;
+
+
