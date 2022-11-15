@@ -4,8 +4,8 @@ object frmSplash: TfrmSplash
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = 'Splash'
-  ClientHeight = 490
-  ClientWidth = 650
+  ClientHeight = 480
+  ClientWidth = 640
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,13 +22,15 @@ object frmSplash: TfrmSplash
   object pnlFundo: TPanel
     Left = 0
     Top = 0
-    Width = 650
-    Height = 490
+    Width = 640
+    Height = 480
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 650
+    ExplicitHeight = 490
     inline frmLogo: TfrmLogo
       Left = 232
       Top = 144
@@ -40,11 +42,6 @@ object frmSplash: TfrmSplash
       TabOrder = 0
       ExplicitLeft = 232
       ExplicitTop = 144
-      inherited pnlFundo: TPanel
-        inherited lblTitulo: TLabel
-          Width = 200
-        end
-      end
     end
   end
   object tmrSplash: TTimer

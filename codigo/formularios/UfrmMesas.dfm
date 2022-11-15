@@ -48,14 +48,14 @@ object frmMesas: TfrmMesas
     object lblCadastroMesa: TLabel
       Left = 8
       Top = 17
-      Width = 171
+      Width = 168
       Height = 25
       Caption = 'Cadastro de Mesa'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblCodigo: TLabel
@@ -87,14 +87,14 @@ object frmMesas: TfrmMesas
     object lblListaMesas: TLabel
       Left = 11
       Top = 321
-      Width = 143
+      Width = 142
       Height = 25
       Caption = 'Lista de Mesas'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblNome: TLabel
@@ -370,7 +370,6 @@ object frmMesas: TfrmMesas
     end
   end
   object tblMesas: TFDTable
-    Active = True
     BeforePost = tblMesasBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
@@ -472,7 +471,6 @@ object frmMesas: TfrmMesas
     Top = 8
   end
   object qryPessoas: TFDQuery
-    Active = True
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
     UpdateOptions.KeyFields = 'id'
@@ -540,7 +538,6 @@ object frmMesas: TfrmMesas
     end
   end
   object tblStatusMesa: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
@@ -568,7 +565,6 @@ object frmMesas: TfrmMesas
     Top = 8
   end
   object tblPessoas: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.pessoa'
@@ -578,6 +574,7 @@ object frmMesas: TfrmMesas
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object tblPessoasnome: TStringField
       FieldName = 'nome'

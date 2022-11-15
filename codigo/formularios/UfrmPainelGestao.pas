@@ -37,6 +37,7 @@ type
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;
     frmMenuItemSair: TfrmMenuItem;
+    Shape3: TShape;
     procedure FrameMenuItemMesasLabelTitleClick(Sender: TObject);
     procedure frmMenuItemSobrelblTituloClick(Sender: TObject);
     procedure frmMenuItemSairlblTituloClick(Sender: TObject);

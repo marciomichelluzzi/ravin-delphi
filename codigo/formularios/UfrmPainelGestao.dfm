@@ -21,14 +21,14 @@ object frmPainelGestao: TfrmPainelGestao
   object lblPainelGestaoTitulo: TLabel
     Left = 189
     Top = 16
-    Width = 104
+    Width = 102
     Height = 25
     Caption = 'Dashboard'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clGreen
+    Font.Color = 8035411
     Font.Height = -21
     Font.Name = 'Roboto'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Shape1: TShape
@@ -67,6 +67,14 @@ object frmPainelGestao: TfrmPainelGestao
   end
   object Shape5: TShape
     Left = 401
+    Top = 47
+    Width = 104
+    Height = 73
+    Pen.Color = clWhite
+    Shape = stRoundRect
+  end
+  object Shape3: TShape
+    Left = 511
     Top = 47
     Width = 104
     Height = 73

@@ -69,16 +69,16 @@ object frmSobre: TfrmSobre
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
-    ExplicitLeft = 216
-    ExplicitTop = 48
+    ExplicitWidth = 650
     inherited pnlFundo: TPanel
       Width = 650
+      ExplicitWidth = 650
       inherited imgLogo: TImage
         Width = 650
+        ExplicitWidth = 650
       end
       inherited lblTitulo: TLabel
         Width = 650
-        ExplicitWidth = 100
       end
     end
   end

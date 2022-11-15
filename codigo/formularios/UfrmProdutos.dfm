@@ -62,14 +62,14 @@ object frmProdutos: TfrmProdutos
     object lblCadastroProduto: TLabel
       Left = 8
       Top = 16
-      Width = 194
+      Width = 192
       Height = 25
       Caption = 'Cadastro de Produto'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblDescricao: TLabel
@@ -105,10 +105,10 @@ object frmProdutos: TfrmProdutos
       Height = 25
       Caption = 'Lista de Produtos'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblNome: TLabel

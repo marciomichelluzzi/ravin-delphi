@@ -109,6 +109,20 @@ CREATE TABLE IF NOT EXISTS `comandaProduto` (
 	FOREIGN KEY (statusComandaProdutoId) REFERENCES statusComandaProduto(id)
 );
 
+CREATE TABLE IF NOT EXISTS `usuario` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`pessoaId` int,
+	`produtoId` int NOT NULL,	
+	`login` VARCHAR(255) NOT NULL,	
+	`senha` VARCHAR(255) NOT NULL,
+	`criadoEm` DATETIME NOT NULL,
+	`criadoPor` VARCHAR(255) NOT NULL,
+	`alteradoEm` DATETIME NOT NULL,
+	`alteradoPor` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (pessoaId) REFERENCES pessoa(id)
+);
+
 ALTER TABLE PESSOA ADD COLUMN dataNascimento DATE;
 
 

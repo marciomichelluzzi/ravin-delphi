@@ -639,7 +639,7 @@ object frmMenuItem: TfrmMenuItem
       AutoSize = False
       Caption = 'Label'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -17
       Font.Name = 'Roboto'
       Font.Style = [fsBold]

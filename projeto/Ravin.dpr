@@ -12,7 +12,13 @@ uses
   UfrmProdutos in '..\codigo\formularios\UfrmProdutos.pas' {frmProdutos},
   UfrmPainelGestao in '..\codigo\formularios\UfrmPainelGestao.pas' {frmPainelGestao},
   UfrmComandas in '..\codigo\formularios\UfrmComandas.pas' {frmComandas},
-  UResourceUtils in '..\codigo\util\UResourceUtils.pas';
+  UResourceUtils in '..\codigo\util\UResourceUtils.pas',
+  UfrmAutenticar in '..\codigo\formularios\UfrmAutenticar.pas' {frmAutenticar},
+  UfrmBotaoPrimario in '..\codigo\frames\UfrmBotaoPrimario.pas' {frmBotaoPrimario: TFrame},
+  UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame},
+  Uusuario in '..\codigo\modelos\Uusuario.pas',
+  UusuarioDao in '..\codigo\dao\UusuarioDao.pas',
+  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar};
 
 {$R *.res}
 
@@ -22,10 +28,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
   Application.CreateForm(TfrmSplash, frmSplash);
-  Application.CreateForm(TfrmMesas, frmMesas);
-  Application.CreateForm(TfrmSobre, frmSobre);
-  Application.CreateForm(TfrmProdutos, frmProdutos);
-  Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
-  Application.CreateForm(TfrmComandas, frmComandas);
+  Application.CreateForm(TfrmRegistrar, frmRegistrar);
   Application.Run;
 end.

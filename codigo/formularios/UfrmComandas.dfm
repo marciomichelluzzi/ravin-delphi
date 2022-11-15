@@ -35,14 +35,14 @@ object frmComandas: TfrmComandas
     object lblListaProdutosComanda: TLabel
       Left = 8
       Top = 16
-      Width = 288
+      Width = 285
       Height = 25
       Caption = 'Lista de produtos da comanda'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object dbgComandaProdutos: TDBGrid
@@ -133,14 +133,14 @@ object frmComandas: TfrmComandas
     object lblCadastroComanda: TLabel
       Left = 8
       Top = 16
-      Width = 221
+      Width = 217
       Height = 25
       Caption = 'Cadastro de Comandas'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblCliente: TLabel
@@ -172,14 +172,14 @@ object frmComandas: TfrmComandas
     object lblListaMesas: TLabel
       Left = 8
       Top = 260
-      Width = 182
+      Width = 180
       Height = 25
       Caption = 'Lista de Comandas'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
+      Font.Color = 8035411
       Font.Height = -21
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblId: TLabel
@@ -347,7 +347,7 @@ object frmComandas: TfrmComandas
       ParentFont = False
       TabOrder = 6
       TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
+      TitleFont.Color = clBlack
       TitleFont.Height = -16
       TitleFont.Name = 'Roboto'
       TitleFont.Style = []
@@ -395,7 +395,6 @@ object frmComandas: TfrmComandas
     end
   end
   object tblComandas: TFDTable
-    Active = True
     BeforePost = tblComandasBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
@@ -490,7 +489,6 @@ object frmComandas: TfrmComandas
     Top = 344
   end
   object tblMesas: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.mesa'
@@ -508,7 +506,6 @@ object frmComandas: TfrmComandas
     Top = 520
   end
   object tblPessoas: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.pessoa'
@@ -521,7 +518,6 @@ object frmComandas: TfrmComandas
     Top = 576
   end
   object tblStatusComanda: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.statuscomanda'
@@ -533,7 +529,6 @@ object frmComandas: TfrmComandas
     Top = 632
   end
   object tblComandaProdutos: TFDTable
-    Active = True
     BeforePost = tblComandaProdutosBeforePost
     IndexFieldNames = 'comandaId'
     MasterSource = dtsComandas
@@ -623,7 +618,6 @@ object frmComandas: TfrmComandas
     end
   end
   object tblProdutos: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.produto'
@@ -636,7 +630,6 @@ object frmComandas: TfrmComandas
     Top = 464
   end
   object tblStatusComandaProduto: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.statuscomandaproduto'

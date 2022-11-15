@@ -1,0 +1,9 @@
+Primária:
+R:105
+G:195
+B:152
+
+Secundária:
+R:83
+G:156
+B:122
