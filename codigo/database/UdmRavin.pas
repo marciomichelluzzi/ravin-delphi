@@ -37,8 +37,10 @@ implementation
 procedure TdmRavin.cnxBancoDeDadosAfterConnect(Sender: TObject);
 var
   LCriarBaseDados: Boolean;
+  LCaminhoBaseDados : String;
 begin
-  LCriarBaseDados := not FileExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\mesa.idb');
+  LCaminhoBaseDados := 'C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\pessoa.ibd';
+  LCriarBaseDados := not FileExists(LCaminhoBaseDados);
 
     if (LCriarBaseDados) then
   begin
@@ -73,7 +75,7 @@ var
   LCaminhoArquivo: String;
 begin
   LSqlArquivoScripts := TStringList.Create();
-  LCaminhoArquivo := 'C:\Users\vgzampieri\Documents\ravin\database\createTable.sql';// NÃO DEVER SER FEITO ASSIM
+  LCaminhoArquivo := 'C:\Users\vgzampieri\Documents\ravin\database\createTable.sql';// NÃO DEVER SER FEITO ASSIM NO CASO CAMINHO ABSOLUTO
   LSqlArquivoScripts.LoadFromFile(LCaminhoArquivo);
   cnxBancoDeDados.ExecSQL(LSqlArquivoScripts.Text);
   FreeAndNil(LSqlArquivoScripts);
@@ -83,7 +85,7 @@ procedure TdmRavin.DataModuleCreate(Sender: TObject);
 begin
   if not (cnxBancoDeDados.Connected) then
   begin
-  cnxBancoDeDados.Connected := true;
+    cnxBancoDeDados.Connected := true;
   end;
 end;
 
