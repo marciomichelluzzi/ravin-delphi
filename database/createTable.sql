@@ -1,30 +1,28 @@
-START TRANSACTION;
-
-CREATE SCHEMA `ravin`;
+CREATE SCHEMA IF NOT EXISTS `ravin`;
 USE `ravin`;
 
-CREATE TABLE `statusMesa` (
+CREATE TABLE IF NOT EXISTS `statusMesa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `statusComanda` (
+CREATE TABLE IF NOT EXISTS `statusComanda` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `statusComandaProduto` (
+CREATE TABLE IF NOT EXISTS `statusComandaProduto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255),
 	UNIQUE KEY `uniqueNome` (`Nome`) USING HASH,
 	PRIMARY KEY (`id`)
 );
 	
-CREATE TABLE `pessoa` (
+CREATE TABLE IF NOT EXISTS `pessoa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255) NOT NULL,
 	`tipoPessoa` CHAR(1) NOT NULL,
@@ -39,7 +37,7 @@ CREATE TABLE `pessoa` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `mesa` (
+CREATE TABLE IF NOT EXISTS `mesa` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`atendenteId` int,
 	`statusMesaId` int,
@@ -58,7 +56,7 @@ CREATE TABLE `mesa` (
 	FOREIGN KEY (statusMesaId) REFERENCES statusMesa(id)
 );
 
-CREATE TABLE `comanda` (
+CREATE TABLE IF NOT EXISTS `comanda` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`mesaId` int,	
 	`clienteId` int,	
@@ -76,7 +74,7 @@ CREATE TABLE `comanda` (
 	FOREIGN KEY (statusComandaId) REFERENCES statusComanda(id)
 );
 
-CREATE TABLE `produto` (
+CREATE TABLE IF NOT EXISTS `produto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255) NOT NULL,
 	`descricao` VARCHAR(255),
@@ -94,7 +92,7 @@ CREATE TABLE `produto` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `comandaProduto` (
+CREATE TABLE IF NOT EXISTS `comandaProduto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`comandaId` int NOT NULL,
 	`produtoId` int NOT NULL,	
@@ -110,4 +108,3 @@ CREATE TABLE `comandaProduto` (
 	FOREIGN KEY (produtoId) REFERENCES produto(id),
 	FOREIGN KEY (statusComandaProdutoId) REFERENCES statusComandaProduto(id)
 );
-COMMIT;

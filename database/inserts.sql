@@ -1,4 +1,3 @@
-START TRANSACTION;
 insert into statusMesa (nome) values ('Livre');
 insert into statusMesa (nome) values ('Reservada');
 insert into statusMesa (nome) values ('Ocupada');
@@ -2117,6 +2116,3 @@ insert into comandaProduto (produtoId, comandaId, statusComandaProdutoId, quanti
 insert into comandaProduto (produtoId, comandaId, statusComandaProdutoId, quantidade, valorTotal, criadoEm, criadoPor, alteradoEm, alteradoPor) values (16, 44, 2, 83, 99.21, '2022-01-16', 'Nita', '2022-02-14', 'Pepito');
 insert into comandaProduto (produtoId, comandaId, statusComandaProdutoId, quantidade, valorTotal, criadoEm, criadoPor, alteradoEm, alteradoPor) values (2, 9, 2, 57, 6.86, '2021-12-21', 'Michelina', '2022-02-10', 'Lorrie');
 insert into comandaProduto (produtoId, comandaId, statusComandaProdutoId, quantidade, valorTotal, criadoEm, criadoPor, alteradoEm, alteradoPor) values (12, 34, 1, 29, 75.04, '2022-07-27', 'Gregg', '2022-01-26', 'Rafaelia');
-
-
-COMMIT;
