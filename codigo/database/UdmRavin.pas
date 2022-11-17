@@ -31,6 +31,9 @@ var
 
 implementation
 
+uses
+  UresourceUtils;
+
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
 
@@ -40,7 +43,7 @@ var
   LCaminhoBaseDados : String;
 begin
   LCaminhoBaseDados := 'C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\pessoa.ibd';
-  LCriarBaseDados := not FileExists(LCaminhoBaseDados);
+  LCriarBaseDados := not DirectoryExists(LCaminhoBaseDados);
 
     if (LCriarBaseDados) then
   begin
@@ -53,7 +56,7 @@ procedure TdmRavin.cnxBancoDeDadosBeforeConnect(Sender: TObject);
 var
   LCriarBaseDados: Boolean;
 begin
-  LCriarBaseDados := not FileExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\mesa.idb');
+  LCriarBaseDados := not DirectoryExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\mesa.ibd');
   with cnxBancoDeDados do
   begin
     Params.Values['Server'] := 'localhost';
@@ -70,15 +73,13 @@ begin
 end;
 
 procedure TdmRavin.CriarTabelas;
-var
-  LSqlArquivoScripts: TStringList;
-  LCaminhoArquivo: String;
 begin
-  LSqlArquivoScripts := TStringList.Create();
-  LCaminhoArquivo := 'C:\Users\vgzampieri\Documents\ravin\database\createTable.sql';// NÃO DEVER SER FEITO ASSIM NO CASO CAMINHO ABSOLUTO
-  LSqlArquivoScripts.LoadFromFile(LCaminhoArquivo);
-  cnxBancoDeDados.ExecSQL(LSqlArquivoScripts.Text);
-  FreeAndNil(LSqlArquivoScripts);
+  try
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('createTable.sql','ravin_sql'));
+  except
+    on E: Exception do
+      ShowMessage(E.Message);
+  end;
 end;
 
 procedure TdmRavin.DataModuleCreate(Sender: TObject);
@@ -90,17 +91,10 @@ begin
 end;
 
 procedure TdmRavin.InserirDados;
-var
-  LSqlArquivoScripts: TStringList;
-  LCaminhoArquivo: String;
 begin
-  LSqlArquivoScripts := TStringList.Create();
-  LCaminhoArquivo := 'C:\Users\vgzampieri\Documents\ravin\database\inserts.sql';// NÃO DEVER SER FEITO ASSIM
-  LSqlArquivoScripts.LoadFromFile(LCaminhoArquivo);
-
   try
     cnxBancoDeDados.StartTransaction();
-    cnxBancoDeDados.ExecSQL(LSqlArquivoScripts.Text);
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('inserts.sql','ravin_sql'));
     cnxBancoDeDados.Commit();
   except
     on E: Exception do
@@ -110,7 +104,6 @@ begin
     end;
   end;
 
-  FreeAndNil(LSqlArquivoScripts);
 end;
 
 end.
