@@ -1345,6 +1345,7 @@ object frmLogin: TfrmLogin
       Width = 233
       Height = 27
       Anchors = [akLeft, akRight]
+      AutoSize = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -1360,6 +1361,7 @@ object frmLogin: TfrmLogin
       Width = 233
       Height = 27
       Anchors = [akLeft, akRight]
+      AutoSize = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
