@@ -103,6 +103,9 @@ object frmLogin: TfrmLogin
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    DesignSize = (
+      409
+      490)
     object imgLogo: TImage
       Left = 144
       Top = 40
@@ -1269,57 +1272,69 @@ object frmLogin: TfrmLogin
       Stretch = True
     end
     object lblTituloRegistrar: TLabel
-      Left = 104
+      Left = 0
       Top = 440
-      Width = 209
+      Width = 409
       Height = 19
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
       Caption = 'Clique aqui para registrar'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 5150005
       Font.Height = -16
-      Font.Name = 'Tahoma'
+      Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblTitulo: TLabel
-      Left = 96
+      Left = 0
       Top = 151
-      Width = 183
+      Width = 409
       Height = 25
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
       Caption = 'Bem vindo de Volta'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
-      Font.Name = 'Tahoma'
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
     end
     object lblSubTitulo: TLabel
-      Left = 120
+      Left = 0
       Top = 182
-      Width = 137
+      Width = 409
       Height = 18
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
       Caption = 'Logue para continuar'
       Color = clSilver
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGrayText
+      Font.Color = clGray
       Font.Height = -15
-      Font.Name = 'Tahoma'
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentColor = False
       ParentFont = False
     end
     object lblSubTituloRegistras: TLabel
-      Left = 150
+      Left = 0
       Top = 420
-      Width = 99
+      Width = 409
       Height = 14
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
       Caption = 'N'#227'o possui conta?'
       Color = clSilver
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGrayText
+      Font.Color = clGray
       Font.Height = -12
-      Font.Name = 'Tahoma'
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentColor = False
       ParentFont = False
@@ -1368,7 +1383,7 @@ object frmLogin: TfrmLogin
       inherited pnlFundo: TPanel
         Top = 3
         ExplicitTop = 3
-        inherited SpeedButton1: TSpeedButton
+        inherited spdBotaoPrimario: TSpeedButton
           Left = -49
           Top = -10
           Height = 64
