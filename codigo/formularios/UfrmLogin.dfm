@@ -1343,29 +1343,32 @@ object frmLogin: TfrmLogin
       Left = 80
       Top = 261
       Width = 233
-      Height = 24
+      Height = 27
+      Anchors = [akLeft, akRight]
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
+      Font.Height = -16
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Text = 'Digite seu Usu'#225'rio'
+      TextHint = 'Login'
     end
     object edtSenha: TEdit
       Left = 80
       Top = 291
       Width = 233
-      Height = 24
+      Height = 27
+      Anchors = [akLeft, akRight]
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
+      Font.Height = -16
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
+      PasswordChar = '*'
       TabOrder = 1
-      Text = 'Digite sua Senha'
+      TextHint = 'Senha'
     end
     inline frmBotaoAutenticar1: TfrmBotaoAutenticar
       Left = 72
