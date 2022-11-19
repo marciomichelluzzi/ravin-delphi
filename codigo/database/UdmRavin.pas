@@ -42,7 +42,7 @@ var
   LCriarBaseDados: Boolean;
   LCaminhoBaseDados : String;
 begin
-  LCaminhoBaseDados := 'C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\pessoa.ibd';
+  LCaminhoBaseDados := 'C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\';
   LCriarBaseDados := not DirectoryExists(LCaminhoBaseDados);
 
     if (LCriarBaseDados) then
@@ -56,7 +56,7 @@ procedure TdmRavin.cnxBancoDeDadosBeforeConnect(Sender: TObject);
 var
   LCriarBaseDados: Boolean;
 begin
-  LCriarBaseDados := not DirectoryExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\mesa.ibd');
+  LCriarBaseDados := not DirectoryExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\');
   with cnxBancoDeDados do
   begin
     Params.Values['Server'] := 'localhost';
@@ -65,7 +65,7 @@ begin
     Params.Values['DriverID'] := 'MySQL';
     Params.Values['Port'] := '3306';
 
-    if not(LCriarBaseDados) then
+    if not (LCriarBaseDados) then
     begin
       Params.Values['Database'] := 'ravin';
     end;
