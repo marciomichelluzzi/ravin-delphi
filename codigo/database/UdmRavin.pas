@@ -41,7 +41,7 @@ type
     { Private declarations }
 
     procedure CriarTabelas();
-    procedure PopularTabelas();
+    procedure InserirDados();
   public
     { Public declarations }
   end;
@@ -64,7 +64,7 @@ begin
   if LCriarBase.Equals('True') OR LCriarBase.Equals('true') then
   begin
     CriarTabelas();
-    PopularTabelas();
+    InserirDados();
   end;
 end;
 
@@ -82,11 +82,11 @@ begin
       Params.Values['Port'] := '3306';
       Params.Values['Host'] := 'localhost';
       Params.Values['User_Name'] := 'root';
-      Params.Values['Password'] := '132600';
+      Params.Values['Password'] := 'root';
       Params.Values['DriverID'] := 'MySQL';
-      Params.Values['User_Name'] := 'root';
 
-      if not LCriarBase.Equals('True') then begin
+      if not LCriarBase.Equals('True') then
+      begin
         Params.Values['Database'] := 'ravin';
       end;
 
@@ -113,10 +113,20 @@ begin
   end;
 end;
 
-procedure TdmRavin.PopularTabelas;
+procedure TdmRavin.InserirDados;
 begin
-  cnxBancoDeDados.ExecSQL(TResourcesUtils.CarregarResourcesTexto
-    ('insertValues.sql', 'ravin'));
+  try
+    cnxBancoDeDados.StartTransaction();
+    cnxBancoDeDados.ExecSQL(TResourcesUtils.CarregarResourcesTexto
+      ('insertValues.sql', 'ravin'));
+    cnxBancoDeDados.Commit;
+  except
+    on E: Exception do
+    begin
+      cnxBancoDeDados.Rollback;
+      ShowMessage(E.Message);
+    end;
+  end;
 end;
 
 end.

@@ -2,7 +2,7 @@ object frmRegistrar: TfrmRegistrar
   Left = 0
   Top = 0
   ActiveControl = edtNome
-  BorderStyle = bsDialog
+  BorderStyle = bsSingle
   Caption = 'Registrar'
   ClientHeight = 490
   ClientWidth = 650
@@ -14,9 +14,6 @@ object frmRegistrar: TfrmRegistrar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  DesignSize = (
-    650
-    490)
   PixelsPerInch = 96
   TextHeight = 13
   object imgFundo: TImage
@@ -22884,24 +22881,31 @@ object frmRegistrar: TfrmRegistrar
     ExplicitHeight = 500
   end
   object pnlRegistrar: TPanel
-    Left = 136
+    AlignWithMargins = True
+    Left = 150
     Top = 0
-    Width = 385
+    Width = 350
     Height = 490
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 150
+    Margins.Top = 0
+    Margins.Right = 150
+    Margins.Bottom = 0
+    Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 136
     DesignSize = (
-      385
+      350
       490)
     object lblTituloRegistrar: TLabel
-      Left = 56
+      Left = 50
       Top = 41
-      Width = 270
+      Width = 250
       Height = 33
       Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
       AutoSize = False
       Caption = 'Criar conta'
       Font.Charset = DEFAULT_CHARSET
@@ -22912,11 +22916,12 @@ object frmRegistrar: TfrmRegistrar
       ParentFont = False
     end
     object lblSubTituloRegistrar: TLabel
-      Left = 56
+      Left = 50
       Top = 80
-      Width = 270
+      Width = 250
       Height = 19
       Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
       AutoSize = False
       Caption = 'Preencha os campos abaixo'
       Color = clGray
@@ -22932,7 +22937,7 @@ object frmRegistrar: TfrmRegistrar
       AlignWithMargins = True
       Left = 3
       Top = 433
-      Width = 379
+      Width = 344
       Height = 15
       Align = alBottom
       Alignment = taCenter
@@ -22943,13 +22948,13 @@ object frmRegistrar: TfrmRegistrar
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 80
+      ExplicitLeft = 50
     end
     object lblSubTituloAutenticar: TLabel
       AlignWithMargins = True
       Left = 3
       Top = 454
-      Width = 379
+      Width = 344
       Height = 33
       Align = alBottom
       Alignment = taCenter
@@ -22962,13 +22967,12 @@ object frmRegistrar: TfrmRegistrar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = lblSubTituloAutenticarClick
-      ExplicitTop = 444
-      ExplicitWidth = 270
+      ExplicitLeft = 50
     end
     object edtNome: TEdit
-      Left = 56
+      Left = 50
       Top = 143
-      Width = 280
+      Width = 250
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -22983,9 +22987,9 @@ object frmRegistrar: TfrmRegistrar
       TextHint = 'Digite seu nome'
     end
     object edtCpf: TEdit
-      Left = 56
+      Left = 50
       Top = 176
-      Width = 280
+      Width = 250
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -23000,26 +23004,26 @@ object frmRegistrar: TfrmRegistrar
       TextHint = 'Digite seu cpf'
     end
     inline frmBotaoPrimarioRegistrar: TfrmBotaoPrimario
-      Left = 56
+      Left = 50
       Top = 344
-      Width = 280
+      Width = 250
       Height = 45
       Anchors = [akLeft, akTop, akRight]
       Color = clWhite
       ParentBackground = False
       ParentColor = False
       TabOrder = 2
-      ExplicitLeft = 56
+      ExplicitLeft = 50
       ExplicitTop = 344
-      ExplicitWidth = 280
+      ExplicitWidth = 250
       ExplicitHeight = 45
       inherited pnlFundo: TPanel
-        Width = 280
+        Width = 250
         Height = 45
         ExplicitWidth = 280
         ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
-          Width = 280
+          Width = 250
           Height = 45
           Hint = 'Send email'
           Caption = 'Registrar'
@@ -23030,9 +23034,9 @@ object frmRegistrar: TfrmRegistrar
       end
     end
     object edtLogin: TEdit
-      Left = 56
+      Left = 50
       Top = 209
-      Width = 280
+      Width = 250
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -23047,9 +23051,9 @@ object frmRegistrar: TfrmRegistrar
       TextHint = 'Digite seu login'
     end
     object edtSenha: TEdit
-      Left = 56
+      Left = 50
       Top = 242
-      Width = 280
+      Width = 250
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -23065,9 +23069,9 @@ object frmRegistrar: TfrmRegistrar
       TextHint = 'Digite sua senha'
     end
     object edtConfirmarSenha: TEdit
-      Left = 56
+      Left = 50
       Top = 275
-      Width = 280
+      Width = 250
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone

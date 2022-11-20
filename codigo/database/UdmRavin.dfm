@@ -6,6 +6,7 @@ object dmRavin: TdmRavin
   object cnxBancoDeDados: TFDConnection
     Params.Strings = (
       'Server='
+      'Port='
       'DriverID=MySQL')
     UpdateOptions.AssignedValues = [uvUpdateMode]
     AfterConnect = cnxBancoDeDadosAfterConnect
@@ -14,7 +15,7 @@ object dmRavin: TdmRavin
     Top = 24
   end
   object drvBancoDeDados: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\projects\ravin\bibliotecas\libmysql.dll'
+    VendorLib = 'D:\projects\ravin\bibliotecas\libmysql.dll'
     Left = 40
     Top = 80
   end

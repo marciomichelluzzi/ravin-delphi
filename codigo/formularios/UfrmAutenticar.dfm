@@ -1,7 +1,7 @@
 object frmAutenticar: TfrmAutenticar
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
+  BorderStyle = bsSingle
   Caption = 'Login'
   ClientHeight = 490
   ClientWidth = 650
@@ -13,9 +13,6 @@ object frmAutenticar: TfrmAutenticar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  DesignSize = (
-    650
-    490)
   PixelsPerInch = 96
   TextHeight = 13
   object imgFundo: TImage
@@ -22880,22 +22877,29 @@ object frmAutenticar: TfrmAutenticar
     ExplicitTop = 8
   end
   object pnlAutenticacao: TPanel
-    Left = 136
+    AlignWithMargins = True
+    Left = 150
     Top = 0
-    Width = 385
+    Width = 350
     Height = 490
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 150
+    Margins.Top = 0
+    Margins.Right = 150
+    Margins.Bottom = 0
+    Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 145
+    ExplicitTop = -5
     DesignSize = (
-      385
+      350
       490)
     object lblTitulo: TLabel
       Left = 56
       Top = 161
-      Width = 280
+      Width = 245
       Height = 33
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -22912,7 +22916,7 @@ object frmAutenticar: TfrmAutenticar
     object lblSubTitulo: TLabel
       Left = 56
       Top = 192
-      Width = 280
+      Width = 245
       Height = 17
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -22929,10 +22933,10 @@ object frmAutenticar: TfrmAutenticar
       ExplicitWidth = 270
     end
     object ImageLogo: TImage
-      Left = 144
+      Left = 128
       Top = 32
-      Width = 105
-      Height = 105
+      Width = 100
+      Height = 100
       Anchors = [akLeft, akTop, akRight]
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
@@ -24097,7 +24101,7 @@ object frmAutenticar: TfrmAutenticar
       AlignWithMargins = True
       Left = 3
       Top = 433
-      Width = 379
+      Width = 344
       Height = 15
       Align = alBottom
       Alignment = taCenter
@@ -24108,14 +24112,13 @@ object frmAutenticar: TfrmAutenticar
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitTop = 423
-      ExplicitWidth = 270
+      ExplicitWidth = 105
     end
     object lblSubTituloRegistras: TLabel
       AlignWithMargins = True
       Left = 3
       Top = 454
-      Width = 379
+      Width = 344
       Height = 33
       Align = alBottom
       Alignment = taCenter
@@ -24134,7 +24137,7 @@ object frmAutenticar: TfrmAutenticar
     object edtLogin: TEdit
       Left = 56
       Top = 263
-      Width = 280
+      Width = 245
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -24147,12 +24150,12 @@ object frmAutenticar: TfrmAutenticar
       ParentFont = False
       TabOrder = 0
       TextHint = 'Digite seu usu'#225'rio'
-      ExplicitWidth = 270
+      ExplicitWidth = 280
     end
     object edtSenha: TEdit
       Left = 56
       Top = 296
-      Width = 280
+      Width = 245
       Height = 27
       Anchors = [akLeft, akTop, akRight]
       BevelInner = bvNone
@@ -24166,12 +24169,12 @@ object frmAutenticar: TfrmAutenticar
       PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Digite sua senha'
-      ExplicitWidth = 270
+      ExplicitWidth = 280
     end
     inline frmBotaoPrimarioAutenticar: TfrmBotaoPrimario
       Left = 56
       Top = 360
-      Width = 280
+      Width = 245
       Height = 45
       Anchors = [akLeft, akTop, akRight]
       Color = clWhite
@@ -24183,12 +24186,12 @@ object frmAutenticar: TfrmAutenticar
       ExplicitWidth = 280
       ExplicitHeight = 45
       inherited pnlFundo: TPanel
-        Width = 280
+        Width = 245
         Height = 45
-        ExplicitWidth = 77
-        ExplicitHeight = 33
+        ExplicitWidth = 280
+        ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
-          Width = 280
+          Width = 245
           Height = 45
           Caption = 'Autenticar'
           OnClick = frmBotaoPrimarioAutenticarspbBotaoPrimarioClick

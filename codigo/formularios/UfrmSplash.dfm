@@ -29,8 +29,6 @@ object frmSplash: TfrmSplash
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 650
-    ExplicitHeight = 490
     inline frmLogo: TfrmLogo
       Left = 232
       Top = 144
@@ -42,6 +40,11 @@ object frmSplash: TfrmSplash
       TabOrder = 0
       ExplicitLeft = 232
       ExplicitTop = 144
+      inherited pnlFundo: TPanel
+        inherited lblTitulo: TLabel
+          Width = 200
+        end
+      end
     end
   end
   object tmrSplash: TTimer
