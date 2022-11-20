@@ -23017,10 +23017,11 @@ object frmRegistrar: TfrmRegistrar
         Width = 280
         Height = 45
         ExplicitWidth = 280
-        ExplicitHeight = 41
+        ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
           Width = 280
           Height = 45
+          Hint = 'Send email'
           Caption = 'Registrar'
           OnClick = frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
           ExplicitWidth = 257
