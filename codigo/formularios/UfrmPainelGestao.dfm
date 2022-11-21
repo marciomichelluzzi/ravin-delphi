@@ -1635,6 +1635,7 @@ object frmPainelGestao: TfrmPainelGestao
         inherited lblTitulo: TLabel
           Caption = 'Mesas'
           OnClick = frmMenuItemMesaslblTituloClick
+          OnMouseMove = frmMenuItemMesaslblTituloMouseMove
         end
       end
     end

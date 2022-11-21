@@ -148,6 +148,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\codigo\util\UresourceUtils.pas"/>
+        <DCCReference Include="..\codigo\formularios\UfrmLogin.pas">
+            <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -176,6 +180,20 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="..\database\insertValues.sql" Configuration="Debug" Class="File">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\assets\internal\</RemoteDir>
+                        <RemoteName>insertValues.sql</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\database\createTables.sql" Configuration="Debug" Class="File">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\assets\internal\</RemoteDir>
+                        <RemoteName>createTables.sql</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Ravin.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Ravin.exe</RemoteName>

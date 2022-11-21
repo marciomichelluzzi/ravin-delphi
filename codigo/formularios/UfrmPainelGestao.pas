@@ -43,6 +43,8 @@ type
     procedure frmMenuItemProdutoslblTituloClick(Sender: TObject);
     procedure frmMenuItemMesaslblTituloClick(Sender: TObject);
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
+    procedure frmMenuItemMesaslblTituloMouseMove(Sender: TObject;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -86,6 +88,13 @@ begin
     Application.CreateForm(TfrmMesas, frmMesas);
   end;
   frmMesas.show();
+end;
+
+procedure TfrmPainelGestao.frmMenuItemMesaslblTituloMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  frmMenuItemMesas.lblTituloMouseMove(Sender, Shift, X, Y);
+
 end;
 
 procedure TfrmPainelGestao.frmMenuItemProdutoslblTituloClick(Sender: TObject);
