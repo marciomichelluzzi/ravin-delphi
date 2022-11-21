@@ -9,7 +9,7 @@ uses
 type
   TfrmBotaoAutenticar = class(TFrame)
     pnlFundo: TPanel;
-    SpeedButton1: TSpeedButton;
+    spdBotaoPrimario: TSpeedButton;
   private
     { Private declarations }
   public

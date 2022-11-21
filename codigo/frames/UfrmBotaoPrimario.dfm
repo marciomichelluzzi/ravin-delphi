@@ -15,7 +15,7 @@ object frmBotaoAutenticar: TfrmBotaoAutenticar
     Color = 8035411
     ParentBackground = False
     TabOrder = 0
-    object SpeedButton1: TSpeedButton
+    object spdBotaoPrimario: TSpeedButton
       Left = 0
       Top = 0
       Width = 350

@@ -18,7 +18,7 @@ object frmLogin: TfrmLogin
   object imgFundo: TImage
     Left = 0
     Top = 0
-    Width = 649
+    Width = 657
     Height = 490
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000002B80000
