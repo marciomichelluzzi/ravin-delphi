@@ -61,7 +61,7 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas, UfrmAutenticar;
+  UfrmMesas, UfrmComandas, UfrmAutenticar, UiniUtils;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
@@ -109,6 +109,9 @@ begin
 
   SetarFormPrincipal(frmAutenticar);
   frmAutenticar.show();
+
+  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGADO, 'false');
 
   Self.Close();
 end;

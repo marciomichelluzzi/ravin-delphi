@@ -22891,8 +22891,6 @@ object frmAutenticar: TfrmAutenticar
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 145
-    ExplicitTop = -5
     DesignSize = (
       350
       490)
@@ -24150,7 +24148,6 @@ object frmAutenticar: TfrmAutenticar
       ParentFont = False
       TabOrder = 0
       TextHint = 'Digite seu usu'#225'rio'
-      ExplicitWidth = 280
     end
     object edtSenha: TEdit
       Left = 56
@@ -24169,7 +24166,6 @@ object frmAutenticar: TfrmAutenticar
       PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Digite sua senha'
-      ExplicitWidth = 280
     end
     inline frmBotaoPrimarioAutenticar: TfrmBotaoPrimario
       Left = 56
@@ -24183,12 +24179,12 @@ object frmAutenticar: TfrmAutenticar
       TabOrder = 2
       ExplicitLeft = 56
       ExplicitTop = 360
-      ExplicitWidth = 280
+      ExplicitWidth = 245
       ExplicitHeight = 45
       inherited pnlFundo: TPanel
         Width = 245
         Height = 45
-        ExplicitWidth = 280
+        ExplicitWidth = 245
         ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
           Width = 245

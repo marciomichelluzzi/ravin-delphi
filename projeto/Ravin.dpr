@@ -18,7 +18,8 @@ uses
   UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame},
   Uusuario in '..\codigo\modelos\Uusuario.pas',
   UusuarioDao in '..\codigo\dao\UusuarioDao.pas',
-  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar};
+  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
+  UiniUtils in '..\codigo\util\UiniUtils.pas';
 
 {$R *.res}
 

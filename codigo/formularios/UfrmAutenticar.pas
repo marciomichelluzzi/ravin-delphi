@@ -45,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar;
+uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar, UiniUtils;
 
 { TfrmLogin }
 
@@ -75,6 +75,8 @@ begin
 
       SetMainForm(frmPainelGestao);
       frmPainelGestao.Show();
+
+      TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO, 'true');
 
       Close;
     end
