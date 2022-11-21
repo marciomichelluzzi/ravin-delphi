@@ -5,6 +5,7 @@ interface
 uses
   System.SysUtils,
   System.Classes,
+  System.IOUtils,
 
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
@@ -73,6 +74,10 @@ var
   LCaminhoBase: String;
   LCriarBase: String;
 begin
+
+  drvBancoDeDados.VendorLib := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
+        'ravin'), 'libmysql.dll');
+
   with cnxBancoDeDados do
   begin
     try

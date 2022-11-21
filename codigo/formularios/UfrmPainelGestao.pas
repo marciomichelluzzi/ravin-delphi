@@ -46,6 +46,7 @@ type
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
   private
     { Private declarations }
+    procedure SetarFormPrincipal(NovoMainForm: TForm);
   public
     { Public declarations }
   end;
@@ -60,7 +61,7 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas;
+  UfrmMesas, UfrmComandas, UfrmAutenticar;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
@@ -73,7 +74,8 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
 begin
-  if(not Assigned(frmComandas)) then begin
+  if (not Assigned(frmComandas)) then
+  begin
     Application.CreateForm(TfrmComandas, frmComandas);
   end;
 
@@ -100,7 +102,15 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
 begin
-  Application.Terminate();
+  if (not Assigned(frmAutenticar)) then
+  begin
+    Application.CreateForm(TfrmSobre, frmSobre)
+  end;
+
+  SetarFormPrincipal(frmAutenticar);
+  frmAutenticar.show();
+
+  Self.Close();
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSobrelblTituloClick(Sender: TObject);
@@ -110,6 +120,14 @@ begin
     Application.CreateForm(TfrmSobre, frmSobre)
   end;
   frmSobre.show();
+end;
+
+procedure TfrmPainelGestao.SetarFormPrincipal(NovoMainForm: TForm);
+var
+  tmpMain: ^TCustomForm;
+begin
+  tmpMain := @Application.Mainform;
+  tmpMain^ := NovoMainForm;
 end;
 
 end.
