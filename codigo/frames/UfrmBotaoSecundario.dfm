@@ -1,0 +1,42 @@
+object frmBotaoSecundario: TfrmBotaoSecundario
+  Left = 0
+  Top = 0
+  Width = 320
+  Height = 50
+  Color = clWhite
+  ParentBackground = False
+  ParentColor = False
+  TabOrder = 0
+  object spbBotaoSecundario: TSpeedButton
+    Left = 0
+    Top = 0
+    Width = 320
+    Height = 50
+    Align = alClient
+    Caption = 'Text'
+    Flat = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 8035411
+    Font.Height = -16
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ExplicitLeft = 152
+    ExplicitTop = 24
+    ExplicitWidth = 23
+    ExplicitHeight = 22
+  end
+  object pnlFundo: TPanel
+    Left = 0
+    Top = 0
+    Width = 320
+    Height = 50
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 88
+    ExplicitTop = 16
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

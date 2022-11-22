@@ -42,38 +42,38 @@ uses
 
 procedure TfrmLogin.btnTesteClick(Sender: TObject);
 var
-  LUsuario : TUsuario;
-  LDao : TUsuarioDAO;
+  LUsuario: TUsuario;
+  LDao: TUsuarioDAO;
 begin
   LUsuario := TUsuario.Create();
   with LUsuario do
   begin
-  login := 'teste';
-  senha := 'teste123';
-  pessoaId := 1;
-  criadoEm := Now();
-  criadoPor := 'Victor';
-  alteradoEm := now();
-  alteradoPor := 'victor';
+    login := 'teste';
+    senha := 'teste123';
+    pessoaId := 1;
+    criadoEm := Now();
+    criadoPor := 'Victor';
+    alteradoEm := Now();
+    alteradoPor := 'Victor';
 
-  LDao := TUsuarioDao.Create();
-  LDao.InserirUsuario(LUsuario);
+    LDao := TUsuarioDAO.Create();
+    LDao.InserirUsuario(LUsuario);
 
-  FreeAndNil(LDao);
-  FreeAndNil(LUsuario);
+    FreeAndNil(LDao);
+    FreeAndNil(LUsuario);
   end;
 end;
 
 procedure TfrmLogin.frmBotaoAutenticar1spdBotaoPrimarioClick(Sender: TObject);
 var
-  LDao: TUsuarioDao;
+  LDao: TUsuarioDAO;
   LUsuario: TUsuario;
 
   LLogin: String;
   LSenha: String;
 begin
 
-  LDao := TUsuarioDao.Create;
+  LDao := TUsuarioDAO.Create;
   LLogin := edtLogin.Text;
   LSenha := edtSenha.Text;
 
@@ -94,7 +94,7 @@ begin
 
     Close();
   end
-    else
+  else
   begin
     FreeAndNil(LDao);
     ShowMessage('Login e/ou senha inválidos!');
