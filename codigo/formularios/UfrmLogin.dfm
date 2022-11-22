@@ -1396,11 +1396,21 @@ object frmLogin: TfrmLogin
           Font.Color = clWhite
           Font.Height = -17
           ParentFont = False
+          OnClick = frmBotaoAutenticar1spdBotaoPrimarioClick
           ExplicitLeft = -49
           ExplicitTop = -10
           ExplicitHeight = 64
         end
       end
+    end
+    object btnTeste: TButton
+      Left = 312
+      Top = 182
+      Width = 75
+      Height = 25
+      Caption = 'btnTeste'
+      TabOrder = 3
+      OnClick = btnTesteClick
     end
   end
 end
