@@ -19,10 +19,10 @@ type
     lblSubTitulo: TLabel;
     lblSubTituloRegistras: TLabel;
     imgFundo: TImage;
-    frmBotaoAutenticar1: TfrmBotaoAutenticar;
     btnTeste: TButton;
-    procedure frmBotaoAutenticar1spdBotaoPrimarioClick(Sender: TObject);
+    frmBotaoPrimario1: TfrmBotaoPrimario;
     procedure btnTesteClick(Sender: TObject);
+    procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetarFormPrincipal(pNovoFormulario: TForm);
@@ -64,7 +64,9 @@ begin
   end;
 end;
 
-procedure TfrmLogin.frmBotaoAutenticar1spdBotaoPrimarioClick(Sender: TObject);
+
+
+procedure TfrmLogin.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
 var
   LDao: TUsuarioDAO;
   LUsuario: TUsuario;

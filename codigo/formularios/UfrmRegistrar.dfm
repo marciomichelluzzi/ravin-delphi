@@ -22965,6 +22965,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = lblSubTituloAutenticarClick
       ExplicitLeft = 50
     end
     object edtNome: TEdit
@@ -23054,9 +23055,9 @@ object frmRegistrar: TfrmRegistrar
       TabOrder = 3
       TextHint = 'Confirme sua senha'
     end
-    inline frmBotaoAutenticar1: TfrmBotaoAutenticar
+    inline frmBotaoPrimario1: TfrmBotaoPrimario
       Left = 50
-      Top = 336
+      Top = 352
       Width = 255
       Height = 50
       Color = clWhite
@@ -23064,13 +23065,17 @@ object frmRegistrar: TfrmRegistrar
       ParentColor = False
       TabOrder = 5
       ExplicitLeft = 50
-      ExplicitTop = 336
+      ExplicitTop = 352
       ExplicitWidth = 255
       inherited pnlFundo: TPanel
-        inherited spdBotaoPrimario: TSpeedButton
-          Left = -50
-          Caption = 'Registrar'
-          ExplicitLeft = -50
+        Width = 255
+        inherited spbBotaoPrimario: TSpeedButton
+          Width = 255
+          Caption = 'Resgistrar'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 305
+          ExplicitHeight = 50
         end
       end
     end

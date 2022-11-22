@@ -98,13 +98,13 @@ object frmLogin: TfrmLogin
   object pnlAutenticacao: TPanel
     Left = 120
     Top = 0
-    Width = 409
+    Width = 433
     Height = 490
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
-      409
+      433
       490)
     object imgLogo: TImage
       Left = 144
@@ -1274,7 +1274,7 @@ object frmLogin: TfrmLogin
     object lblTituloRegistrar: TLabel
       Left = 0
       Top = 440
-      Width = 409
+      Width = 433
       Height = 19
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -1286,11 +1286,12 @@ object frmLogin: TfrmLogin
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      ExplicitWidth = 409
     end
     object lblTitulo: TLabel
       Left = 0
       Top = 151
-      Width = 409
+      Width = 433
       Height = 25
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -1302,11 +1303,12 @@ object frmLogin: TfrmLogin
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
+      ExplicitWidth = 409
     end
     object lblSubTitulo: TLabel
       Left = 0
       Top = 182
-      Width = 409
+      Width = 433
       Height = 18
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -1320,11 +1322,12 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      ExplicitWidth = 409
     end
     object lblSubTituloRegistras: TLabel
       Left = 0
       Top = 420
-      Width = 409
+      Width = 433
       Height = 14
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -1338,11 +1341,12 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      ExplicitWidth = 409
     end
     object edtLogin: TEdit
       Left = 80
       Top = 261
-      Width = 233
+      Width = 257
       Height = 27
       Anchors = [akLeft, akRight]
       AutoSize = False
@@ -1354,11 +1358,12 @@ object frmLogin: TfrmLogin
       ParentFont = False
       TabOrder = 0
       TextHint = 'Login'
+      ExplicitWidth = 233
     end
     object edtSenha: TEdit
       Left = 80
       Top = 291
-      Width = 233
+      Width = 257
       Height = 27
       Anchors = [akLeft, akRight]
       AutoSize = False
@@ -1371,37 +1376,7 @@ object frmLogin: TfrmLogin
       PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Senha'
-    end
-    inline frmBotaoAutenticar1: TfrmBotaoAutenticar
-      Left = 72
-      Top = 336
-      Width = 257
-      Height = 57
-      Color = clWhite
-      ParentBackground = False
-      ParentColor = False
-      TabOrder = 2
-      ExplicitLeft = 72
-      ExplicitTop = 336
-      ExplicitWidth = 257
-      ExplicitHeight = 57
-      inherited pnlFundo: TPanel
-        Top = 3
-        ExplicitTop = 3
-        inherited spdBotaoPrimario: TSpeedButton
-          Left = -49
-          Top = -10
-          Height = 64
-          Caption = 'Autenticar'
-          Font.Color = clWhite
-          Font.Height = -17
-          ParentFont = False
-          OnClick = frmBotaoAutenticar1spdBotaoPrimarioClick
-          ExplicitLeft = -49
-          ExplicitTop = -10
-          ExplicitHeight = 64
-        end
-      end
+      ExplicitWidth = 233
     end
     object btnTeste: TButton
       Left = 312
@@ -1409,8 +1384,29 @@ object frmLogin: TfrmLogin
       Width = 75
       Height = 25
       Caption = 'btnTeste'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btnTesteClick
+    end
+    inline frmBotaoPrimario1: TfrmBotaoPrimario
+      Left = 80
+      Top = 352
+      Width = 273
+      Height = 50
+      Color = clWhite
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 3
+      ExplicitLeft = 80
+      ExplicitTop = 352
+      ExplicitWidth = 273
+      inherited pnlFundo: TPanel
+        Width = 273
+        inherited spbBotaoPrimario: TSpeedButton
+          Width = 273
+          Caption = 'Autenticar'
+          OnClick = frmBotaoPrimario1spbBotaoPrimarioClick
+        end
+      end
     end
   end
 end

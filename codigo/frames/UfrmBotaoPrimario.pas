@@ -7,9 +7,9 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls;
 
 type
-  TfrmBotaoAutenticar = class(TFrame)
+  TfrmBotaoPrimario = class(TFrame)
+    spbBotaoPrimario: TSpeedButton;
     pnlFundo: TPanel;
-    spdBotaoPrimario: TSpeedButton;
   private
     { Private declarations }
   public

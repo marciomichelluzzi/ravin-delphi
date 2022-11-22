@@ -1,4 +1,4 @@
-﻿unit UfrmRegistrar;
+unit UfrmRegistrar;
 
 interface
 
@@ -32,9 +32,8 @@ type
     edtLogin: TEdit;
     edtSenha: TEdit;
     edtConfirmarSenha: TEdit;
-    frmBotaoAutenticar1: TfrmBotaoAutenticar;
-//    procedure lblSubTituloAutenticarClick(Sender: TObject);
-//    procedure frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(Sender: TObject);
+    frmBotaoPrimario1: TfrmBotaoPrimario;
+    procedure lblSubTituloAutenticarClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetMainForm(NovoMainForm: TForm);
@@ -53,41 +52,8 @@ uses
 
 {$R *.dfm}
 
-//procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
-//  (Sender: TObject);
-//var
-//  Lusuario: Tusuario;
-//  LusuarioDao: TUsuarioDAO;
-//begin
-//  Lusuario := Tusuario.Create;
-//  Lusuario.Login := edtLogin.Text;
-//  Lusuario.Senha := edtSenha.Text;
-//
-//  LusuarioDao := TUsuarioDAO.Create();
-//
-//  try
-//    try
-//      LusuarioDao.Salvar(Lusuario);
-//      Vcl.Dialogs.MessageDlg
-//        ('Agora que voc� se cadastrou efetue o login com suas informa��es cadastradas',
-//        TMsgDlgType.mtConfirmation, [mbOk], 0, mbOk);
-//      lblSubTituloAutenticarClick(Sender);
-//    except
-//      on E: Exception do
-//      begin
-//        ShowMessage('Erro ao criar a conta do usu�rio')
-//      end;
-//    end;
-//
-//  finally
-//    LusuarioDao.Free;
-//    Lusuario.Free;
-//  end;
-//
-//end;
-
-//procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
-//begin
+procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
+begin
 //  if not Assigned(frmAutenticar) then
 //  begin
 //    Application.CreateForm(TfrmAutenticar, frmAutenticar);
@@ -97,7 +63,7 @@ uses
 //  frmAutenticar.Show();
 //
 //  Close();
-//end;
+end;
 
 procedure TfrmRegistrar.SetMainForm(NovoMainForm: TForm);
 var
