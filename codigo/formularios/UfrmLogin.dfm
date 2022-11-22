@@ -17,7 +17,6 @@ object frmLogin: TfrmLogin
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object pnlLogin: TPanel
@@ -35,10 +34,6 @@ object frmLogin: TfrmLogin
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 3
-    ExplicitTop = 3
-    ExplicitWidth = 526
-    ExplicitHeight = 484
     DesignSize = (
       350
       490)
@@ -1273,7 +1268,7 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentFont = False
     end
-    object Edit1: TEdit
+    object edtLogin: TEdit
       Left = 48
       Top = 256
       Width = 250
@@ -1288,7 +1283,7 @@ object frmLogin: TfrmLogin
       TabOrder = 0
       TextHint = 'Login'
     end
-    object Edit2: TEdit
+    object edtSenha: TEdit
       Left = 48
       Top = 289
       Width = 250
@@ -1305,5 +1300,23 @@ object frmLogin: TfrmLogin
       TabOrder = 1
       TextHint = 'Senha'
     end
+    object btnLogar: TButton
+      Left = 48
+      Top = 344
+      Width = 249
+      Height = 25
+      Caption = 'Logar'
+      TabOrder = 2
+      OnClick = btnLogarClick
+    end
+  end
+  object Button1: TButton
+    Left = 32
+    Top = 88
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
   end
 end

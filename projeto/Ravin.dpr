@@ -13,7 +13,10 @@ uses
   UfrmPainelGestao in '..\codigo\formularios\UfrmPainelGestao.pas' {frmPainelGestao},
   UfrmComandas in '..\codigo\formularios\UfrmComandas.pas' {frmComandas},
   UresourceUtils in '..\codigo\util\UresourceUtils.pas',
-  UfrmLogin in '..\codigo\formularios\UfrmLogin.pas' {frmLogin};
+  UfrmLogin in '..\codigo\formularios\UfrmLogin.pas' {frmLogin},
+  Uusuario in '..\codigo\modelos\Uusuario.pas',
+  UusuarioDao in '..\codigo\dao\UusuarioDao.pas',
+  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar};
 
 {$R *.res}
 
@@ -23,5 +26,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
   Application.CreateForm(TfrmSplash, frmSplash);
+  Application.CreateForm(TfrmRegistrar, frmRegistrar);
   Application.Run;
 end.

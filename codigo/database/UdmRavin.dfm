@@ -26,4 +26,9 @@ object dmRavin: TdmRavin
     Left = 40
     Top = 136
   end
+  object FDQuery1: TFDQuery
+    Connection = cnxBancoDeDados
+    Left = 408
+    Top = 48
+  end
 end

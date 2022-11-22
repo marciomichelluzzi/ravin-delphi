@@ -15,6 +15,7 @@ type
     cnxBancoDeDados: TFDConnection;
     drvBancoDeDados: TFDPhysMySQLDriverLink;
     wtcBancoDeDados: TFDGUIxWaitCursor;
+    FDQuery1: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure cnxBancoDeDadosBeforeConnect(Sender: TObject);
     procedure cnxBancoDeDadosAfterConnect(Sender: TObject);
