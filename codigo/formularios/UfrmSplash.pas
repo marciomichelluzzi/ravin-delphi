@@ -30,9 +30,9 @@ type
     procedure FormPaint(Sender: TObject);
   private
     { Private declarations }
-    Inicialized: Boolean;
+    Inicializado: Boolean;
     procedure InicializarAplicacao();
-    procedure SetarFormPrincipal(NewMainForm: TForm);
+    procedure SetarFormPrincipal(PNovoFormulario: TForm);
   public
     { Public declarations }
   end;
@@ -44,29 +44,29 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, UfrmLogin;
+uses UfrmPainelGestao, UfrmAutenticar;
 
 procedure TfrmSplash.FormCreate(Sender: TObject);
 begin
-  Inicialized := false;
+  Inicializado := false;
   tmrSplash.Enabled := false;
   tmrSplash.Interval := 1000;
 end;
 
 procedure TfrmSplash.FormPaint(Sender: TObject);
 begin
-  tmrSplash.Enabled := not Inicialized;
+  tmrSplash.Enabled := not Inicializado;
 end;
 
 procedure TfrmSplash.InicializarAplicacao;
 begin
-  if not Assigned(frmLogin) then
+  if not Assigned(frmAutenticar) then
   begin
-    Application.CreateForm(TfrmLogin, frmLogin);
+    Application.CreateForm(TfrmAutenticar, frmAutenticar);
   end;
 
-  SetarFormPrincipal(frmLogin);
-  frmLogin.Show();
+  SetarFormPrincipal(frmAutenticar);
+  frmAutenticar.Show();
 
   Close;
 end;
@@ -74,19 +74,19 @@ end;
 procedure TfrmSplash.tmrSplashTimer(Sender: TObject);
 begin
   tmrSplash.Enabled := false;
-  if not Inicialized then
+  if not Inicializado then
   begin
-    Inicialized := true;
+    Inicializado := true;
     InicializarAplicacao();
   end;
 end;
 
-procedure TfrmSplash.SetarFormPrincipal(NewMainForm: TForm);
+procedure TfrmSplash.SetarFormPrincipal(PNovoFormulario: TForm);
 var
   tmpMain: ^TCustomForm;
 begin
   tmpMain := @Application.Mainform;
-  tmpMain^ := NewMainForm;
+  tmpMain^ := PNovoFormulario;
 end;
 
 end.

@@ -43,7 +43,6 @@ begin
 
   if not LQuery.IsEmpty then
   begin
-    // Achou algum registro
     LUsuario := TUsuario.Create();
     LUsuario.id := LQuery.FieldByName('id').AsInteger;
     LUsuario.login := LQuery.FieldByName('login').AsString;

@@ -29,10 +29,10 @@ type
     lblSubTituloAutenticar: TLabel;
     edtNome: TEdit;
     edtCpf: TEdit;
+    frmBotaoPrimarioRegistrar: TfrmBotaoPrimario;
     edtLogin: TEdit;
     edtSenha: TEdit;
     edtConfirmarSenha: TEdit;
-    Button1: TButton;
     procedure lblSubTituloAutenticarClick(Sender: TObject);
     procedure frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(Sender: TObject);
   private
@@ -59,30 +59,30 @@ var
   Lusuario: Tusuario;
   LusuarioDao: TUsuarioDAO;
 begin
-  Lusuario := Tusuario.Create;
-  Lusuario.Login := edtLogin.Text;
-  Lusuario.Senha := edtSenha.Text;
-
-  LusuarioDao := TUsuarioDAO.Create();
-
-  try
-    try
-      LusuarioDao.Salvar(Lusuario);
-      Vcl.Dialogs.MessageDlg
-        ('Agora que você se cadastrou efetue o login com suas informações cadastradas',
-        TMsgDlgType.mtConfirmation, [mbOk], 0, mbOk);
-      lblSubTituloAutenticarClick(Sender);
-    except
-      on E: Exception do
-      begin
-        ShowMessage('Erro ao criar a conta do usuário')
-      end;
-    end;
-
-  finally
-    LusuarioDao.Free;
-    Lusuario.Free;
-  end;
+//  Lusuario := Tusuario.Create;
+//  Lusuario.Login := edtLogin.Text;
+//  Lusuario.Senha := edtSenha.Text;
+//
+//  LusuarioDao := TUsuarioDAO.Create();
+//
+//  try
+//    try
+//      LusuarioDao.Salvar(Lusuario);
+//      Vcl.Dialogs.MessageDlg
+//        ('Agora que você se cadastrou efetue o login com suas informações cadastradas',
+//        TMsgDlgType.mtConfirmation, [mbOk], 0, mbOk);
+//      lblSubTituloAutenticarClick(Sender);
+//    except
+//      on E: Exception do
+//      begin
+//        ShowMessage('Erro ao criar a conta do usuário')
+//      end;
+//    end;
+//
+//  finally
+//    LusuarioDao.Free;
+//    Lusuario.Free;
+//  end;
 
 end;
 

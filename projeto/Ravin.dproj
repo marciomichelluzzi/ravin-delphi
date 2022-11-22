@@ -148,12 +148,22 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\codigo\util\UresourceUtils.pas"/>
-        <DCCReference Include="..\codigo\formularios\UfrmLogin.pas">
-            <Form>frmLogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\codigo\modelos\Uusuario.pas"/>
         <DCCReference Include="..\codigo\dao\UusuarioDao.pas"/>
+        <DCCReference Include="..\codigo\frames\UfrmBotaoPrimario.pas">
+            <Form>frmBotaoPrimario</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\codigo\frames\UfrmBotaoSecundario.pas">
+            <Form>frmBotaoSecundario</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\codigo\formularios\UfrmAutenticar.pas">
+            <Form>frmAutenticar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="..\codigo\formularios\UfrmRegistrar.pas">
             <Form>frmRegistrar</Form>
             <FormType>dfm</FormType>

@@ -81,7 +81,7 @@ begin
   try
     cnxBancoDeDados.ExecSQL(TResourceUtils
     .carregarArquivoResource
-      ('createTable.sql', 'ravin'));
+      ('createTables.sql', 'ravin'));
   except
     on E: Exception do
       ShowMessage(E.Message);
@@ -93,7 +93,7 @@ begin
     cnxBancoDeDados.StartTransaction();
     cnxBancoDeDados.ExecSQL(TResourceUtils
     .carregarArquivoResource
-      ('inserts.sql', 'ravin'));
+      ('insertValues.sql', 'ravin'));
     cnxBancoDeDados.Commit();
   except
     on E: Exception do
