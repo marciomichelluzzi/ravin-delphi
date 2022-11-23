@@ -31,6 +31,9 @@ type
     class function lerPropriedade(PSecao: TSECAO;
       PPropriedade: TPROPRIEDADE): String;
 
+    const VALOR_VERDADEIRO : String = 'true';
+    const VALOR_FALSO      : String = 'false';
+
   end;
 
 implementation
@@ -54,12 +57,17 @@ class procedure TIniUtils.gravarPropriedade(PSecao: TSECAO;
 var
   LcaminhoArquivoIni: String;
   LarquivoINI: TIniFile;
+  LNomeSecao: String;
+  LNomePropriedade: String;
 begin
   LcaminhoArquivoIni := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
-    'ravin'), 'configuracoes.ini');
+    'ravin_sources'), 'configuracoes.ini');
   LarquivoINI := TIniFile.Create(LcaminhoArquivoIni);
-  LarquivoINI.WriteString(GetEnumName(TypeInfo(TSECAO), Integer(PSecao)),
-    GetEnumName(TypeInfo(TPROPRIEDADE), Integer(PPropriedade)), PValor);
+
+  LNomeSecao := GetEnumName(TypeInfo(TSECAO), Integer(PSecao));
+  LNomePropriedade := GetEnumName(TypeInfo(TPROPRIEDADE),Integer(PPropriedade));
+
+  LarquivoINI.WriteString(LNomeSecao, LNomePropriedade, PValor);
   LarquivoINI.Free;
 end;
 
@@ -68,12 +76,17 @@ class function TIniUtils.lerPropriedade(PSecao: TSECAO;
 var
   LcaminhoArquivoIni: String;
   LarquivoINI: TIniFile;
+  LNomeSecao: String;
+  LNomePropriedade: String;
 begin
   LcaminhoArquivoIni := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
-    'ravin'), 'configuracoes.ini');
+    'ravin_sources'), 'configuracoes.ini');
+
+  LNomeSecao := GetEnumName(TypeInfo(TSECAO), Integer(PSecao));
+  LNomePropriedade := GetEnumName(TypeInfo(TPROPRIEDADE),Integer(PPropriedade));
+
   LarquivoINI := TIniFile.Create(LcaminhoArquivoIni);
-  Result := LarquivoINI.ReadString(GetEnumName(TypeInfo(TSECAO), Integer(PSecao)
-    ), GetEnumName(TypeInfo(TPROPRIEDADE), Integer(PPropriedade)), '');
+  Result := LarquivoINI.ReadString(LNomeSecao, LNomePropriedade, '');
   LarquivoINI.Free;
 end;
 

@@ -35,7 +35,7 @@ var
 implementation
 
 uses
-  UfrmPainelGestao, UusuarioDao, Uusuario, UfrmRegistrar;
+  UfrmPainelGestao, UusuarioDao, Uusuario, UfrmRegistrar, UiniUtils;
 
 {$R *.dfm}
 
@@ -47,7 +47,6 @@ var
   LLogin: String;
   LSenha: String;
 begin
-
   LDao := TUsuarioDAO.Create;
   LLogin := edtLogin.Text;
   LSenha := edtSenha.Text;
@@ -56,6 +55,8 @@ begin
 
   if Assigned(LUsuario) then
   begin
+    TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
+      TIniUtils.VALOR_VERDADEIRO);
     if not Assigned(frmPainelGestao) then
     begin
       Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
@@ -71,6 +72,8 @@ begin
   end
   else
   begin
+    TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
+      TIniUtils.VALOR_FALSO);
     FreeAndNil(LDao);
     ShowMessage('Login e/ou senha inválidos!');
   end;
@@ -79,7 +82,7 @@ end;
 
 procedure TfrmLogin.lblTituloRegistrarClick(Sender: TObject);
 begin
-    if not Assigned(frmRegistrar) then
+  if not Assigned(frmRegistrar) then
   begin
     Application.CreateForm(TfrmRegistrar, frmRegistrar);
   end;

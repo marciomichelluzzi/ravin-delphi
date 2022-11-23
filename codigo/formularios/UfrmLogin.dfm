@@ -1357,7 +1357,6 @@ object frmLogin: TfrmLogin
       ParentFont = False
       TabOrder = 0
       TextHint = 'Login'
-      ExplicitWidth = 233
     end
     object edtSenha: TEdit
       Left = 80
@@ -1375,7 +1374,6 @@ object frmLogin: TfrmLogin
       PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Senha'
-      ExplicitWidth = 233
     end
     inline frmBotaoPrimario1: TfrmBotaoPrimario
       Left = 80
@@ -1391,10 +1389,12 @@ object frmLogin: TfrmLogin
       ExplicitWidth = 241
       inherited pnlFundo: TPanel
         Width = 241
+        ExplicitWidth = 241
         inherited spbBotaoPrimario: TSpeedButton
           Width = 241
           Caption = 'Autenticar'
           OnClick = frmBotaoPrimario1spbBotaoPrimarioClick
+          ExplicitWidth = 241
         end
       end
     end
