@@ -14,11 +14,12 @@ uses
   UfrmComandas in '..\codigo\formularios\UfrmComandas.pas' {frmComandas},
   UresourceUtils in '..\codigo\utils\UresourceUtils.pas',
   UfrmLogin in '..\codigo\formularios\UfrmLogin.pas' {frmLogin},
-  UfrmBotaoPrimario in '..\codigo\frames\UfrmBotaoPrimario.pas' {frmBotaoAutenticar: TFrame},
   Uusuario in '..\codigo\modelos\Uusuario.pas',
   UusuarioDao in '..\codigo\dao\UusuarioDao.pas',
   UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame},
-  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar};
+  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
+  UfrmBotaoPrimario in '..\codigo\frames\UfrmBotaoPrimario.pas' {frmBotaoPrimario: TFrame},
+  UvalidadorUsuario in '..\codigo\Validadores\UvalidadorUsuario.pas';
 
 {$R *.res}
 
@@ -28,6 +29,5 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
   Application.CreateForm(TfrmSplash, frmSplash);
-  Application.CreateForm(TfrmRegistrar, frmRegistrar);
   Application.Run;
 end.

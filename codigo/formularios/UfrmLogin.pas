@@ -19,10 +19,9 @@ type
     lblSubTitulo: TLabel;
     lblSubTituloRegistras: TLabel;
     imgFundo: TImage;
-    btnTeste: TButton;
     frmBotaoPrimario1: TfrmBotaoPrimario;
-    procedure btnTesteClick(Sender: TObject);
     procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
+    procedure lblTituloRegistrarClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetarFormPrincipal(pNovoFormulario: TForm);
@@ -36,35 +35,9 @@ var
 implementation
 
 uses
-  UfrmPainelGestao, UusuarioDao, Uusuario;
+  UfrmPainelGestao, UusuarioDao, Uusuario, UfrmRegistrar;
 
 {$R *.dfm}
-
-procedure TfrmLogin.btnTesteClick(Sender: TObject);
-var
-  LUsuario: TUsuario;
-  LDao: TUsuarioDAO;
-begin
-  LUsuario := TUsuario.Create();
-  with LUsuario do
-  begin
-    login := 'teste';
-    senha := 'teste123';
-    pessoaId := 1;
-    criadoEm := Now();
-    criadoPor := 'Victor';
-    alteradoEm := Now();
-    alteradoPor := 'Victor';
-
-    LDao := TUsuarioDAO.Create();
-    LDao.InserirUsuario(LUsuario);
-
-    FreeAndNil(LDao);
-    FreeAndNil(LUsuario);
-  end;
-end;
-
-
 
 procedure TfrmLogin.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
 var
@@ -102,6 +75,19 @@ begin
     ShowMessage('Login e/ou senha inválidos!');
   end;
 
+end;
+
+procedure TfrmLogin.lblTituloRegistrarClick(Sender: TObject);
+begin
+    if not Assigned(frmRegistrar) then
+  begin
+    Application.CreateForm(TfrmRegistrar, frmRegistrar);
+  end;
+
+  SetarFormPrincipal(frmRegistrar);
+  frmRegistrar.Show();
+
+  Close();
 end;
 
 procedure TfrmLogin.SetarFormPrincipal(pNovoFormulario: TForm);

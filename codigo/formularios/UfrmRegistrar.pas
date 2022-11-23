@@ -17,7 +17,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  System.Actions, Vcl.ActnList, Vcl.ExtActns;
+  System.Actions, Vcl.ActnList, FireDAC.Phys.MySQLWrapper, Vcl.ExtActns;
 
 type
   TfrmRegistrar = class(TForm)
@@ -34,6 +34,7 @@ type
     edtConfirmarSenha: TEdit;
     frmBotaoPrimario1: TfrmBotaoPrimario;
     procedure lblSubTituloAutenticarClick(Sender: TObject);
+    procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetMainForm(NovoMainForm: TForm);
@@ -48,21 +49,57 @@ implementation
 
 uses
   UusuarioDao,
-  Uusuario;
+  Uusuario, UfrmLogin, UvalidadorUsuario;
 
 {$R *.dfm}
 
+procedure TfrmRegistrar.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
+var
+  LUsuario: TUsuario;
+  LDao : TUsuarioDAO;
+begin
+
+try
+   LUsuario := TUsuario.Create();
+with LUsuario do
+  begin
+   login := edtLogin.Text;
+   senha := edtSenha.Text;
+   pessoaId := 1;
+   criadoEm := Now();
+   criadoPor := 'admin';
+   alteradoEm := Now();
+   alteradoPor := 'admin';
+  end;
+
+  TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
+  LDao := TUsuarioDAO.Create();
+  LDao.InserirUsuario(LUsuario);
+
+  FreeAndNil(LDao);
+
+except
+ on E: EMySQLNativeException  do
+ begin
+  ShowMessage('Erro ao inserir o usuario no banco');
+ end;
+ on E: Exception do
+  ShowMessage(e.Message);
+end;
+  FreeAndNil(LUsuario);
+end;
+
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
 begin
-//  if not Assigned(frmAutenticar) then
-//  begin
-//    Application.CreateForm(TfrmAutenticar, frmAutenticar);
-//  end;
-//
-//  SetMainForm(frmAutenticar);
-//  frmAutenticar.Show();
-//
-//  Close();
+  if not Assigned(frmLogin) then
+  begin
+    Application.CreateForm(TfrmLogin, frmLogin);
+  end;
+
+  SetMainForm(frmLogin);
+  frmLogin.Show();
+
+  Close();
 end;
 
 procedure TfrmRegistrar.SetMainForm(NovoMainForm: TForm);

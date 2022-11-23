@@ -23069,9 +23069,11 @@ object frmRegistrar: TfrmRegistrar
       ExplicitWidth = 255
       inherited pnlFundo: TPanel
         Width = 255
+        ExplicitWidth = 255
         inherited spbBotaoPrimario: TSpeedButton
           Width = 255
           Caption = 'Resgistrar'
+          OnClick = frmBotaoPrimario1spbBotaoPrimarioClick
           ExplicitLeft = 0
           ExplicitTop = 0
           ExplicitWidth = 305
