@@ -9,6 +9,8 @@ uses
   System.Variants,
   System.Classes,
 
+  FireDAC.Phys.MySQLWrapper,
+
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -49,41 +51,43 @@ implementation
 
 uses
   UusuarioDao,
-  Uusuario;
+  Uusuario,
+  UvalidadorUsuario;
 
 {$R *.dfm}
 
 procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
   (Sender: TObject);
 var
-  Lusuario: Tusuario;
-  LusuarioDao: TUsuarioDAO;
+  LUsuario: TUsuario;
+  LDao: TUsuarioDAO;
 begin
-//  Lusuario := Tusuario.Create;
-//  Lusuario.Login := edtLogin.Text;
-//  Lusuario.Senha := edtSenha.Text;
-//
-//  LusuarioDao := TUsuarioDAO.Create();
-//
-//  try
-//    try
-//      LusuarioDao.Salvar(Lusuario);
-//      Vcl.Dialogs.MessageDlg
-//        ('Agora que você se cadastrou efetue o login com suas informações cadastradas',
-//        TMsgDlgType.mtConfirmation, [mbOk], 0, mbOk);
-//      lblSubTituloAutenticarClick(Sender);
-//    except
-//      on E: Exception do
-//      begin
-//        ShowMessage('Erro ao criar a conta do usuário')
-//      end;
-//    end;
-//
-//  finally
-//    LusuarioDao.Free;
-//    Lusuario.Free;
-//  end;
+  try
+    LUsuario := TUsuario.Create();
+    LUsuario.login := edtLogin.Text;
+    LUsuario.senha := edtSenha.Text;
+    LUsuario.pessoaId := 10000;
+    LUsuario.criadoEm := Now();
+    LUsuario.criadoPor := 'admin';
+    LUsuario.alteradoEm := Now();
+    LUsuario.alteradoPor := 'admin';
 
+    TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.text);
+
+    LDao := TUsuarioDAO.Create();
+    LDao.InserirUsuario(LUsuario);
+
+    FreeAndNil(LDao);
+  except
+    on E: EMySQLNativeException do begin
+      ShowMessage('Erro ao inserir o usuário no banco');
+    end;
+    on E: Exception do begin
+      ShowMessage(E.Message);
+    end;
+  end;
+
+  FreeAndNil(LUsuario);
 end;
 
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);

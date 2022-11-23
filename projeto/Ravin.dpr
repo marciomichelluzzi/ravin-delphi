@@ -18,7 +18,9 @@ uses
   UfrmBotaoPrimario in '..\codigo\frames\UfrmBotaoPrimario.pas' {frmBotaoPrimario: TFrame},
   UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame},
   UfrmAutenticar in '..\codigo\formularios\UfrmAutenticar.pas' {frmAutenticar},
-  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar};
+  UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
+  UvalidadorUsuario in '..\codigo\UvalidadorUsuario.pas',
+  UiniUtils in '..\codigo\util\UiniUtils.pas';
 
 {$R *.res}
 

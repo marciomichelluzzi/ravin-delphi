@@ -10,8 +10,6 @@ uses
 type
   TResourceUtils = class(TObject)
   private
-    FNome: String;
-    property Nome: String read FNome write FNome;
 
   protected
 

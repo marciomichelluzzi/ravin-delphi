@@ -22895,7 +22895,6 @@ object frmRegistrar: TfrmRegistrar
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 136
     DesignSize = (
       350
       490)
@@ -23020,7 +23019,7 @@ object frmRegistrar: TfrmRegistrar
       inherited pnlFundo: TPanel
         Width = 250
         Height = 45
-        ExplicitWidth = 280
+        ExplicitWidth = 250
         ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
           Width = 250
