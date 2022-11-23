@@ -75,7 +75,7 @@ end;
 procedure TdmRavin.CriarTabelas;
 begin
   try
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('createTable.sql','ravin_sql'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('createTable.sql','ravin_sources'));
   except
     on E: Exception do
       ShowMessage(E.Message);
@@ -94,7 +94,7 @@ procedure TdmRavin.InserirDados;
 begin
   try
     cnxBancoDeDados.StartTransaction();
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('inserts.sql','ravin_sql'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('inserts.sql','ravin_sources'));
     cnxBancoDeDados.Commit();
   except
     on E: Exception do
