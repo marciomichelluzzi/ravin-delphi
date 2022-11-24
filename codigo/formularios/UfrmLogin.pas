@@ -72,8 +72,6 @@ begin
   end
   else
   begin
-    TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
-      TIniUtils.VALOR_FALSO);
     FreeAndNil(LDao);
     ShowMessage('Login e/ou senha inválidos!');
   end;

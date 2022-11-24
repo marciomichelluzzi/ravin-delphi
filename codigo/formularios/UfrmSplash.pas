@@ -69,8 +69,8 @@ begin
 
   if (LLogado = TIniUtils.VALOR_VERDADEIRO) then
   begin
-     //ShowPainelGestao();
-    ShowForm(frmPainelGestao, TfrmPainelGestao);
+     ShowPainelGestao();
+   // ShowForm(frmPainelGestao, TfrmPainelGestao);
   end
   else
   begin

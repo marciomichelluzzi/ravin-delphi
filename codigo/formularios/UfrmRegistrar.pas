@@ -56,37 +56,41 @@ uses
 procedure TfrmRegistrar.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
 var
   LUsuario: TUsuario;
-  LDao : TUsuarioDAO;
+  LDao: TUsuarioDAO;
 begin
+  try
+    try
+      LUsuario := TUsuario.Create();
+      with LUsuario do
+      begin
+        login := edtLogin.Text;
+        senha := edtSenha.Text;
+        pessoaId := 1;
+        criadoEm := Now();
+        criadoPor := 'admin';
+        alteradoEm := Now();
+        alteradoPor := 'admin';
+      end;
 
-try
-   LUsuario := TUsuario.Create();
-with LUsuario do
-  begin
-   login := edtLogin.Text;
-   senha := edtSenha.Text;
-   pessoaId := 1;
-   criadoEm := Now();
-   criadoPor := 'admin';
-   alteradoEm := Now();
-   alteradoPor := 'admin';
+      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
+      LDao := TUsuarioDAO.Create();
+      LDao.InserirUsuario(LUsuario);
+
+    except
+      on E: EMySQLNativeException do
+      begin
+        ShowMessage('Erro ao inserir o usuario no banco');
+      end;
+      on E: Exception do
+        ShowMessage(E.Message);
+    end;
+  finally
+    if Assigned(LDao) then
+    begin
+      FreeAndNil(LDao);
+    end;
+    FreeAndNil(LUsuario);
   end;
-
-  TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
-  LDao := TUsuarioDAO.Create();
-  LDao.InserirUsuario(LUsuario);
-
-  FreeAndNil(LDao);
-
-except
- on E: EMySQLNativeException  do
- begin
-  ShowMessage('Erro ao inserir o usuario no banco');
- end;
- on E: Exception do
-  ShowMessage(e.Message);
-end;
-  FreeAndNil(LUsuario);
 end;
 
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
