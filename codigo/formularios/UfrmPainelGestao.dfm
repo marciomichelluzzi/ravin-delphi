@@ -5716,7 +5716,7 @@ object frmPainelGestao: TfrmPainelGestao
             000049454E44AE426082}
         end
         inherited lblTitulo: TLabel
-          Caption = 'Sair'
+          Caption = 'Deslogar'
           OnClick = frmMenuItemSairlblTituloClick
         end
       end
