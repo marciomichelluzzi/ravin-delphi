@@ -32,6 +32,8 @@ type
     { Private declarations }
     Inicializado: Boolean;
     procedure InicializarAplicacao();
+    procedure ShowPainelGestao();
+    procedure ShowLogin();
     procedure SetarFormPrincipal(PNovoFormulario: TForm);
   public
     { Public declarations }
@@ -44,7 +46,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, UfrmAutenticar;
+uses UfrmPainelGestao, UfrmAutenticar, UiniUtils;
 
 procedure TfrmSplash.FormCreate(Sender: TObject);
 begin
@@ -59,16 +61,20 @@ begin
 end;
 
 procedure TfrmSplash.InicializarAplicacao;
+var
+  LLogado: String;
 begin
-  if not Assigned(frmAutenticar) then
+  LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGADO);
+
+  if LLogado = TIniUtils.VALOR_VERDADEIRO then
   begin
-    Application.CreateForm(TfrmAutenticar, frmAutenticar);
+    ShowPainelGestao();
+  end
+  else
+  begin
+    ShowLogin();
   end;
-
-  SetarFormPrincipal(frmAutenticar);
-  frmAutenticar.Show();
-
-  Close;
 end;
 
 procedure TfrmSplash.tmrSplashTimer(Sender: TObject);
@@ -89,6 +95,30 @@ begin
   tmpMain^ := PNovoFormulario;
 end;
 
+procedure TfrmSplash.ShowLogin;
+begin
+  if not Assigned(frmAutenticar) then
+  begin
+    Application.CreateForm(TfrmAutenticar, frmAutenticar);
+  end;
+
+  SetarFormPrincipal(frmAutenticar);
+  frmAutenticar.Show();
+
+  Close;
+end;
+
+procedure TfrmSplash.ShowPainelGestao;
+begin
+  if not Assigned(frmPainelGestao) then
+  begin
+    Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
+  end;
+
+  SetarFormPrincipal(frmPainelGestao);
+  frmPainelGestao.Show();
+
+  Close;
+end;
+
 end.
-
-

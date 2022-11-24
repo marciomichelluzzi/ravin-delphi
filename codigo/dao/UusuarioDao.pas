@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils,
   Uusuario,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, System.Generics.Collections;
 
 type
   TUsuarioDAO = class
@@ -16,6 +16,7 @@ type
   public
     function BuscarUsuarioPorLoginSenha(PLogin: String; PSenha: String)
       : TUsuario;
+    function BuscarTodosUsuarios(): TList<TUsuario>;
     procedure InserirUsuario(PUsuario: TUsuario);
   end;
 
@@ -24,6 +25,51 @@ implementation
 { TUsuarioDAO }
 
 uses UdmRavin;
+
+function TUsuarioDAO.BuscarTodosUsuarios: TList<TUsuario>;
+var
+  LLista: TList<TUsuario>;
+
+  LU1, LU2, LU3: TUsuario;
+  I: Integer;
+  LusuarioTemp: TUsuario;
+begin
+
+  LU1 := TUsuario.Create();
+  LU1.id := 1;
+  LU1.login := 'Marcio';
+  LU1.senha := '123';
+
+  LU2 := TUsuario.Create();
+  LU2.id := 2;
+  LU2.login := 'Pedro';
+  LU2.senha := '222';
+
+  LU3 := TUsuario.Create();
+  LU3.id := 3;
+  LU3.login := 'Joana';
+  LU3.senha := '456';
+
+  LLista := TList<TUsuario>.Create();
+
+  LLista.Add(LU1);
+  LLista.Add(LU2);
+  LLista.Add(LU3);
+
+  LLista.Remove(LU1);
+  LLista.Contains(LU3);
+  LLista.IndexOf(LU2);
+  LLista.Items[2] := LU2;
+
+  for I := 0 to LLista.Count - 1 do
+  begin
+    LusuarioTemp := LLista.Items[I];
+    LusuarioTemp.login := '';
+  end;
+
+
+
+end;
 
 function TUsuarioDAO.BuscarUsuarioPorLoginSenha(PLogin, PSenha: String)
   : TUsuario;
@@ -77,7 +123,7 @@ begin
     ParamByName('senha').AsString := PUsuario.senha;
     ParamByName('pessoaId').AsInteger := PUsuario.pessoaId;
     ParamByName('criadoEm').AsDateTime := PUsuario.criadoEm;
-    ParamByName('criadoPor').AsString := Pusuario.criadoPor;
+    ParamByName('criadoPor').AsString := PUsuario.criadoPor;
     ParamByName('alteradoEm').AsDateTime := PUsuario.alteradoEm;
     ParamByName('alteradoPor').AsString := PUsuario.alteradoPor;
     ExecSQL();

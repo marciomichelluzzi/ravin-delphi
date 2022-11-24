@@ -11,10 +11,10 @@ uses
   IniFiles;
 
 type
-  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS);
+  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS, DATABASE);
 
 type
-  TPROPRIEDADE = (NOME_DATABASE, LOGADO);
+  TPROPRIEDADE = (NOME_DATABASE, LOGADO, SERVER, PORTA, LOGIN, SENHA);
 
 type
   TIniUtils = class
@@ -30,6 +30,9 @@ type
       PPropriedade: TPROPRIEDADE; PValor: String);
     class function lerPropriedade(PSecao: TSECAO;
       PPropriedade: TPROPRIEDADE): String;
+
+    const VALOR_VERDADEIRO: String = 'true';
+    const VALOR_FALSO: String = 'false';
 
   end;
 
@@ -54,12 +57,20 @@ class procedure TIniUtils.gravarPropriedade(PSecao: TSECAO;
 var
   LcaminhoArquivoIni: String;
   LarquivoINI: TIniFile;
+  LNomeSecao: String;
+  LNomePropriedade: String;
 begin
-  LcaminhoArquivoIni := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
+  LcaminhoArquivoIni := TPath.Combine(
+    TPath.Combine(TPath.GetDocumentsPath,
     'ravin'), 'configuracoes.ini');
   LarquivoINI := TIniFile.Create(LcaminhoArquivoIni);
-  LarquivoINI.WriteString(GetEnumName(TypeInfo(TSECAO), Integer(PSecao)),
-    GetEnumName(TypeInfo(TPROPRIEDADE), Integer(PPropriedade)), PValor);
+
+  LNomeSecao := GetEnumName(TypeInfo(TSECAO), Integer(PSecao));
+
+  LNomePropriedade := GetEnumName(TypeInfo(TPROPRIEDADE),
+    Integer(PPropriedade));
+
+  LarquivoINI.WriteString(LNomeSecao, LNomePropriedade, PValor);
   LarquivoINI.Free;
 end;
 
@@ -68,12 +79,21 @@ class function TIniUtils.lerPropriedade(PSecao: TSECAO;
 var
   LcaminhoArquivoIni: String;
   LarquivoINI: TIniFile;
+
+  LNomeSecao: String;
+  LNomePropriedade: String;
 begin
   LcaminhoArquivoIni := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
     'ravin'), 'configuracoes.ini');
   LarquivoINI := TIniFile.Create(LcaminhoArquivoIni);
-  Result := LarquivoINI.ReadString(GetEnumName(TypeInfo(TSECAO), Integer(PSecao)
-    ), GetEnumName(TypeInfo(TPROPRIEDADE), Integer(PPropriedade)), '');
+
+  LNomeSecao := GetEnumName(TypeInfo(TSECAO), Integer(PSecao));
+
+  LNomePropriedade := GetEnumName(TypeInfo(TPROPRIEDADE),
+    Integer(PPropriedade));
+
+  Result := LarquivoINI.ReadString(
+    LNomeSecao, LNomePropriedade, '');
   LarquivoINI.Free;
 end;
 

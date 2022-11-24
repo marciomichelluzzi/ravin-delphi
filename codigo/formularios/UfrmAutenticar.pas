@@ -45,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar;
+uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar, UiniUtils;
 
 { TfrmLogin }
 
@@ -68,6 +68,12 @@ begin
 
     if Assigned(Lusuario) then
     begin
+      //Conseguiu logar
+
+      TIniUtils.gravarPropriedade(
+        TSECAO.INFORMACOES_GERAIS,
+        TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
+
       if not Assigned(frmPainelGestao) then
       begin
         Application.CreateForm(TfrmPainelGestao, frmPainelGestao);

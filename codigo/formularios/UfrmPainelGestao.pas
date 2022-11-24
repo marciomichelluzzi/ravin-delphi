@@ -59,7 +59,7 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas;
+  UfrmMesas, UfrmComandas, UiniUtils;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
@@ -72,7 +72,8 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
 begin
-  if(not Assigned(frmComandas)) then begin
+  if (not Assigned(frmComandas)) then
+  begin
     Application.CreateForm(TfrmComandas, frmComandas);
   end;
 
@@ -99,6 +100,9 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
 begin
+  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGADO,
+    TIniUtils.VALOR_FALSO);
   Application.Terminate();
 end;
 

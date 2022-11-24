@@ -63,31 +63,40 @@ var
   LDao: TUsuarioDAO;
 begin
   try
-    LUsuario := TUsuario.Create();
-    LUsuario.login := edtLogin.Text;
-    LUsuario.senha := edtSenha.Text;
-    LUsuario.pessoaId := 10000;
-    LUsuario.criadoEm := Now();
-    LUsuario.criadoPor := 'admin';
-    LUsuario.alteradoEm := Now();
-    LUsuario.alteradoPor := 'admin';
+    try
+      LUsuario := TUsuario.Create();
+      LUsuario.login := edtLogin.Text;
+      LUsuario.senha := edtSenha.Text;
+      LUsuario.pessoaId := 10000;
+      LUsuario.criadoEm := Now();
+      LUsuario.criadoPor := 'admin';
+      LUsuario.alteradoEm := Now();
+      LUsuario.alteradoPor := 'admin';
 
-    TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.text);
+      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
 
-    LDao := TUsuarioDAO.Create();
-    LDao.InserirUsuario(LUsuario);
+      LDao := TUsuarioDAO.Create();
+      LDao.InserirUsuario(LUsuario);
 
-    FreeAndNil(LDao);
-  except
-    on E: EMySQLNativeException do begin
-      ShowMessage('Erro ao inserir o usuário no banco');
+    except
+      on E: EMySQLNativeException do
+      begin
+        ShowMessage('Erro ao inserir o usuário no banco');
+      end;
+      on E: Exception do
+      begin
+        ShowMessage(E.Message);
+      end;
     end;
-    on E: Exception do begin
-      ShowMessage(E.Message);
+  finally
+    if Assigned(LDao) then
+    begin
+      FreeAndNil(LDao);
     end;
+
+    FreeAndNil(LUsuario);
   end;
 
-  FreeAndNil(LUsuario);
 end;
 
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);

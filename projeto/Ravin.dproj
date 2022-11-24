@@ -168,8 +168,8 @@
             <Form>frmRegistrar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\codigo\UvalidadorUsuario.pas"/>
         <DCCReference Include="..\codigo\util\UiniUtils.pas"/>
+        <DCCReference Include="..\codigo\validadores\UvalidadorUsuario.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
