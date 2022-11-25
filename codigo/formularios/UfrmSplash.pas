@@ -32,7 +32,6 @@ type
     { Private declarations }
     Inicialized: Boolean;
     procedure InicializarAplicacao();
-    procedure ShowForm(pForm : TForm; pTForm : TComponentClass);
     procedure ShowPainelGestao();
     procedure ShowLogin();
     procedure SetarFormPrincipal(NewMainForm: TForm);
@@ -47,7 +46,7 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, UfrmLogin, UiniUtils;
+uses UfrmPainelGestao, UfrmLogin, UiniUtils, UformsUtils;
 
 procedure TfrmSplash.FormCreate(Sender: TObject);
 begin
@@ -69,12 +68,14 @@ begin
 
   if (LLogado = TIniUtils.VALOR_VERDADEIRO) then
   begin
-     ShowPainelGestao();
-   // ShowForm(frmPainelGestao, TfrmPainelGestao);
+   //  ShowPainelGestao();
+    TformsUtils.ShowForm(frmPainelGestao, TfrmPainelGestao);
+    Close;
   end
   else
   begin
-    ShowLogin();
+    TformsUtils.ShowForm(frmLogin, TfrmLogin);
+    Close;
   end;
 end;
 
@@ -96,18 +97,6 @@ begin
   tmpMain^ := NewMainForm;
 end;
 
-procedure TfrmSplash.ShowForm(pForm: TForm; pTForm : TComponentClass);
-begin
- if not Assigned(pForm) then
- begin
-   Application.CreateForm( pTForm, pForm);
- end;
-
- SetarFormPrincipal(pForm);
-  pForm.Show();
-
-  Close;
-end;
 
 procedure TfrmSplash.ShowLogin;
 begin
@@ -119,7 +108,7 @@ begin
   SetarFormPrincipal(frmLogin);
   frmLogin.Show();
 
-  Close;
+   close;
 end;
 
 procedure TfrmSplash.ShowPainelGestao;
