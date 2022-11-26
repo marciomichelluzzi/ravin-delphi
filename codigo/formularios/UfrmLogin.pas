@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.Buttons, Vcl.StdCtrls, UfrmBotaoPrimario;
+  Vcl.Buttons, Vcl.StdCtrls, UfrmBotaoPrimario, System.Generics.Collections;
 
 type
   TfrmLogin = class(TForm)
@@ -20,8 +20,10 @@ type
     lblSubTituloRegistras: TLabel;
     imgFundo: TImage;
     frmBotaoPrimario1: TfrmBotaoPrimario;
+    Memo1: TMemo;
     procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
     procedure lblTituloRegistrarClick(Sender: TObject);
+    procedure Memo1Click(Sender: TObject);
   private
     { Private declarations }
     procedure SetarFormPrincipal(pNovoFormulario: TForm);
@@ -89,6 +91,27 @@ begin
   frmRegistrar.Show();
 
   Close();
+end;
+
+procedure TfrmLogin.Memo1Click(Sender: TObject);
+ var
+  LDao: TUsuarioDAO;
+  LUsuario : TUsuario;
+  LListaUsuarios : TList<TUsuario>;
+  I: Integer;
+begin
+  LDao := TUsuarioDAO.Create;
+  LListaUsuarios := TList<TUsuario>.Create;
+  LListaUsuarios := LDao.BuscarTodosUsuarios;
+  for I := 0 to LListaUsuarios.Count -1 do
+  begin
+    LUsuario := LListaUsuarios.Items[I];
+    Memo1.Lines.Add(LUsuario.login);
+    FreeAndNil(LUsuario);
+  end;
+
+    FreeAndNil(LListaUsuarios);
+    FreeAndNil(LDao);
 end;
 
 procedure TfrmLogin.SetarFormPrincipal(pNovoFormulario: TForm);

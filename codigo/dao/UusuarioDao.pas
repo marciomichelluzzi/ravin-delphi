@@ -3,7 +3,7 @@ unit UusuarioDao;
 interface
 
 uses
-  Uusuario, FireDAC.Comp.Client;
+  Uusuario, FireDAC.Comp.Client, System.Generics.Collections;
 
 type  TUsuarioDAO = class(TObject)
   private
@@ -13,13 +13,54 @@ type  TUsuarioDAO = class(TObject)
   public
     procedure InserirUsuario(PUsuario : TUsuario);
     function BuscarUsuarioPorLoginSenha(PLogin : String; PSenha : String): TUsuario;
+    function BuscarTodosUsuarios() : TList<TUsuario>;
 end;
 
 implementation
 
 { TUsuarioDAO }
 
-uses UdmRavin, System.SysUtils;
+uses UdmRavin, System.SysUtils, Vcl.Dialogs;
+
+function TUsuarioDAO.BuscarTodosUsuarios: TList<TUsuario>;
+var
+  LQuery : TFDQuery;
+  LUsuario : TUsuario;
+  LListaUsuarios : TList<TUsuario>;
+begin
+  LQuery := TFDQuery.Create(nil);
+  LListaUsuarios := TList<TUsuario>.Create;
+  LQuery.Connection := dmRavin.cnxBancoDeDados;
+  LQuery.SQL.Text := 'SELECT * FROM usuario';
+  LQuery.Open();
+  LQuery.First;
+  LUsuario := nil;
+try
+begin
+    while not LQuery.Eof do
+    begin
+      LUsuario := TUsuario.Create();
+      LUsuario.id := LQuery.FieldByName('id').AsInteger;
+      LUsuario.login := LQuery.FieldByName('login').AsString;
+      LUsuario.senha := LQuery.FieldByName('senha').AsString;
+      LUsuario.pessoaId := LQuery.FieldByName('pessoaId').AsInteger;
+      LUsuario.criadoEm := LQuery.FieldByName('criadoEm').AsDateTime;
+      LUsuario.criadoPor := LQuery.FieldByName('criadoPor').AsString;
+      LUsuario.alteradoEm := LQuery.FieldByName('alteradoEm').AsDateTime;
+      LUsuario.alteradoPor := LQuery.FieldByName('alteradoPor').AsString;
+      LListaUsuarios.Add(LUsuario);
+ 
+      LQuery.next;
+    end;
+end;
+
+  finally
+    LQuery.Close();
+    FreeAndNil(LQuery);
+    FreeAndNil(LUsuario);
+end;
+  Result := LListaUsuarios;
+end;
 
 function TUsuarioDAO.BuscarUsuarioPorLoginSenha(PLogin,
   PSenha: String): TUsuario;

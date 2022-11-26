@@ -37,6 +37,7 @@ type
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;
     frmMenuItemSair: TfrmMenuItem;
+    Memo1: TMemo;
     procedure FrameMenuItemMesasLabelTitleClick(Sender: TObject);
     procedure frmMenuItemSobrelblTituloClick(Sender: TObject);
     procedure frmMenuItemSairlblTituloClick(Sender: TObject);
@@ -59,42 +60,26 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas, UiniUtils;
+  UfrmMesas, UfrmComandas, UiniUtils,  UformsUtils;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
-  if (not Assigned(frmMesas)) then
-  begin
-    Application.CreateForm(TfrmMesas, frmMesas);
-  end;
-  frmMesas.show();
+    TFormsUtils.ShowForm(frmMesas, TfrmMesas);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
 begin
-  if(not Assigned(frmComandas)) then begin
-    Application.CreateForm(TfrmComandas, frmComandas);
-  end;
-
-  frmComandas.show();
+    TFormsUtils.ShowForm(frmComandas, TfrmComandas);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemMesaslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmMesas)) then
-  begin
-    Application.CreateForm(TfrmMesas, frmMesas);
-  end;
-  frmMesas.show();
+    TFormsUtils.ShowForm(frmMesas, TfrmMesas);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemProdutoslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmProdutos)) then
-  begin
-    Application.CreateForm(TfrmProdutos, frmProdutos);
-  end;
-  frmProdutos.show();
+    TFormsUtils.ShowForm(frmProdutos, TfrmProdutos);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
@@ -106,11 +91,7 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemSobrelblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmSobre)) then
-  begin
-    Application.CreateForm(TfrmSobre, frmSobre)
-  end;
-  frmSobre.show();
+    TFormsUtils.ShowForm(frmSobre, TfrmSobre);
 end;
 
 end.

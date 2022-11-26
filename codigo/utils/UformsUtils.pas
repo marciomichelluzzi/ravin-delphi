@@ -12,15 +12,16 @@ type
   protected
 
   public
+    class procedure ShowFormPrincipal(pForm : TForm; pTForm : TComponentClass);
     class procedure ShowForm(pForm : TForm; pTForm : TComponentClass);
-    class procedure SetarFormPrincipal(NewMainForm: TForm);
+     procedure SetarFormPrincipal(NewMainForm: TForm);
   end;
 
 implementation
 
 { TFormsUtils }
 
-class procedure TFormsUtils.SetarFormPrincipal(NewMainForm: TForm);
+ procedure TFormsUtils.SetarFormPrincipal(NewMainForm: TForm);
   var
   tmpMain: ^TCustomForm;
 begin
@@ -29,6 +30,16 @@ begin
 end;
 
 class procedure TFormsUtils.ShowForm(pForm: TForm; pTForm: TComponentClass);
+begin
+  if not Assigned(pForm) then
+ begin
+   Application.CreateForm(pTForm, pForm);
+ end;
+
+  pForm.Show();
+end;
+
+class procedure TFormsUtils.ShowFormPrincipal(pForm: TForm; pTForm: TComponentClass);
 begin
   if not Assigned(pForm) then
  begin

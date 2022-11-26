@@ -1398,5 +1398,15 @@ object frmLogin: TfrmLogin
         end
       end
     end
+    object Memo1: TMemo
+      Left = 247
+      Top = 56
+      Width = 185
+      Height = 89
+      Lines.Strings = (
+        'Memo1')
+      TabOrder = 3
+      OnClick = Memo1Click
+    end
   end
 end
