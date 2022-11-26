@@ -11,10 +11,10 @@ uses
   IniFiles;
 
 type
-  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS);
+  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS, CONFIGURACOES_DATABASE);
 
 type
-  TPROPRIEDADE = (NOME_DATABASE, LOGADO);
+  TPROPRIEDADE = (NOME_DATABASE, SERVER, USER_NAME, PASSWORD, DRIVERID, PORT, LOGADO);
 
 type
   TIniUtils = class
@@ -33,7 +33,12 @@ type
 
     const VALOR_VERDADEIRO : String = 'true';
     const VALOR_FALSO      : String = 'false';
-
+//    const VALOR_DATABASE   : String = 'ravin';
+//    const VALOR_SERVER     : String = 'localhost';
+//    const VALOR_USER_NAME  : String = 'root';
+//    const VALOR_PASSWORD   : String = 'root';
+//    const VALOR_DRIVER_ID  : String = 'MySQL';
+//    const VALOR_PORT       : String = '3306';
   end;
 
 implementation

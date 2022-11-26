@@ -27,6 +27,9 @@ type
   private
     { Private declarations }
     procedure SetarFormPrincipal(pNovoFormulario: TForm);
+    procedure ExibirFormRegistrar();
+    procedure ExibirFormPainelGestao();
+    procedure LoginUsuario();
   public
     { Public declarations }
   end;
@@ -37,11 +40,33 @@ var
 implementation
 
 uses
-  UfrmPainelGestao, UusuarioDao, Uusuario, UfrmRegistrar, UiniUtils;
+  UfrmPainelGestao, UusuarioDao, Uusuario, UfrmRegistrar, UiniUtils, UformsUtils;
 
 {$R *.dfm}
 
+procedure TfrmLogin.ExibirFormPainelGestao;
+begin
+  TFormsUtils.ShowFormPrincipal(frmPainelGestao, TfrmPainelGestao);
+  Close();
+end;
+
+procedure TfrmLogin.ExibirFormRegistrar;
+begin
+  TFormsUtils.ShowFormPrincipal(frmRegistrar, TfrmRegistrar);
+  Close();
+end;
+
 procedure TfrmLogin.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
+begin
+  Self.LoginUsuario;
+end;
+
+procedure TfrmLogin.lblTituloRegistrarClick(Sender: TObject);
+begin
+  Self.ExibirFormRegistrar;
+end;
+
+procedure TfrmLogin.LoginUsuario;
 var
   LDao: TUsuarioDAO;
   LUsuario: TUsuario;
@@ -53,44 +78,24 @@ begin
   LLogin := edtLogin.Text;
   LSenha := edtSenha.Text;
 
+try
   LUsuario := LDao.BuscarUsuarioPorLoginSenha(LLogin, LSenha);
 
   if Assigned(LUsuario) then
   begin
     TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
       TIniUtils.VALOR_VERDADEIRO);
-    if not Assigned(frmPainelGestao) then
-    begin
-      Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
-    end;
-
-    SetarFormPrincipal(frmPainelGestao);
-    frmPainelGestao.Show();
-
-    FreeAndNil(LDao);
-    FreeAndNil(LUsuario);
-
-    Close();
+      Self.ExibirFormRegistrar;
   end
   else
   begin
     FreeAndNil(LDao);
     ShowMessage('Login e/ou senha inválidos!');
   end;
-
+finally
+    FreeAndNil(LDao);
+    FreeAndNil(LUsuario);
 end;
-
-procedure TfrmLogin.lblTituloRegistrarClick(Sender: TObject);
-begin
-  if not Assigned(frmRegistrar) then
-  begin
-    Application.CreateForm(TfrmRegistrar, frmRegistrar);
-  end;
-
-  SetarFormPrincipal(frmRegistrar);
-  frmRegistrar.Show();
-
-  Close();
 end;
 
 procedure TfrmLogin.Memo1Click(Sender: TObject);

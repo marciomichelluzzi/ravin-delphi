@@ -45,6 +45,11 @@ type
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
   private
     { Private declarations }
+    procedure ExibirFormMesas();
+    procedure ExibirFormComandas();
+    procedure ExibirFormProdutos();
+    procedure ExibirFormSobre();
+    procedure Deslogar();
   public
     { Public declarations }
   end;
@@ -59,38 +64,65 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas, UiniUtils,  UformsUtils;
+  UfrmMesas, UfrmComandas, UiniUtils,  UformsUtils, UfrmLogin;
+
+procedure TfrmPainelGestao.Deslogar;
+begin
+
+  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
+      TIniUtils.VALOR_FALSO);
+   TFormsUtils.ShowForm(frmLogin, TfrmLogin);
+   Close;
+end;
+
+procedure TfrmPainelGestao.ExibirFormComandas;
+begin
+  TFormsUtils.ShowForm(frmComandas, TfrmComandas);
+end;
+
+procedure TfrmPainelGestao.ExibirFormMesas;
+begin
+  TFormsUtils.ShowForm(frmMesas, TfrmMesas);
+end;
+
+procedure TfrmPainelGestao.ExibirFormProdutos;
+begin
+  TFormsUtils.ShowForm(frmProdutos, TfrmProdutos);
+end;
+
+procedure TfrmPainelGestao.ExibirFormSobre;
+begin
+  TFormsUtils.ShowForm(frmSobre, TfrmSobre);
+end;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
-    TFormsUtils.ShowForm(frmMesas, TfrmMesas);
+    self.ExibirFormMesas;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
 begin
-    TFormsUtils.ShowForm(frmComandas, TfrmComandas);
+    self.ExibirFormComandas;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemMesaslblTituloClick(Sender: TObject);
 begin
-    TFormsUtils.ShowForm(frmMesas, TfrmMesas);
+    self.ExibirFormMesas;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemProdutoslblTituloClick(Sender: TObject);
 begin
-    TFormsUtils.ShowForm(frmProdutos, TfrmProdutos);
+    self.ExibirFormProdutos;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
 begin
-  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
-      TIniUtils.VALOR_FALSO);
-  Application.Terminate();
+  self.Deslogar;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSobrelblTituloClick(Sender: TObject);
 begin
-    TFormsUtils.ShowForm(frmSobre, TfrmSobre);
+    self.ExibirFormSobre;
 end;
 
 end.

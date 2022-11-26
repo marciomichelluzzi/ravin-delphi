@@ -32,7 +32,7 @@ var
 implementation
 
 uses
-  UresourceUtils;
+  UresourceUtils, UiniUtils;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
@@ -59,15 +59,21 @@ begin
   LCriarBaseDados := not DirectoryExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\');
   with cnxBancoDeDados do
   begin
-    Params.Values['Server'] := 'localhost';
-    Params.Values['User_Name'] := 'root';
-    Params.Values['Password'] := 'root';
-    Params.Values['DriverID'] := 'MySQL';
-    Params.Values['Port'] := '3306';
+//  Params.Values['Server'] := 'localhost';
+//    Params.Values['User_Name'] := 'root';
+//    Params.Values['Password'] := 'root';
+//    Params.Values['DriverID'] := 'MySQL';
+//    Params.Values['Port'] := '3306';
+
+    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.SERVER);
+    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.SERVER);
+    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.PASSWORD);
+    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.DRIVERID);
+    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.PORT);
 
     if not (LCriarBaseDados) then
     begin
-      Params.Values['Database'] := 'ravin';
+      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.NOME_DATABASE);
     end;
   end;
 end;
