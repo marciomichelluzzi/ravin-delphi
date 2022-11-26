@@ -49,7 +49,6 @@ begin
       LUsuario.alteradoEm := LQuery.FieldByName('alteradoEm').AsDateTime;
       LUsuario.alteradoPor := LQuery.FieldByName('alteradoPor').AsString;
       LListaUsuarios.Add(LUsuario);
- 
       LQuery.next;
     end;
 end;
@@ -57,7 +56,6 @@ end;
   finally
     LQuery.Close();
     FreeAndNil(LQuery);
-    FreeAndNil(LUsuario);
 end;
   Result := LListaUsuarios;
 end;

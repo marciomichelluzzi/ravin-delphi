@@ -5722,13 +5722,4 @@ object frmPainelGestao: TfrmPainelGestao
       end
     end
   end
-  object Memo1: TMemo
-    Left = 447
-    Top = 22
-    Width = 185
-    Height = 89
-    Lines.Strings = (
-      'Memo1')
-    TabOrder = 1
-  end
 end

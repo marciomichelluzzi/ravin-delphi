@@ -101,7 +101,6 @@ procedure TfrmLogin.Memo1Click(Sender: TObject);
   I: Integer;
 begin
   LDao := TUsuarioDAO.Create;
-  LListaUsuarios := TList<TUsuario>.Create;
   LListaUsuarios := LDao.BuscarTodosUsuarios;
   for I := 0 to LListaUsuarios.Count -1 do
   begin
@@ -109,9 +108,8 @@ begin
     Memo1.Lines.Add(LUsuario.login);
     FreeAndNil(LUsuario);
   end;
-
-    FreeAndNil(LListaUsuarios);
     FreeAndNil(LDao);
+    FreeAndNil(LListaUsuarios);
 end;
 
 procedure TfrmLogin.SetarFormPrincipal(pNovoFormulario: TForm);
