@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils,
   Uusuario,
-  FireDAC.Comp.Client, System.Generics.Collections;
+  FireDAC.Comp.Client,
+  System.Generics.Collections;
 
 type
   TUsuarioDAO = class
@@ -28,47 +29,41 @@ uses UdmRavin;
 
 function TUsuarioDAO.BuscarTodosUsuarios: TList<TUsuario>;
 var
+  LQuery: TFDQuery;
+  LUsuario: TUsuario;
   LLista: TList<TUsuario>;
-
-  LU1, LU2, LU3: TUsuario;
-  I: Integer;
-  LusuarioTemp: TUsuario;
+  I : Integer;
 begin
-
-  LU1 := TUsuario.Create();
-  LU1.id := 1;
-  LU1.login := 'Marcio';
-  LU1.senha := '123';
-
-  LU2 := TUsuario.Create();
-  LU2.id := 2;
-  LU2.login := 'Pedro';
-  LU2.senha := '222';
-
-  LU3 := TUsuario.Create();
-  LU3.id := 3;
-  LU3.login := 'Joana';
-  LU3.senha := '456';
+  // Setar as informações da query e buscar os dados do banco
+  LQuery := TFDQuery.Create(nil);
+  LQuery.Connection := dmRavin.cnxBancoDeDados;
+  LQuery.SQL.Text := 'SELECT * FROM usuario';
+  LQuery.Open();
 
   LLista := TList<TUsuario>.Create();
 
-  LLista.Add(LU1);
-  LLista.Add(LU2);
-  LLista.Add(LU3);
+  LQuery.First;
 
-  LLista.Remove(LU1);
-  LLista.Contains(LU3);
-  LLista.IndexOf(LU2);
-  LLista.Items[2] := LU2;
-
-  for I := 0 to LLista.Count - 1 do
+  // Mapear os dados carregados para objeto
+  while not LQuery.Eof do
   begin
-    LusuarioTemp := LLista.Items[I];
-    LusuarioTemp.login := '';
+    LUsuario := TUsuario.Create();
+    LUsuario.id := LQuery.FieldByName('id').AsInteger;
+    LUsuario.login := LQuery.FieldByName('login').AsString;
+    LUsuario.senha := LQuery.FieldByName('senha').AsString;
+    LUsuario.pessoaId := LQuery.FieldByName('pessoaId').AsInteger;
+    LUsuario.criadoEm := LQuery.FieldByName('criadoEm').AsDateTime;
+    LUsuario.criadoPor := LQuery.FieldByName('criadoPor').AsString;
+    LUsuario.alteradoEm := LQuery.FieldByName('alteradoEm').AsDateTime;
+    LUsuario.alteradoPor := LQuery.FieldByName('alteradoPor').AsString;
+
+    LLista.add(LUsuario);
+    LQuery.Next;
   end;
 
+  Result:= LLista;
 
-
+  FreeAndNil(LQuery);
 end;
 
 function TUsuarioDAO.BuscarUsuarioPorLoginSenha(PLogin, PSenha: String)

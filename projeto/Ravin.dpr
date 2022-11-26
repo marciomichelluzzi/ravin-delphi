@@ -20,7 +20,9 @@ uses
   UfrmAutenticar in '..\codigo\formularios\UfrmAutenticar.pas' {frmAutenticar},
   UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
   UiniUtils in '..\codigo\util\UiniUtils.pas',
-  UvalidadorUsuario in '..\codigo\validadores\UvalidadorUsuario.pas';
+  UvalidadorUsuario in '..\codigo\validadores\UvalidadorUsuario.pas',
+  UfrmUsuarios in '..\codigo\formularios\UfrmUsuarios.pas' {frmUsuarios},
+  Ucomanda in '..\codigo\modelos\Ucomanda.pas';
 
 {$R *.res}
 
@@ -29,8 +31,6 @@ begin
   Application.MainFormOnTaskbar := False;
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
-  Application.CreateForm(TfrmSplash, frmSplash);
-  Application.CreateForm(TfrmAutenticar, frmAutenticar);
-  Application.CreateForm(TfrmRegistrar, frmRegistrar);
+  Application.CreateForm(TfrmUsuarios, frmUsuarios);
   Application.Run;
 end.
