@@ -22,7 +22,11 @@ uses
   UiniUtils in '..\codigo\util\UiniUtils.pas',
   UvalidadorUsuario in '..\codigo\validadores\UvalidadorUsuario.pas',
   UfrmUsuarios in '..\codigo\formularios\UfrmUsuarios.pas' {frmUsuarios},
-  Ucomanda in '..\codigo\modelos\Ucomanda.pas';
+  Ucomanda in '..\codigo\modelos\Ucomanda.pas',
+  UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
+  UBotaoCancelar in '..\codigo\frames\UBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
+  UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
+  UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente};
 
 {$R *.res}
 
@@ -31,6 +35,6 @@ begin
   Application.MainFormOnTaskbar := False;
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
-  Application.CreateForm(TfrmUsuarios, frmUsuarios);
+  Application.CreateForm(TfrmListaClientes, frmListaClientes);
   Application.Run;
 end.

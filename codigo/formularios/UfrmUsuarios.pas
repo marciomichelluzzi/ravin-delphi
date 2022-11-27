@@ -47,16 +47,7 @@ begin
     FreeAndNil(LUsuario);
   end;
 
-
-  LListaComanda.
-
-  // for I := 0 to LLista.Count - 1 do
-  // begin
-  // FreeAndNil(LLista[I]);
-  // end;
-  FreeAndNil(LDao);
   FreeAndNil(LLista);
-
 end;
 
 end.

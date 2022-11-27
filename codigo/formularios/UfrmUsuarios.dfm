@@ -1,7 +1,8 @@
 object frmUsuarios: TfrmUsuarios
   Left = 0
   Top = 0
-  Caption = 'frmUsuarios'
+  ActiveControl = memListaUsuarios
+  Caption = 'Excluir'
   ClientHeight = 320
   ClientWidth = 591
   Color = clBtnFace
