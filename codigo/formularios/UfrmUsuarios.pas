@@ -5,12 +5,16 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,
+  Vcl.Grids, Vcl.Samples.Calendar, Vcl.ComCtrls;
 
 type
   TfrmUsuarios = class(TForm)
     memListaUsuarios: TMemo;
     btnCarregarUsuarios: TButton;
+    TrackBar1: TTrackBar;
+    Calendar1: TCalendar;
+    SpinButton1: TSpinButton;
     procedure btnCarregarUsuariosClick(Sender: TObject);
   private
     { Private declarations }
@@ -24,7 +28,8 @@ var
 implementation
 
 uses
-  UusuarioDao, System.Generics.Collections, Uusuario, Ucomanda;
+  UusuarioDao, System.Generics.Collections, Uusuario, Ucomanda,
+  FireDAC.Comp.Client;
 
 {$R *.dfm}
 
@@ -34,6 +39,8 @@ var
   LUsuario: TUsuario;
   LLista: TList<TUsuario>;
   LListaComanda: TList<TComanda>;
+
+  LListaQuery : TList;
   I: Integer;
 begin
 
@@ -47,8 +54,9 @@ begin
     FreeAndNil(LUsuario);
   end;
 
+  LListaComanda := TList<TComanda>.Create();
 
-  LListaComanda.
+//  LListaComanda.Add(LUsuario);
 
   // for I := 0 to LLista.Count - 1 do
   // begin
