@@ -17,7 +17,8 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  System.Actions, Vcl.ActnList, FireDAC.Phys.MySQLWrapper, Vcl.ExtActns;
+  System.Actions, Vcl.ActnList, FireDAC.Phys.MySQLWrapper, Vcl.ExtActns,
+  Vcl.Mask;
 
 type
   TfrmRegistrar = class(TForm)
@@ -28,16 +29,15 @@ type
     lblTituloAutenticar: TLabel;
     lblSubTituloAutenticar: TLabel;
     edtNome: TEdit;
-    edtCpf: TEdit;
     edtLogin: TEdit;
     edtSenha: TEdit;
     edtConfirmarSenha: TEdit;
     frmBotaoPrimario1: TfrmBotaoPrimario;
+    medtCPF: TMaskEdit;
     procedure lblSubTituloAutenticarClick(Sender: TObject);
     procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
   private
     { Private declarations }
-    procedure SetMainForm(NovoMainForm: TForm);
   public
     { Public declarations }
   end;
@@ -49,7 +49,7 @@ implementation
 
 uses
   UusuarioDao,
-  Uusuario, UfrmLogin, UvalidadorUsuario;
+  Uusuario, UfrmLogin, UvalidadorUsuario, UformsUtils;
 
 {$R *.dfm}
 
@@ -95,23 +95,7 @@ end;
 
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
 begin
-  if not Assigned(frmLogin) then
-  begin
-    Application.CreateForm(TfrmLogin, frmLogin);
-  end;
-
-  SetMainForm(frmLogin);
-  frmLogin.Show();
-
-  Close();
-end;
-
-procedure TfrmRegistrar.SetMainForm(NovoMainForm: TForm);
-var
-  tmpMain: ^TCustomForm;
-begin
-  tmpMain := @Application.Mainform;
-  tmpMain^ := NovoMainForm;
+  TFormsUtils.ShowFormPrincipal(frmLogin, TfrmLogin);
 end;
 
 end.

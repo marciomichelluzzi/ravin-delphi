@@ -9,7 +9,7 @@ uses
   System.SysUtils,
   System.Variants,
   System.Classes,
-
+  DateUtils,
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -60,10 +60,13 @@ end;
 procedure TfrmSplash.InicializarAplicacao;
 var
   LLogado : String;
+  LUltimosAcesso : TDate;
 begin
   LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO);
+  LUltimosAcesso := StrToDate(TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.ULTIMO_ACESSO));
 
-  if (LLogado = TIniUtils.VALOR_VERDADEIRO) then
+
+  if (LLogado = TIniUtils.VALOR_VERDADEIRO) and (DaysBetween(Now(),LUltimosAcesso) < 5) then
   begin
     TformsUtils.ShowFormPrincipal(frmPainelGestao, TfrmPainelGestao);
     Close;

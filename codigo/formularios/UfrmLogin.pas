@@ -26,7 +26,6 @@ type
     procedure Memo1Click(Sender: TObject);
   private
     { Private declarations }
-    procedure SetarFormPrincipal(pNovoFormulario: TForm);
     procedure ExibirFormRegistrar();
     procedure ExibirFormPainelGestao();
     procedure LoginUsuario();
@@ -85,7 +84,8 @@ try
   begin
     TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
       TIniUtils.VALOR_VERDADEIRO);
-      Self.ExibirFormRegistrar;
+    TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.ULTIMO_ACESSO, DateToStr(Now()));
+      Self.ExibirFormPainelGestao;
   end
   else
   begin
@@ -115,14 +115,6 @@ begin
   end;
     FreeAndNil(LDao);
     FreeAndNil(LListaUsuarios);
-end;
-
-procedure TfrmLogin.SetarFormPrincipal(pNovoFormulario: TForm);
-var
-  tmpMain: ^TCustomForm;
-begin
-  tmpMain := @Application.Mainform;
-  tmpMain^ := pNovoFormulario;
 end;
 
 end.

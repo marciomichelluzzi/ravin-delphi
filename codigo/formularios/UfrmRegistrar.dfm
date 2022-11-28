@@ -22985,23 +22985,6 @@ object frmRegistrar: TfrmRegistrar
       TabOrder = 0
       TextHint = 'Digite seu nome'
     end
-    object edtCpf: TEdit
-      Left = 50
-      Top = 176
-      Width = 250
-      Height = 27
-      Anchors = [akLeft, akTop, akRight]
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      TextHint = 'Digite seu cpf'
-    end
     object edtLogin: TEdit
       Left = 50
       Top = 209
@@ -23016,7 +22999,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       TextHint = 'Digite seu login'
     end
     object edtSenha: TEdit
@@ -23034,7 +23017,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Style = []
       ParentFont = False
       PasswordChar = '*'
-      TabOrder = 4
+      TabOrder = 3
       TextHint = 'Digite sua senha'
     end
     object edtConfirmarSenha: TEdit
@@ -23052,7 +23035,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Style = []
       ParentFont = False
       PasswordChar = '*'
-      TabOrder = 3
+      TabOrder = 2
       TextHint = 'Confirme sua senha'
     end
     inline frmBotaoPrimario1: TfrmBotaoPrimario
@@ -23063,7 +23046,7 @@ object frmRegistrar: TfrmRegistrar
       Color = clWhite
       ParentBackground = False
       ParentColor = False
-      TabOrder = 5
+      TabOrder = 4
       ExplicitLeft = 50
       ExplicitTop = 352
       ExplicitWidth = 255
@@ -23080,6 +23063,17 @@ object frmRegistrar: TfrmRegistrar
           ExplicitHeight = 50
         end
       end
+    end
+    object medtCPF: TMaskEdit
+      Left = 50
+      Top = 176
+      Width = 245
+      Height = 27
+      EditMask = '!999.999.999-99;0; '
+      MaxLength = 14
+      TabOrder = 5
+      Text = ''
+      TextHint = 'Digite Seu CPF'
     end
   end
 end

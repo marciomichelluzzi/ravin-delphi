@@ -42,7 +42,7 @@ var
   LCriarBaseDados: Boolean;
   LCaminhoBaseDados : String;
 begin
-  LCaminhoBaseDados := 'C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\';
+  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.DIRETORIO_BANCO);
   LCriarBaseDados := not DirectoryExists(LCaminhoBaseDados);
 
     if (LCriarBaseDados) then
@@ -56,7 +56,8 @@ procedure TdmRavin.cnxBancoDeDadosBeforeConnect(Sender: TObject);
 var
   LCriarBaseDados: Boolean;
 begin
-  LCriarBaseDados := not DirectoryExists('C:\ProgramData\MySQL\MySQL Server 8.0\Data\ravin\');
+  drvBancoDeDados.VendorLib :=  TResourceUtils.carregarArquivoResource(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.LIB), TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.RAVIN_SOURCES));
+  LCriarBaseDados := not DirectoryExists(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.DIRETORIO_BANCO));
   with cnxBancoDeDados do
   begin
 //  Params.Values['Server'] := 'localhost';
@@ -64,16 +65,15 @@ begin
 //    Params.Values['Password'] := 'root';
 //    Params.Values['DriverID'] := 'MySQL';
 //    Params.Values['Port'] := '3306';
-
-    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.SERVER);
-    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.SERVER);
-    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.PASSWORD);
-    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.DRIVERID);
-    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.PORT);
+    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.SERVER);
+    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.SERVER);
+    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.PASSWORD);
+    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.DRIVERID);
+    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.PORT);
 
     if not (LCriarBaseDados) then
     begin
-      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES_DATABASE, TPROPRIEDADE.NOME_DATABASE);
+      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.NOME_DATABASE);
     end;
   end;
 end;
@@ -81,7 +81,7 @@ end;
 procedure TdmRavin.CriarTabelas;
 begin
   try
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('createTable.sql','ravin_sources'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.CREATE_SQL), TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.RAVIN_SOURCES)));
   except
     on E: Exception do
       ShowMessage(E.Message);
@@ -100,7 +100,7 @@ procedure TdmRavin.InserirDados;
 begin
   try
     cnxBancoDeDados.StartTransaction();
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('inserts.sql','ravin_sources'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.INSERTS_SQL), TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.RAVIN_SOURCES)));
     cnxBancoDeDados.Commit();
   except
     on E: Exception do
