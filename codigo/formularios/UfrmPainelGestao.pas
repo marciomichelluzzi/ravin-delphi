@@ -71,7 +71,7 @@ begin
 
   TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
       TIniUtils.VALOR_FALSO);
-   TFormsUtils.ShowForm(frmLogin, TfrmLogin);
+   TFormsUtils.ShowFormPrincipal(frmLogin, TfrmLogin);
    Close;
 end;
 

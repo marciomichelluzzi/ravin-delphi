@@ -56,7 +56,7 @@ procedure TdmRavin.cnxBancoDeDadosBeforeConnect(Sender: TObject);
 var
   LCriarBaseDados: Boolean;
 begin
-  drvBancoDeDados.VendorLib :=  TResourceUtils.carregarArquivoResource(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.LIB), TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.RAVIN_SOURCES));
+  drvBancoDeDados.VendorLib :=  TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.LIB);
   LCriarBaseDados := not DirectoryExists(TIniUtils.lerPropriedade(TSECAO.DIRETORIOS, TPROPRIEDADE.DIRETORIO_BANCO));
   with cnxBancoDeDados do
   begin
@@ -66,7 +66,7 @@ begin
 //    Params.Values['DriverID'] := 'MySQL';
 //    Params.Values['Port'] := '3306';
     Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.SERVER);
-    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.SERVER);
+    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.USER_NAME);
     Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.PASSWORD);
     Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.DRIVERID);
     Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.CONFIGURACOES, TPROPRIEDADE.PORT);

@@ -52,17 +52,18 @@ begin
 
 end;
 
-class function TValidadorUsuario.ValidarCpf(pCpf: String): boolean;
-var  dig10, dig11 : string;
+class function TValidadorUsuario.ValidarCpf(pCpf : String): boolean;
+var  dig10, dig11, CPF : string;
     s, i, r, peso: integer;
 begin
+  CPF := pCpf;
 
-  if ((pCpf = '00000000000') or (pCpf = '11111111111') or
-      (pCpf = '22222222222') or (pCpf = '33333333333') or
-      (pCpf = '44444444444') or (pCpf = '55555555555') or
-      (pCpf = '66666666666') or (pCpf = '77777777777') or
-      (pCpf = '88888888888') or (pCpf = '99999999999') or
-      (length(pCpf) <> 11))
+  if ((CPF = '00000000000') or (CPF = '11111111111') or
+      (CPF = '22222222222') or (CPF = '33333333333') or
+      (CPF = '44444444444') or (CPF = '55555555555') or
+      (CPF = '66666666666') or (CPF = '77777777777') or
+      (CPF = '88888888888') or (CPF = '99999999999') or
+      (length(CPF) <> 11))
      then begin
               ValidarCpf := false;
               exit;
@@ -74,7 +75,7 @@ begin
     for i := 1 to 9 do
     begin
 
-      s := s + (StrToInt(pCpf[i]) * peso);
+      s := s + (StrToInt(CPF[i]) * peso);
       peso := peso - 1;
     end;
     r := 11 - (s mod 11);
@@ -86,7 +87,7 @@ begin
     peso := 11;
     for i := 1 to 10 do
     begin
-      s := s + (StrToInt(pCpf[i]) * peso);
+      s := s + (StrToInt(CPF[i]) * peso);
       peso := peso - 1;
     end;
     r := 11 - (s mod 11);
@@ -94,7 +95,7 @@ begin
        then dig11 := '0'
     else str(r:1, dig11);
 
-    if ((dig10 = pCpf[10]) and (dig11 = pCpf[11])) then
+    if ((dig10 = CPF[10]) and (dig11 = CPF[11])) then
     begin
      ValidarCpf := true;
     end

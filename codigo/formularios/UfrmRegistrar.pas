@@ -72,7 +72,7 @@ begin
         alteradoPor := 'admin';
       end;
 
-      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
+      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text, medtCPF.Text);
       LDao := TUsuarioDAO.Create();
       LDao.InserirUsuario(LUsuario);
 

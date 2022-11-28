@@ -66,7 +66,7 @@ begin
   LUltimosAcesso := StrToDate(TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.ULTIMO_ACESSO));
 
 
-  if (LLogado = TIniUtils.VALOR_VERDADEIRO) and (DaysBetween(Now(),LUltimosAcesso) < 5) then
+  if (LLogado = TIniUtils.VALOR_VERDADEIRO) or (DaysBetween(Now(),LUltimosAcesso) < 5) then
   begin
     TformsUtils.ShowFormPrincipal(frmPainelGestao, TfrmPainelGestao);
     Close;

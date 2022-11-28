@@ -23068,7 +23068,7 @@ object frmRegistrar: TfrmRegistrar
       Left = 50
       Top = 176
       Width = 245
-      Height = 27
+      Height = 21
       EditMask = '!999.999.999-99;0; '
       MaxLength = 14
       TabOrder = 5

@@ -46,7 +46,7 @@ begin
    Application.CreateForm(pTForm, pForm);
  end;
 
-
+  SetarFormPrincipal(pForm);
   pForm.Show();
 
   //close;
