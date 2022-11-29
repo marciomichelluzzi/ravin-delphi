@@ -68,7 +68,7 @@ begin
   //carregando se o usuario esta logado
   LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO);
 
-  if (LLogado = TIniUtils.VALOR_VERDADEIRO) and (verificarLoginExipirou) {(DaysBetween(Now(),LUltimosAcesso) < diasMaximoInatividade)//minha forma antiga }then
+  if (LLogado = TIniUtils.VALOR_VERDADEIRO) and (not verificarLoginExipirou) {(DaysBetween(Now(),LUltimosAcesso) < diasMaximoInatividade)//minha forma antiga }then
   begin
     TformsUtils.ShowFormPrincipal(frmPainelGestao, TfrmPainelGestao);
     Close;

@@ -51,7 +51,7 @@ implementation
 
 uses
   UusuarioDao,
-  Uusuario, UfrmLogin, UvalidadorUsuario, UformsUtils;
+  Uusuario, UfrmLogin, UvalidadorUsuario, UformsUtils, UpessoaDao;
 
 {$R *.dfm}
 
@@ -75,15 +75,17 @@ procedure TfrmRegistrar.RegistrarUsuario;
 var
   LUsuario: TUsuario;
   LDao: TUsuarioDAO;
+  LDaoPessoa: TPessoaDAO;
 begin
   try
     try
       LUsuario := TUsuario.Create();
+      LDaoPessoa := TPessoaDAO.Create();
       with LUsuario do
       begin
         login := edtLogin.Text;
         senha := edtSenha.Text;
-        pessoaId := 1;
+        pessoaId := LDaoPessoa.BuscarIdPessoaMaisRecente;
         criadoEm := Now();
         criadoPor := 'admin';
         alteradoEm := Now();
@@ -110,6 +112,7 @@ begin
     if Assigned(LDao) then
     begin
       FreeAndNil(LDao);
+      FreeAndNil(LDaoPessoa);
     end;
     FreeAndNil(LUsuario);
   end;

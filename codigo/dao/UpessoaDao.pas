@@ -31,7 +31,7 @@ var
 begin
   LQuery := TFDQuery.Create(nil);
   LQuery.Connection := dmRavin.cnxBancoDeDados;
-  LQuery.SQL.Text := 'SELECT id FROM pessoa WHERE login = (select max(criadoEm) from pessoa)';
+  LQuery.SQL.Text := 'SELECT id FROM pessoa WHERE criadoEm = (select max(criadoEm) from pessoa)';
   LQuery.Open();
 
   if not LQuery.IsEmpty then
