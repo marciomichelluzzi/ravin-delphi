@@ -15,13 +15,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ComCtrls,
-  Vcl.StdCtrls, UfrmBotaoPrimario, UBotaoCancelar;
+  Vcl.StdCtrls,
+
+  UfrmBotaoPrimario,
+  UfrmBotaoCancelar;
 
 type
   TfrmListaClientes = class(TForm)
     lbxListaClientes: TListBox;
-    frmBotaoPrimario1: TfrmBotaoPrimario;
-    frmBotaoCancelar1: TfrmBotaoCancelar;
+    frmBotaoPrimario: TfrmBotaoPrimario;
+    frmBotaoCancelar: TfrmBotaoCancelar;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

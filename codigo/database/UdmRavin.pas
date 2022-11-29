@@ -3,12 +3,31 @@ unit UdmRavin;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Comp.UI, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, Vcl.Dialogs;
+  System.SysUtils,
+  System.Classes,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.UI,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+
+  Vcl.Dialogs;
 
 type
   TdmRavin = class(TDataModule)
@@ -31,7 +50,7 @@ var
 
 implementation
 
-uses UresourceUtils, UiniUtils;
+uses UresourceUtils, UiniUtils, System.IOUtils;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
@@ -110,6 +129,8 @@ end;
 
 procedure TdmRavin.DataModuleCreate(Sender: TObject);
 begin
+  drvBancoDeDados.VendorLib := TPath.Combine(TPath.GetDocumentsPath,
+    'ravin\libmysql.dll');
   if not cnxBancoDeDados.Connected then
   begin
     cnxBancoDeDados.Connected := true;

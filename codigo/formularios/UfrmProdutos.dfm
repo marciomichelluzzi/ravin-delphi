@@ -15,17 +15,19 @@ object frmProdutos: TfrmProdutos
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  DesignSize = (
-    1024
-    768)
   PixelsPerInch = 96
   TextHeight = 13
   object pnlProdutos: TPanel
+    AlignWithMargins = True
     Left = 8
     Top = 8
     Width = 1008
     Height = 752
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 8
+    Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False

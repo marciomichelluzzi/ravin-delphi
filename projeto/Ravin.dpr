@@ -24,7 +24,7 @@ uses
   UfrmUsuarios in '..\codigo\formularios\UfrmUsuarios.pas' {frmUsuarios},
   Ucomanda in '..\codigo\modelos\Ucomanda.pas',
   UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
-  UBotaoCancelar in '..\codigo\frames\UBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
+  UfrmBotaoCancelar in '..\codigo\frames\UfrmBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
   UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
   UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente},
   UformUtils in '..\codigo\util\UformUtils.pas';

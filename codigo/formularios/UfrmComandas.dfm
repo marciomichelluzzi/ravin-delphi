@@ -14,17 +14,19 @@ object frmComandas: TfrmComandas
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  DesignSize = (
-    1024
-    741)
   PixelsPerInch = 96
   TextHeight = 13
   object pnlItensComanda: TPanel
+    AlignWithMargins = True
     Left = 423
     Top = 8
     Width = 593
     Height = 725
-    Anchors = [akTop, akRight, akBottom]
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 8
+    Align = alRight
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
@@ -112,10 +114,16 @@ object frmComandas: TfrmComandas
     end
   end
   object pnlComanda: TPanel
+    AlignWithMargins = True
     Left = 8
     Top = 8
     Width = 409
     Height = 725
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 8
+    Align = alLeft
     Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
     Color = clWhite
@@ -395,7 +403,6 @@ object frmComandas: TfrmComandas
     end
   end
   object tblComandas: TFDTable
-    Active = True
     BeforePost = tblComandasBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
@@ -490,7 +497,6 @@ object frmComandas: TfrmComandas
     Top = 344
   end
   object tblMesas: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.mesa'
@@ -508,7 +514,6 @@ object frmComandas: TfrmComandas
     Top = 520
   end
   object tblPessoas: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.pessoa'
@@ -521,7 +526,6 @@ object frmComandas: TfrmComandas
     Top = 576
   end
   object tblStatusComanda: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.statuscomanda'
@@ -533,7 +537,6 @@ object frmComandas: TfrmComandas
     Top = 632
   end
   object tblComandaProdutos: TFDTable
-    Active = True
     BeforePost = tblComandaProdutosBeforePost
     IndexFieldNames = 'comandaId'
     MasterSource = dtsComandas
@@ -623,7 +626,6 @@ object frmComandas: TfrmComandas
     end
   end
   object tblProdutos: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.produto'
@@ -636,7 +638,6 @@ object frmComandas: TfrmComandas
     Top = 464
   end
   object tblStatusComandaProduto: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.statuscomandaproduto'

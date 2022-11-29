@@ -15,7 +15,10 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  Vcl.StdCtrls, UfrmBotaoPrimario, UfrmBotaoSecundario;
+  Vcl.StdCtrls,
+
+  UfrmBotaoPrimario,
+  UfrmBotaoSecundario;
 
 type
   TfrmAutenticar = class(TForm)

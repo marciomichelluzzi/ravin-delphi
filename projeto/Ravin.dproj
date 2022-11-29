@@ -179,7 +179,7 @@
             <Form>frmBotaoExcluir</Form>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\codigo\frames\UBotaoCancelar.pas">
+        <DCCReference Include="..\codigo\frames\UfrmBotaoCancelar.pas">
             <Form>frmBotaoCancelar</Form>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>

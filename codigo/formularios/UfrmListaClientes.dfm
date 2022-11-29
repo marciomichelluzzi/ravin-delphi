@@ -27,9 +27,8 @@ object frmListaClientes: TfrmListaClientes
     Align = alClient
     ItemHeight = 13
     TabOrder = 0
-    ExplicitHeight = 277
   end
-  inline frmBotaoPrimario1: TfrmBotaoPrimario
+  inline frmBotaoPrimario: TfrmBotaoPrimario
     Left = 8
     Top = 296
     Width = 120
@@ -45,6 +44,8 @@ object frmListaClientes: TfrmListaClientes
     inherited pnlFundo: TPanel
       Width = 120
       Height = 45
+      ExplicitWidth = 120
+      ExplicitHeight = 45
       inherited spbBotaoPrimario: TSpeedButton
         Width = 120
         Height = 45
@@ -56,7 +57,7 @@ object frmListaClientes: TfrmListaClientes
       end
     end
   end
-  inline frmBotaoCancelar1: TfrmBotaoCancelar
+  inline frmBotaoCancelar: TfrmBotaoCancelar
     Left = 134
     Top = 296
     Width = 120
@@ -69,6 +70,8 @@ object frmListaClientes: TfrmListaClientes
     inherited pnlFundo: TPanel
       Width = 120
       Height = 45
+      ExplicitWidth = 120
+      ExplicitHeight = 45
       inherited spbBotaoCancelar: TSpeedButton
         Width = 120
         Height = 45
