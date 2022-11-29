@@ -26,7 +26,8 @@ uses
   UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
   UBotaoCancelar in '..\codigo\frames\UBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
   UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
-  UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente};
+  UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente},
+  UformUtils in '..\codigo\util\UformUtils.pas';
 
 {$R *.res}
 
@@ -35,6 +36,6 @@ begin
   Application.MainFormOnTaskbar := False;
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
-  Application.CreateForm(TfrmListaClientes, frmListaClientes);
+  Application.CreateForm(TfrmSplash, frmSplash);
   Application.Run;
 end.

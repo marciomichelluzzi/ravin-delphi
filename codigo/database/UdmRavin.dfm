@@ -15,7 +15,9 @@ object dmRavin: TdmRavin
     Top = 24
   end
   object drvBancoDeDados: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\Users\User\Documents\ravin\libmysql.dll'
+    VendorLib = 
+      'C:\Users\mmichelluzzi\Documents\GitHub\ravin\bibliotecas\libmysq' +
+      'l.dll'
     Left = 40
     Top = 80
   end

@@ -11,10 +11,11 @@ uses
   IniFiles;
 
 type
-  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS, DATABASE);
+  TSECAO = (CONFIGURACOES, INFORMACOES_GERAIS, BANCO);
 
 type
-  TPROPRIEDADE = (NOME_DATABASE, LOGADO, SERVER, PORTA, LOGIN, SENHA);
+  TPROPRIEDADE = (LOGADO, SERVIDOR_BANCO, PORTA_BANCO, USUARIO_BANCO, SENHA_BANCO, NOME_BANCO,
+    CAMINHO_BANCO, DRIVER_ID);
 
 type
   TIniUtils = class
@@ -31,8 +32,11 @@ type
     class function lerPropriedade(PSecao: TSECAO;
       PPropriedade: TPROPRIEDADE): String;
 
-    const VALOR_VERDADEIRO: String = 'true';
-    const VALOR_FALSO: String = 'false';
+  const
+    VALOR_VERDADEIRO: String = 'true';
+
+  const
+    VALOR_FALSO: String = 'false';
 
   end;
 
@@ -60,8 +64,7 @@ var
   LNomeSecao: String;
   LNomePropriedade: String;
 begin
-  LcaminhoArquivoIni := TPath.Combine(
-    TPath.Combine(TPath.GetDocumentsPath,
+  LcaminhoArquivoIni := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath,
     'ravin'), 'configuracoes.ini');
   LarquivoINI := TIniFile.Create(LcaminhoArquivoIni);
 
@@ -92,8 +95,7 @@ begin
   LNomePropriedade := GetEnumName(TypeInfo(TPROPRIEDADE),
     Integer(PPropriedade));
 
-  Result := LarquivoINI.ReadString(
-    LNomeSecao, LNomePropriedade, '');
+  Result := LarquivoINI.ReadString(LNomeSecao, LNomePropriedade, '');
   LarquivoINI.Free;
 end;
 

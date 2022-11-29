@@ -3,9 +3,19 @@ unit UfrmUsuarios;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Winapi.Windows,
+  Winapi.Messages,
+
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  System.DateUtils,
+
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls;
 
 type
   TfrmUsuarios = class(TForm)
@@ -37,17 +47,19 @@ var
   I: Integer;
 begin
 
-  LDao := TUsuarioDao.Create();
-  LLista := LDao.BuscarTodosUsuarios();
+  now();
 
-  for I := 0 to LLista.Count - 1 do
-  begin
-    LUsuario := LLista.Items[I];
-    memListaUsuarios.Lines.Add(LUsuario.login);
-    FreeAndNil(LUsuario);
-  end;
-
-  FreeAndNil(LLista);
+//  LDao := TUsuarioDao.Create();
+//  LLista := LDao.BuscarTodosUsuarios();
+//
+//  for I := 0 to LLista.Count - 1 do
+//  begin
+//    LUsuario := LLista.Items[I];
+//    memListaUsuarios.Lines.Add(LUsuario.login);
+//    FreeAndNil(LUsuario);
+//  end;
+//
+//  FreeAndNil(LLista);
 end;
 
 end.

@@ -31,7 +31,7 @@ var
 
 implementation
 
-uses UresourceUtils;
+uses UresourceUtils, UiniUtils;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
@@ -41,8 +41,8 @@ var
   LCaminhoBaseDados: String;
   LCriarBaseDados: Boolean;
 begin
-  LCaminhoBaseDados := 'C:\ProgramData\MySQL' +
-    '\MySQL Server 8.0\Data\ravin\pessoa.ibd';
+  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO,
+    TPROPRIEDADE.CAMINHO_BANCO);
   LCriarBaseDados := not FileExists(LCaminhoBaseDados, true);
 
   If LCriarBaseDados then
@@ -57,20 +57,26 @@ var
   LCaminhoBaseDados: String;
   LCriarBaseDados: Boolean;
 begin
-  LCaminhoBaseDados := 'C:\ProgramData\MySQL' +
-    '\MySQL Server 8.0\Data\ravin\pessoa.ibd';
+  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO,
+    TPROPRIEDADE.CAMINHO_BANCO);
   LCriarBaseDados := not FileExists(LCaminhoBaseDados, true);
   with cnxBancoDeDados do
   begin
-    Params.Values['Server'] := 'localhost';
-    Params.Values['User_Name'] := 'root';
-    Params.Values['Password'] := 'root';
-    Params.Values['DriverID'] := 'MySQL';
-    Params.Values['Port'] := '3306';
+    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+      TPROPRIEDADE.SERVIDOR_BANCO);
+    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+      TPROPRIEDADE.USUARIO_BANCO);
+    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+      TPROPRIEDADE.SENHA_BANCO);
+    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+      TPROPRIEDADE.DRIVER_ID);
+    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+      TPROPRIEDADE.PORTA_BANCO);
 
     if not LCriarBaseDados then
     begin
-      Params.Values['Database'] := 'ravin';
+      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
+        TPROPRIEDADE.NOME_BANCO);
     end;
   end;
 end;
@@ -78,20 +84,19 @@ end;
 procedure TdmRavin.CriarTabelas;
 begin
   try
-    cnxBancoDeDados.ExecSQL(TResourceUtils
-    .carregarArquivoResource
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource
       ('createTables.sql', 'ravin'));
   except
     on E: Exception do
       ShowMessage(E.Message);
   end;
 end;
+
 procedure TdmRavin.InserirDados;
 begin
   try
     cnxBancoDeDados.StartTransaction();
-    cnxBancoDeDados.ExecSQL(TResourceUtils
-    .carregarArquivoResource
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource
       ('insertValues.sql', 'ravin'));
     cnxBancoDeDados.Commit();
   except

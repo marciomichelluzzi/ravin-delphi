@@ -33,7 +33,6 @@ type
     procedure lblSubTituloRegistrasClick(Sender: TObject);
   private
     { Private declarations }
-    procedure SetMainForm(NovoMainForm: TForm);
   public
     { Public declarations }
   end;
@@ -45,7 +44,8 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar, UiniUtils;
+uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar, UiniUtils,
+  UformUtils;
 
 { TfrmLogin }
 
@@ -68,10 +68,7 @@ begin
 
     if Assigned(Lusuario) then
     begin
-      //Conseguiu logar
-
-      TIniUtils.gravarPropriedade(
-        TSECAO.INFORMACOES_GERAIS,
+      TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
         TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
 
       if not Assigned(frmPainelGestao) then
@@ -79,7 +76,7 @@ begin
         Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
       end;
 
-      SetMainForm(frmPainelGestao);
+      TFormUtils.SetarFormularioPrincipal(frmPainelGestao);
       frmPainelGestao.Show();
 
       Close;
@@ -106,18 +103,10 @@ begin
     Application.CreateForm(TfrmRegistrar, frmRegistrar);
   end;
 
-  SetMainForm(frmRegistrar);
+  TFormUtils.SetarFormularioPrincipal(frmRegistrar);
   frmRegistrar.Show();
 
   Close();
-end;
-
-procedure TfrmAutenticar.SetMainForm(NovoMainForm: TForm);
-var
-  tmpMain: ^TCustomForm;
-begin
-  tmpMain := @Application.Mainform;
-  tmpMain^ := NovoMainForm;
 end;
 
 end.
