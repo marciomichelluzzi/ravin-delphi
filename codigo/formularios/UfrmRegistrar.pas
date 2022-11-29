@@ -38,6 +38,8 @@ type
     procedure frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
   private
     { Private declarations }
+    procedure RegistrarUsuario();
+    procedure ExibirFormLogin();
   public
     { Public declarations }
   end;
@@ -53,7 +55,23 @@ uses
 
 {$R *.dfm}
 
+procedure TfrmRegistrar.ExibirFormLogin;
+begin
+   TFormsUtils.ShowFormPrincipal(frmLogin, TfrmLogin);
+   Close();
+end;
+
 procedure TfrmRegistrar.frmBotaoPrimario1spbBotaoPrimarioClick(Sender: TObject);
+begin
+  Self.RegistrarUsuario;
+end;
+
+procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
+begin
+  Self.ExibirFormLogin;
+end;
+
+procedure TfrmRegistrar.RegistrarUsuario;
 var
   LUsuario: TUsuario;
   LDao: TUsuarioDAO;
@@ -76,6 +94,10 @@ begin
       LDao := TUsuarioDAO.Create();
       LDao.InserirUsuario(LUsuario);
 
+    if Assigned(LUsuario) then
+    begin
+      Self.ExibirFormLogin;
+    end;
     except
       on E: EMySQLNativeException do
       begin
@@ -91,11 +113,6 @@ begin
     end;
     FreeAndNil(LUsuario);
   end;
-end;
-
-procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
-begin
-  TFormsUtils.ShowFormPrincipal(frmLogin, TfrmLogin);
 end;
 
 end.

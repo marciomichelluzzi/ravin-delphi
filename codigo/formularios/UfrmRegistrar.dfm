@@ -23067,10 +23067,16 @@ object frmRegistrar: TfrmRegistrar
     object medtCPF: TMaskEdit
       Left = 50
       Top = 176
-      Width = 245
-      Height = 21
+      Width = 250
+      Height = 27
       EditMask = '!999.999.999-99;0; '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = []
       MaxLength = 14
+      ParentFont = False
       TabOrder = 5
       Text = ''
       TextHint = 'Digite Seu CPF'
