@@ -61,6 +61,9 @@ var
   LSenha: String;
 begin
 
+  Lusuario := nil;
+  LusuarioDAO := nil;
+
   Llogin := edtLogin.Text;
   LSenha := edtSenha.Text;
 
@@ -71,6 +74,12 @@ begin
 
     if Assigned(Lusuario) then
     begin
+
+      // Registrando a data do ultimo login do usuário
+      TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+        TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN, DateTimeToStr(Now));
+
+      // Registrar que o usuário efetuou o login com sucesso
       TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
         TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
 

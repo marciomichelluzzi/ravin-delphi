@@ -37,6 +37,12 @@ type
     procedure SetarFormPrincipal(PNovoFormulario: TForm);
   public
     { Public declarations }
+    function VerificarDeveLogar(): Boolean;
+
+    // Número máximo de dias que o usuário fica logado
+    // sem precisar autenticar novamente
+  const
+    MAX_DIAS_LOGIN: Integer = 5;
   end;
 
 var
@@ -46,7 +52,11 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, UfrmAutenticar, UiniUtils;
+uses
+  UfrmPainelGestao,
+  UfrmAutenticar,
+  UiniUtils,
+  System.DateUtils;
 
 procedure TfrmSplash.FormCreate(Sender: TObject);
 begin
@@ -63,11 +73,15 @@ end;
 procedure TfrmSplash.InicializarAplicacao;
 var
   LLogado: String;
+  LDeveLogar: Boolean;
 begin
+  // Carregando se o usuário está logado
   LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
     TPROPRIEDADE.LOGADO);
 
-  if LLogado = TIniUtils.VALOR_VERDADEIRO then
+  LDeveLogar := VerificarDeveLogar();
+
+  if (LLogado = TIniUtils.VALOR_VERDADEIRO) AND (not LDeveLogar) then
   begin
     ShowPainelGestao();
   end
@@ -84,6 +98,34 @@ begin
   begin
     Inicializado := true;
     InicializarAplicacao();
+  end;
+end;
+
+function TfrmSplash.VerificarDeveLogar: Boolean;
+var
+  LDataString: String;
+  LDataUltimoLogin: TDateTime;
+  LDataExpiracaoLogin: TDateTime;
+  LExisteDataUltimoLogin: Boolean;
+begin
+  // LDataUltimoLogin := now();
+  // Carregando a datahora do ultimo login do usuário
+  LDataString := TIniUtils.lerPropriedade(
+    TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN);
+
+  try
+    //Converte a data de String para DateTime
+    LDataUltimoLogin := StrToDateTime(LDataString);
+
+    // Calculando a data de expiração do login
+    LDataExpiracaoLogin := IncDay(
+      LDataUltimoLogin,
+      MAX_DIAS_LOGIN);
+    Result := LDataExpiracaoLogin < Now();
+  except
+    on E: Exception do
+      Result := true;
   end;
 end;
 
