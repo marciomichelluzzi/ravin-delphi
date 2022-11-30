@@ -27,7 +27,8 @@ uses
   UfrmBotaoCancelar in '..\codigo\frames\UfrmBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
   UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
   UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente},
-  UformUtils in '..\codigo\util\UformUtils.pas';
+  UformUtils in '..\codigo\util\UformUtils.pas',
+  UfrmClientes in '..\codigo\formularios\UfrmClientes.pas' {frmClientes};
 
 {$R *.res}
 
@@ -37,5 +38,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TdmRavin, dmRavin);
   Application.CreateForm(TfrmSplash, frmSplash);
+  Application.CreateForm(TfrmClientes, frmClientes);
   Application.Run;
 end.

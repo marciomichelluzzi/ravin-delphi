@@ -1,6 +1,7 @@
 object frmCadastroCliente: TfrmCadastroCliente
   Left = 0
   Top = 0
+  ActiveControl = edtNome
   Caption = 'Cadastro de cliente'
   ClientHeight = 475
   ClientWidth = 640
@@ -10,7 +11,9 @@ object frmCadastroCliente: TfrmCadastroCliente
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
+  Visible = True
   PixelsPerInch = 96
   TextHeight = 13
   object pnlCadastroCliente: TPanel
@@ -133,7 +136,7 @@ object frmCadastroCliente: TfrmCadastroCliente
       ShowHint = False
       TabOrder = 3
     end
-    inline frmBotaoSalvar: TfrmBotaoPrimario
+    inline lblInformacoesGerenciais: TfrmBotaoPrimario
       Left = 17
       Top = 400
       Width = 120

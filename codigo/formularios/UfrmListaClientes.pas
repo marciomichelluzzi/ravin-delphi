@@ -18,14 +18,20 @@ uses
   Vcl.StdCtrls,
 
   UfrmBotaoPrimario,
-  UfrmBotaoCancelar;
+  UfrmBotaoCancelar, Vcl.ExtCtrls;
 
 type
   TfrmListaClientes = class(TForm)
-    lbxListaClientes: TListBox;
     frmBotaoPrimario: TfrmBotaoPrimario;
     frmBotaoCancelar: TfrmBotaoCancelar;
-    procedure FormShow(Sender: TObject);
+    lvwClientes: TListView;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape5: TShape;
+    lblInformacoesGerenciais: TLabel;
+    pnlListaClientes: TPanel;
+    lblListaClientesTitulo: TLabel;
+    procedure frmBotaoPrimariospbBotaoPrimarioClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,9 +45,16 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmListaClientes.FormShow(Sender: TObject);
+procedure TfrmListaClientes.frmBotaoPrimariospbBotaoPrimarioClick
+  (Sender: TObject);
+var
+  LItem: TListItem;
 begin
-  lbxListaClientes.Items.Add('asjuhasd');
+  LItem := lvwClientes.Items.Add();
+  LItem.Caption := 'Marcio';
+  LItem.SubItems.Add('2134234324');
+  LItem.SubItems.Add('(47)9925645663');
+  LItem.SubItems.Add('Ativo');
 end;
 
 end.

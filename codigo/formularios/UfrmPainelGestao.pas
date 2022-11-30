@@ -32,7 +32,7 @@ type
     lblNomeUsuario: TLabel;
     frmMenuItemMesas: TfrmMenuItem;
     frmMenuItemComandas: TfrmMenuItem;
-    frmMenuItemPessoas: TfrmMenuItem;
+    frmMenuItemClientes: TfrmMenuItem;
     frmMenuItemProdutos: TfrmMenuItem;
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;
@@ -43,6 +43,7 @@ type
     procedure frmMenuItemProdutoslblTituloClick(Sender: TObject);
     procedure frmMenuItemMesaslblTituloClick(Sender: TObject);
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
+    procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,7 +60,12 @@ implementation
 uses
   UfrmSobre,
   UfrmProdutos,
-  UfrmMesas, UfrmComandas, UiniUtils;
+  UfrmMesas,
+  UfrmComandas,
+  UiniUtils,
+  UfrmCadastroCliente,
+  UfrmClientes,
+  UfrmListaClientes;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
@@ -68,6 +74,15 @@ begin
     Application.CreateForm(TfrmMesas, frmMesas);
   end;
   frmMesas.show();
+end;
+
+procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
+begin
+  if (not Assigned(frmListaClientes)) then
+  begin
+    Application.CreateForm(TfrmListaClientes, frmListaClientes);
+  end;
+  frmListaClientes.show();
 end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
@@ -100,8 +115,7 @@ end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
 begin
-  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGADO,
+  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
     TIniUtils.VALOR_FALSO);
   Application.Terminate();
 end;

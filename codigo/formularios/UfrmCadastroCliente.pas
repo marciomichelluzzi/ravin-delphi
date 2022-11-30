@@ -30,7 +30,7 @@ type
     edtTelefone: TEdit;
     mskCpf: TMaskEdit;
     dtpDataNascimento: TDateTimePicker;
-    frmBotaoSalvar: TfrmBotaoPrimario;
+    lblInformacoesGerenciais: TfrmBotaoPrimario;
     frmBotaoCancelar: TfrmBotaoCancelar;
     frmBotaoExcluir: TfrmBotaoExcluir;
   private

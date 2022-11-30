@@ -87,10 +87,10 @@ object frmPainelGestao: TfrmPainelGestao
       175
       480)
     object imgLogomarca: TImage
-      Left = 42
+      Left = 34
       Top = 16
-      Width = 87
-      Height = 97
+      Width = 95
+      Height = 95
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
         02001006000000A4E808B90000000467414D410000B18F0BFC61050000000662
@@ -2330,7 +2330,7 @@ object frmPainelGestao: TfrmPainelGestao
         end
       end
     end
-    inline frmMenuItemPessoas: TfrmMenuItem
+    inline frmMenuItemClientes: TfrmMenuItem
       Left = 0
       Top = 252
       Width = 175
@@ -2339,7 +2339,8 @@ object frmPainelGestao: TfrmPainelGestao
       ExplicitTop = 252
       inherited pnlFundo: TPanel
         inherited lblTitulo: TLabel
-          Caption = 'Pessoas'
+          Caption = 'Clientes'
+          OnClick = frmMenuItemClienteslblTituloClick
         end
       end
     end
