@@ -11,7 +11,6 @@ object frmCadastroCliente: TfrmCadastroCliente
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  FormStyle = fsMDIChild
   OldCreateOrder = False
   Visible = True
   PixelsPerInch = 96
@@ -159,6 +158,7 @@ object frmCadastroCliente: TfrmCadastroCliente
           Width = 120
           Height = 45
           Caption = 'Salvar'
+          OnClick = lblInformacoesGerenciaisspbBotaoPrimarioClick
           ExplicitLeft = -192
           ExplicitTop = 32
           ExplicitWidth = 320
@@ -186,6 +186,7 @@ object frmCadastroCliente: TfrmCadastroCliente
           Width = 120
           Height = 45
           Caption = 'Cancelar'
+          OnClick = frmBotaoCancelarspbBotaoCancelarClick
           ExplicitLeft = 16
           ExplicitTop = 0
           ExplicitWidth = 104
@@ -213,6 +214,7 @@ object frmCadastroCliente: TfrmCadastroCliente
           Width = 120
           Height = 45
           Caption = 'Excluir'
+          OnClick = frmBotaoExcluirspbBotaoExcluirClick
           ExplicitWidth = 120
           ExplicitHeight = 45
         end

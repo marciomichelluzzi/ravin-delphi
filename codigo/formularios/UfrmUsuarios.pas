@@ -15,12 +15,14 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
   TfrmUsuarios = class(TForm)
-    memListaUsuarios: TMemo;
     btnCarregarUsuarios: TButton;
+    ListView1: TListView;
+    ListBox1: TListBox;
+    Memo1: TMemo;
     procedure btnCarregarUsuariosClick(Sender: TObject);
   private
     { Private declarations }
@@ -46,8 +48,12 @@ var
   LListaComanda: TList<TComanda>;
   I: Integer;
 begin
+  ListBox1.Items.Add('aihsa');
+  Memo1.Lines.Add('sdkjfskdbdsf');
+  Memo1.Lines[1];
+  ListBox1.Items[1];
 
-  now();
+//  now();
 
 //  LDao := TUsuarioDao.Create();
 //  LLista := LDao.BuscarTodosUsuarios();

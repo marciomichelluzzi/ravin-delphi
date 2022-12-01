@@ -37,6 +37,8 @@ type
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;
     frmMenuItemSair: TfrmMenuItem;
+    Timer1: TTimer;
+    Button1: TButton;
     procedure FrameMenuItemMesasLabelTitleClick(Sender: TObject);
     procedure frmMenuItemSobrelblTituloClick(Sender: TObject);
     procedure frmMenuItemSairlblTituloClick(Sender: TObject);
@@ -44,8 +46,12 @@ type
     procedure frmMenuItemMesaslblTituloClick(Sender: TObject);
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+
+    procedure MinhaThreadAcabou(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -65,7 +71,24 @@ uses
   UiniUtils,
   UfrmCadastroCliente,
   UfrmClientes,
-  UfrmListaClientes;
+  UfrmListaClientes, UminhaThread;
+
+procedure TfrmPainelGestao.Button1Click(Sender: TObject);
+var
+  thread: TMinhaThread;
+begin
+  Timer1.Enabled := not Timer1.Enabled;
+
+  thread := TMinhaThread.Create();
+  thread.FreeOnTerminate := true;
+  thread.OnTerminate := MinhaThreadAcabou;
+  thread.start();
+
+
+
+
+
+end;
 
 procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
 begin
@@ -127,6 +150,17 @@ begin
     Application.CreateForm(TfrmSobre, frmSobre)
   end;
   frmSobre.show();
+end;
+
+procedure TfrmPainelGestao
+.MinhaThreadAcabou(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPainelGestao.Timer1Timer(Sender: TObject);
+begin
+  ShowMessage('Cento de salgado');
 end;
 
 end.

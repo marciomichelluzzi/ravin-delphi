@@ -5723,4 +5723,20 @@ object frmPainelGestao: TfrmPainelGestao
       end
     end
   end
+  object Button1: TButton
+    Left = 448
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10000
+    OnTimer = Timer1Timer
+    Left = 560
+    Top = 32
+  end
 end
