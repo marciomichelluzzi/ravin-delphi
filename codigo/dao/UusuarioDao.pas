@@ -32,7 +32,6 @@ var
   LQuery: TFDQuery;
   LUsuario: TUsuario;
   LLista: TList<TUsuario>;
-  I : Integer;
 begin
   // Setar as informações da query e buscar os dados do banco
   LQuery := TFDQuery.Create(nil);

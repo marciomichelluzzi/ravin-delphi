@@ -2,7 +2,7 @@ object frmListaClientes: TfrmListaClientes
   Left = 0
   Top = 0
   Caption = 'Lista de Clientes'
-  ClientHeight = 459
+  ClientHeight = 553
   ClientWidth = 818
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,24 +15,32 @@ object frmListaClientes: TfrmListaClientes
   PixelsPerInch = 96
   TextHeight = 13
   object pnlListaClientes: TPanel
-    Left = 0
-    Top = 0
-    Width = 818
-    Height = 459
+    AlignWithMargins = True
+    Left = 8
+    Top = 8
+    Width = 802
+    Height = 537
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 8
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 640
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitWidth = 818
+    ExplicitHeight = 459
     DesignSize = (
-      818
-      459)
+      802
+      537)
     object lblInformacoesGerenciais: TLabel
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 802
+      Width = 786
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -94,74 +102,84 @@ object frmListaClientes: TfrmListaClientes
       ParentFont = False
     end
     inline frmBotaoCancelar: TfrmBotaoCancelar
+      AlignWithMargins = True
       Left = 134
-      Top = 408
+      Top = 485
       Width = 120
-      Height = 46
+      Height = 45
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
       Anchors = [akLeft, akBottom]
       TabOrder = 0
       ExplicitLeft = 134
-      ExplicitTop = 408
+      ExplicitTop = 485
       ExplicitWidth = 120
-      ExplicitHeight = 46
+      ExplicitHeight = 45
       inherited pnlFundo: TPanel
         Width = 120
-        Height = 46
+        Height = 45
         ExplicitWidth = 120
         ExplicitHeight = 46
         inherited spbBotaoCancelar: TSpeedButton
           Width = 120
-          Height = 46
+          Height = 45
           Caption = 'Cancelar'
           OnClick = frmBotaoCancelarspbBotaoCancelarClick
           ExplicitLeft = 0
-          ExplicitTop = 16
+          ExplicitTop = 0
           ExplicitWidth = 120
-          ExplicitHeight = 37
+          ExplicitHeight = 9
         end
       end
     end
     inline frmBotaoPrimario: TfrmBotaoPrimario
+      AlignWithMargins = True
       Left = 8
-      Top = 408
+      Top = 485
       Width = 120
-      Height = 46
+      Height = 45
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
       Anchors = [akLeft, akBottom]
       Color = clWhite
       ParentBackground = False
       ParentColor = False
       TabOrder = 1
       ExplicitLeft = 8
-      ExplicitTop = 408
+      ExplicitTop = 485
       ExplicitWidth = 120
-      ExplicitHeight = 46
+      ExplicitHeight = 45
       inherited pnlFundo: TPanel
         Width = 120
-        Height = 46
+        Height = 45
         ExplicitWidth = 120
         ExplicitHeight = 46
         inherited spbBotaoPrimario: TSpeedButton
           Width = 120
-          Height = 46
+          Height = 45
           Caption = 'Inserir'
           OnClick = frmBotaoPrimariospbBotaoPrimarioClick
           ExplicitLeft = 0
-          ExplicitTop = 8
+          ExplicitTop = 1
           ExplicitWidth = 120
-          ExplicitHeight = 51
+          ExplicitHeight = 45
         end
       end
     end
     object lvwClientes: TListView
       AlignWithMargins = True
       Left = 8
-      Top = 181
-      Width = 802
-      Height = 218
+      Top = 186
+      Width = 786
+      Height = 286
       Margins.Left = 8
-      Margins.Top = 140
+      Margins.Top = 145
       Margins.Right = 8
-      Margins.Bottom = 60
+      Margins.Bottom = 65
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -195,7 +213,8 @@ object frmListaClientes: TfrmListaClientes
       ParentFont = False
       TabOrder = 2
       ViewStyle = vsReport
-      ExplicitWidth = 624
+      ExplicitTop = 181
+      ExplicitHeight = 292
     end
   end
 end

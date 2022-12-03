@@ -20,7 +20,6 @@ object frmUsuarios: TfrmUsuarios
     Height = 25
     Caption = 'Carregar usu'#225'rios'
     TabOrder = 0
-    OnClick = btnCarregarUsuariosClick
   end
   object ListView1: TListView
     Left = 8

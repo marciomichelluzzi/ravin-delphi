@@ -71,7 +71,6 @@ begin
 
   if LConfirmacaoExclusao = mrNo then
   begin
-    //
   end;
 end;
 
