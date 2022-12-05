@@ -13,6 +13,7 @@ object frmAutenticar: TfrmAutenticar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object imgFundo: TImage
@@ -24147,6 +24148,7 @@ object frmAutenticar: TfrmAutenticar
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      Text = 'marciomichelluzzi'
       TextHint = 'Digite seu usu'#225'rio'
     end
     object edtSenha: TEdit
@@ -24165,6 +24167,7 @@ object frmAutenticar: TfrmAutenticar
       ParentFont = False
       PasswordChar = '*'
       TabOrder = 1
+      Text = '12345'
       TextHint = 'Digite sua senha'
     end
     inline frmBotaoPrimarioAutenticar: TfrmBotaoPrimario

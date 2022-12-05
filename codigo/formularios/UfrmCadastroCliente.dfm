@@ -1,7 +1,6 @@
 object frmCadastroCliente: TfrmCadastroCliente
   Left = 0
   Top = 0
-  ActiveControl = edtNome
   Caption = 'Cadastro de cliente'
   ClientHeight = 475
   ClientWidth = 640
@@ -13,6 +12,7 @@ object frmCadastroCliente: TfrmCadastroCliente
   Font.Style = []
   OldCreateOrder = False
   Visible = True
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object pnlCadastroCliente: TPanel

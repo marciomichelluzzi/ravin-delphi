@@ -36,6 +36,7 @@ type
     procedure lblInformacoesGerenciaisspbBotaoPrimarioClick(Sender: TObject);
     procedure frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
     procedure frmBotaoExcluirspbBotaoExcluirClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -48,6 +49,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmCadastroCliente.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmCadastroCliente := nil;
+end;
 
 procedure TfrmCadastroCliente.frmBotaoCancelarspbBotaoCancelarClick
   (Sender: TObject);

@@ -34,8 +34,10 @@ type
     lblSubTituloRegistras: TLabel;
     procedure frmBotaoPrimarioAutenticarspbBotaoPrimarioClick(Sender: TObject);
     procedure lblSubTituloRegistrasClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
+    procedure Autenticar();
   public
     { Public declarations }
   end;
@@ -47,78 +49,96 @@ implementation
 
 {$R *.dfm}
 
-uses UfrmPainelGestao, Uusuario, UusuarioDao, UfrmRegistrar, UiniUtils,
+uses
+  UfrmPainelGestao,
+  Uusuario,
+  UusuarioDao,
+  UfrmRegistrar,
+  UiniUtils,
   UformUtils;
 
 { TfrmLogin }
 
-procedure TfrmAutenticar.frmBotaoPrimarioAutenticarspbBotaoPrimarioClick
-  (Sender: TObject);
+procedure TfrmAutenticar.Autenticar;
 var
-  LusuarioDAO: TUsuarioDAO;
-  Lusuario: TUsuario;
-  Llogin: String;
+  LUsuarioDAO: TUsuarioDAO;
+  LUsuario: TUsuario;
+  LLogin: String;
   LSenha: String;
 begin
 
-  Lusuario := nil;
-  LusuarioDAO := nil;
+  // Limpa possíveis sujeiras das variáveis locais
+  LUsuario := nil;
+  LUsuarioDAO := nil;
 
-  Llogin := edtLogin.Text;
+  // Pega os valores dos edits de login
+  LLogin := edtLogin.Text;
   LSenha := edtSenha.Text;
 
-  if (not Llogin.IsEmpty) and (not LSenha.IsEmpty) then
-  begin
-    LusuarioDAO := TUsuarioDAO.Create();
-    Lusuario := LusuarioDAO.BuscarUsuarioPorLoginSenha(Llogin, LSenha);
-
-    if Assigned(Lusuario) then
-    begin
-
-      // Registrando a data do ultimo login do usuário
-      TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-        TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN, DateTimeToStr(Now));
-
-      // Registrar que o usuário efetuou o login com sucesso
-      TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-        TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
-
-      if not Assigned(frmPainelGestao) then
+  try
+    try
+      // Caso os valores de login e senha não sejam vazios será feita a tentitiva de
+      // autenticação
+      if (not LLogin.IsEmpty) and (not LSenha.IsEmpty) then
       begin
-        Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
+        // Tenta carregar um usuário com o login e senha informados
+        LUsuarioDAO := TUsuarioDAO.Create();
+        LUsuario := LUsuarioDAO.BuscarUsuarioPorLoginSenha(LLogin, LSenha);
+
+        // Caso exista quer o usuário é levado a tela de login
+        if Assigned(LUsuario) then
+        begin
+
+          // Registrando a data do ultimo login do usuário
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+            TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN, DateTimeToStr(Now));
+
+          // Registrar que o usuário efetuou o login com sucesso
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+            TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
+
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
+            TPROPRIEDADE.LOGIN_ATUAL, LLogin);
+
+          // Mostrando o forma de Painel de Gestão
+          TFormUtils.MostrarFormulario<TfrmPainelGestao>(frmPainelGestao, Self);
+        end
+        else
+        begin
+          ShowMessage('Login e/ou senha inválido');
+        end;
+      end
+      else
+      begin
+        ShowMessage('Login e senha são obrigatórios');
       end;
-
-      TFormUtils.SetarFormularioPrincipal(frmPainelGestao);
-      frmPainelGestao.Show();
-
-      Close;
-    end
-    else
-    begin
-      ShowMessage('Login e/ou senha inválido');
+    except
+      on E: Exception do
+        ShowMessage(E.Message);
     end;
-  end
-  else
-  begin
-    ShowMessage('Login e senha são obrigatórios');
+  finally
+    if Assigned(LUsuario) then
+      FreeAndNil(LUsuario);
+    if Assigned(LUsuarioDAO) then
+      FreeAndNil(LUsuarioDAO);
   end;
+end;
 
-  FreeAndNil(LusuarioDAO);
-  FreeAndNil(Lusuario);
+procedure TfrmAutenticar.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmAutenticar := nil;
+end;
 
+procedure TfrmAutenticar.frmBotaoPrimarioAutenticarspbBotaoPrimarioClick
+  (Sender: TObject);
+begin
+  Autenticar();
 end;
 
 procedure TfrmAutenticar.lblSubTituloRegistrasClick(Sender: TObject);
 begin
-  if not Assigned(frmRegistrar) then
-  begin
-    Application.CreateForm(TfrmRegistrar, frmRegistrar);
-  end;
-
-  TFormUtils.SetarFormularioPrincipal(frmRegistrar);
-  frmRegistrar.Show();
-
-  Close();
+  TFormUtils.MostrarFormulario<TfrmRegistrar>(frmRegistrar, Self);
 end;
 
 end.

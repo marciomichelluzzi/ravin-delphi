@@ -170,10 +170,6 @@
         </DCCReference>
         <DCCReference Include="..\codigo\util\UiniUtils.pas"/>
         <DCCReference Include="..\codigo\validadores\UvalidadorUsuario.pas"/>
-        <DCCReference Include="..\codigo\formularios\UfrmUsuarios.pas">
-            <Form>frmUsuarios</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\codigo\modelos\Ucomanda.pas"/>
         <DCCReference Include="..\codigo\frames\UfrmBotaoExcluir.pas">
             <Form>frmBotaoExcluir</Form>
@@ -190,11 +186,8 @@
             <Form>frmCadastroCliente</Form>
         </DCCReference>
         <DCCReference Include="..\codigo\util\UformUtils.pas"/>
-        <DCCReference Include="..\codigo\formularios\UfrmClientes.pas">
-            <Form>frmClientes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\codigo\UminhaThread.pas"/>
+        <DCCReference Include="..\codigo\validadores\UvalidaCpf.pas"/>
+        <DCCReference Include="..\codigo\dao\UpessoaDao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

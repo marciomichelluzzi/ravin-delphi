@@ -17,6 +17,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   Vcl.Imaging.pngimage,
+
   UfrmItemMenu;
 
 type
@@ -37,13 +38,13 @@ type
     frmMenuItemConfiguracoes: TfrmMenuItem;
     frmMenuItemSobre: TfrmMenuItem;
     frmMenuItemSair: TfrmMenuItem;
-    procedure FrameMenuItemMesasLabelTitleClick(Sender: TObject);
     procedure frmMenuItemSobrelblTituloClick(Sender: TObject);
     procedure frmMenuItemSairlblTituloClick(Sender: TObject);
     procedure frmMenuItemProdutoslblTituloClick(Sender: TObject);
     procedure frmMenuItemMesaslblTituloClick(Sender: TObject);
     procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -64,70 +65,47 @@ uses
   UfrmComandas,
   UiniUtils,
   UfrmCadastroCliente,
-  UfrmClientes,
-  UfrmListaClientes, UminhaThread;
+  UfrmListaClientes,
+  UfrmAutenticar,
+  UformUtils;
 
-
-procedure TfrmPainelGestao.FrameMenuItemMesasLabelTitleClick(Sender: TObject);
+procedure TfrmPainelGestao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if (not Assigned(frmMesas)) then
-  begin
-    Application.CreateForm(TfrmMesas, frmMesas);
-  end;
-  frmMesas.show();
+  Action := caFree;
+  frmPainelGestao := nil;
 end;
 
 procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmListaClientes)) then
-  begin
-    Application.CreateForm(TfrmListaClientes, frmListaClientes);
-  end;
-  frmListaClientes.show();
+  TFormUtils.MostrarFormulario<TfrmListaClientes>(frmListaClientes);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmComandas)) then
-  begin
-    Application.CreateForm(TfrmComandas, frmComandas);
-  end;
-
-  frmComandas.show();
+  TFormUtils.MostrarFormulario<TfrmComandas>(frmComandas);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemMesaslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmMesas)) then
-  begin
-    Application.CreateForm(TfrmMesas, frmMesas);
-  end;
-  frmMesas.show();
+  TFormUtils.MostrarFormulario<TfrmMesas>(frmMesas);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemProdutoslblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmProdutos)) then
-  begin
-    Application.CreateForm(TfrmProdutos, frmProdutos);
-  end;
-  frmProdutos.show();
+  TFormUtils.MostrarFormulario<TfrmProdutos>(frmProdutos);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
 begin
   TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
     TIniUtils.VALOR_FALSO);
-  Application.Terminate();
+
+  TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
 end;
 
 procedure TfrmPainelGestao.frmMenuItemSobrelblTituloClick(Sender: TObject);
 begin
-  if (not Assigned(frmSobre)) then
-  begin
-    Application.CreateForm(TfrmSobre, frmSobre)
-  end;
-  frmSobre.show();
+  TFormUtils.MostrarFormulario<TfrmSobre>(frmSobre);
 end;
 
 end.

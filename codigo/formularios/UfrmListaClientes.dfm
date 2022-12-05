@@ -11,6 +11,7 @@ object frmListaClientes: TfrmListaClientes
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -29,10 +30,6 @@ object frmListaClientes: TfrmListaClientes
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 818
-    ExplicitHeight = 459
     DesignSize = (
       802
       537)
@@ -121,7 +118,7 @@ object frmListaClientes: TfrmListaClientes
         Width = 120
         Height = 45
         ExplicitWidth = 120
-        ExplicitHeight = 46
+        ExplicitHeight = 45
         inherited spbBotaoCancelar: TSpeedButton
           Width = 120
           Height = 45
@@ -157,7 +154,7 @@ object frmListaClientes: TfrmListaClientes
         Width = 120
         Height = 45
         ExplicitWidth = 120
-        ExplicitHeight = 46
+        ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
           Width = 120
           Height = 45
@@ -213,8 +210,6 @@ object frmListaClientes: TfrmListaClientes
       ParentFont = False
       TabOrder = 2
       ViewStyle = vsReport
-      ExplicitTop = 181
-      ExplicitHeight = 292
     end
   end
 end

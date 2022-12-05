@@ -102,6 +102,10 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    procedure SetarCamposAuditoriaComanda();
+    procedure SetarCamposAuditoriaComandaProduto();
+    procedure AtivarDatasets();
+    procedure DesativarDatasets();
   public
     { Public declarations }
   end;
@@ -113,22 +117,12 @@ implementation
 
 {$R *.dfm}
 
-uses UdmRavin;
+uses
+  UdmRavin,
+  UiniUtils,
+  UformUtils;
 
-procedure TfrmComandas.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-  tblComandas.Active := false;
-  tblComandaProdutos.Active := false;
-  tblMesas.Active := false;
-  tblPessoas.Active := false;
-  tblPessoas.Active := false;
-  tblStatusComanda.Active := false;
-  tblStatusComandaProduto.Active := false;
-  frmComandas := nil;
-end;
-
-procedure TfrmComandas.FormCreate(Sender: TObject);
+procedure TfrmComandas.AtivarDatasets;
 begin
   tblComandas.Active := true;
   tblComandaProdutos.Active := true;
@@ -139,35 +133,72 @@ begin
   tblStatusComandaProduto.Active := true;
 end;
 
-procedure TfrmComandas.FormShow(Sender: TObject);
-var
-  i: Integer;
+procedure TfrmComandas.DesativarDatasets;
 begin
-  for i := 0 to Self.ComponentCount - 1 do
-    if Self.Components[i] is TDBEdit then
-      TDBEdit(Self.Components[i]).Field.Alignment := taLeftJustify;
+  tblComandas.Active := false;
+  tblComandaProdutos.Active := false;
+  tblMesas.Active := false;
+  tblPessoas.Active := false;
+  tblPessoas.Active := false;
+  tblStatusComanda.Active := false;
+  tblStatusComandaProduto.Active := false;
+end;
+
+procedure TfrmComandas.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DesativarDatasets();
+  Action := caFree;
+  frmComandas := nil;
+end;
+
+procedure TfrmComandas.FormCreate(Sender: TObject);
+begin
+  AtivarDatasets();
+end;
+
+procedure TfrmComandas.FormShow(Sender: TObject);
+begin
+  TFormUtils.AlinharCamposDBEdit<TfrmComandas>(Self);
+end;
+
+procedure TfrmComandas.SetarCamposAuditoriaComanda();
+var
+  LLogin: String;
+begin
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGIN_ATUAL);
+  if tblComandas.State = TDataSetState.dsInsert then
+  begin
+    tblComandascriadoPor.Value := LLogin;
+    tblComandascriadoEm.Value := Now();
+  end;
+  tblComandasalteradoPor.Value := LLogin;
+  tblComandasalteradoEm.Value := Now();
+end;
+
+procedure TfrmComandas.SetarCamposAuditoriaComandaProduto();
+var
+  LLogin: String;
+begin
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGIN_ATUAL);
+  if tblComandaProdutos.State = TDataSetState.dsInsert then
+  begin
+    tblComandaProdutoscriadoPor.Value := LLogin;
+    tblComandaProdutoscriadoEm.Value := Now();
+  end;
+  tblComandaProdutosalteradoPor.Value := LLogin;
+  tblComandaProdutosalteradoEm.Value := Now();
 end;
 
 procedure TfrmComandas.tblComandaProdutosBeforePost(DataSet: TDataSet);
 begin
-  if tblComandaProdutos.State = TDataSetState.dsInsert then
-  begin
-    tblComandaProdutoscriadoPor.Value := 'Marcio';
-    tblComandaProdutoscriadoEm.Value := Now();
-  end;
-  tblComandaProdutosalteradoPor.Value := 'Marcio';
-  tblComandaProdutosalteradoEm.Value := Now();
+  SetarCamposAuditoriaComandaProduto();
 end;
 
 procedure TfrmComandas.tblComandasBeforePost(DataSet: TDataSet);
 begin
-  if tblComandas.State = TDataSetState.dsInsert then
-  begin
-    tblComandascriadoPor.Value := 'Marcio';
-    tblComandascriadoEm.Value := Now();
-  end;
-  tblComandasalteradoPor.Value := 'Marcio';
-  tblComandasalteradoEm.Value := Now();
+  SetarCamposAuditoriaComanda();
 end;
 
 end.

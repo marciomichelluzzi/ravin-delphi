@@ -1,7 +1,6 @@
 object frmRegistrar: TfrmRegistrar
   Left = 0
   Top = 0
-  ActiveControl = edtNome
   BorderStyle = bsSingle
   Caption = 'Registrar'
   ClientHeight = 490
@@ -14,6 +13,7 @@ object frmRegistrar: TfrmRegistrar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object imgFundo: TImage
@@ -22985,23 +22985,6 @@ object frmRegistrar: TfrmRegistrar
       TabOrder = 0
       TextHint = 'Digite seu nome'
     end
-    object edtCpf: TEdit
-      Left = 50
-      Top = 176
-      Width = 250
-      Height = 27
-      Anchors = [akLeft, akTop, akRight]
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      TextHint = 'Digite seu cpf'
-    end
     inline frmBotaoPrimarioRegistrar: TfrmBotaoPrimario
       Left = 50
       Top = 344
@@ -23011,7 +22994,7 @@ object frmRegistrar: TfrmRegistrar
       Color = clWhite
       ParentBackground = False
       ParentColor = False
-      TabOrder = 2
+      TabOrder = 5
       ExplicitLeft = 50
       ExplicitTop = 344
       ExplicitWidth = 250
@@ -23026,7 +23009,6 @@ object frmRegistrar: TfrmRegistrar
           Height = 45
           Hint = 'Send email'
           Caption = 'Registrar'
-          OnClick = frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
           ExplicitWidth = 257
           ExplicitHeight = 35
         end
@@ -23046,7 +23028,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       TextHint = 'Digite seu login'
     end
     object edtSenha: TEdit
@@ -23064,7 +23046,7 @@ object frmRegistrar: TfrmRegistrar
       Font.Style = []
       ParentFont = False
       PasswordChar = '*'
-      TabOrder = 4
+      TabOrder = 3
       TextHint = 'Digite sua senha'
     end
     object edtConfirmarSenha: TEdit
@@ -23082,8 +23064,24 @@ object frmRegistrar: TfrmRegistrar
       Font.Style = []
       ParentFont = False
       PasswordChar = '*'
-      TabOrder = 5
+      TabOrder = 4
       TextHint = 'Confirme sua senha'
+    end
+    object mskCpf: TMaskEdit
+      Left = 50
+      Top = 176
+      Width = 249
+      Height = 27
+      EditMask = '999.999.999-99;1;_'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      MaxLength = 14
+      ParentFont = False
+      TabOrder = 1
+      Text = '   .   .   -  '
     end
   end
 end

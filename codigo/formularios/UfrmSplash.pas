@@ -28,21 +28,20 @@ type
     procedure tmrSplashTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     Inicializado: Boolean;
     procedure InicializarAplicacao();
-    procedure ShowPainelGestao();
-    procedure ShowLogin();
-    procedure SetarFormPrincipal(PNovoFormulario: TForm);
-  public
-    { Public declarations }
     function VerificarDeveLogar(): Boolean;
+  public
+  { Public declarations }
 
-    // Número máximo de dias que o usuário fica logado
-    // sem precisar autenticar novamente
-  const
+  // Número máximo de dias que o usuário fica logado
+  // sem precisar autenticar novamente
+    const
     MAX_DIAS_LOGIN: Integer = 5;
+    TEMPO_ANIMACAO_SPLASH = 1000;
   end;
 
 var
@@ -56,13 +55,20 @@ uses
   UfrmPainelGestao,
   UfrmAutenticar,
   UiniUtils,
-  System.DateUtils;
+  System.DateUtils,
+  UformUtils;
+
+procedure TfrmSplash.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmSplash := nil;
+end;
 
 procedure TfrmSplash.FormCreate(Sender: TObject);
 begin
   Inicializado := false;
   tmrSplash.Enabled := false;
-  tmrSplash.Interval := 1000;
+  tmrSplash.Interval := TEMPO_ANIMACAO_SPLASH;
 end;
 
 procedure TfrmSplash.FormPaint(Sender: TObject);
@@ -83,11 +89,11 @@ begin
 
   if (LLogado = TIniUtils.VALOR_VERDADEIRO) AND (not LDeveLogar) then
   begin
-    ShowPainelGestao();
+    TFormUtils.MostrarFormulario<TfrmPainelGestao>(frmPainelGestao, Self);
   end
   else
   begin
-    ShowLogin();
+    TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
   end;
 end;
 
@@ -108,59 +114,21 @@ var
   LDataExpiracaoLogin: TDateTime;
   LExisteDataUltimoLogin: Boolean;
 begin
-  // LDataUltimoLogin := now();
   // Carregando a datahora do ultimo login do usuário
-  LDataString := TIniUtils.lerPropriedade(
-    TSECAO.INFORMACOES_GERAIS,
+  LDataString := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
     TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN);
 
   try
-    //Converte a data de String para DateTime
+    // Converte a data de String para DateTime
     LDataUltimoLogin := StrToDateTime(LDataString);
 
     // Calculando a data de expiração do login
-    LDataExpiracaoLogin := IncDay(
-      LDataUltimoLogin,
-      MAX_DIAS_LOGIN);
+    LDataExpiracaoLogin := IncDay(LDataUltimoLogin, MAX_DIAS_LOGIN);
     Result := LDataExpiracaoLogin < Now();
   except
     on E: Exception do
       Result := true;
   end;
-end;
-
-procedure TfrmSplash.SetarFormPrincipal(PNovoFormulario: TForm);
-var
-  tmpMain: ^TCustomForm;
-begin
-  tmpMain := @Application.Mainform;
-  tmpMain^ := PNovoFormulario;
-end;
-
-procedure TfrmSplash.ShowLogin;
-begin
-  if not Assigned(frmAutenticar) then
-  begin
-    Application.CreateForm(TfrmAutenticar, frmAutenticar);
-  end;
-
-  SetarFormPrincipal(frmAutenticar);
-  frmAutenticar.Show();
-
-  Close;
-end;
-
-procedure TfrmSplash.ShowPainelGestao;
-begin
-  if not Assigned(frmPainelGestao) then
-  begin
-    Application.CreateForm(TfrmPainelGestao, frmPainelGestao);
-  end;
-
-  SetarFormPrincipal(frmPainelGestao);
-  frmPainelGestao.Show();
-
-  Close;
 end;
 
 end.

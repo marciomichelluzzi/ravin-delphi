@@ -79,6 +79,9 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure SetarCamposAuditoriaProduto();
+    procedure AtivarDatasets();
+    procedure DesativarDatasets();
   public
     { Public declarations }
   end;
@@ -90,38 +93,56 @@ implementation
 
 {$R *.dfm}
 
-uses UdmRavin;
+uses
+  UdmRavin,
+  UformUtils,
+  UiniUtils;
+
+procedure TfrmProdutos.AtivarDatasets;
+begin
+  tblProdutos.Active := true;
+end;
+
+procedure TfrmProdutos.DesativarDatasets;
+begin
+  tblProdutos.Active := false;
+end;
 
 procedure TfrmProdutos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  DesativarDatasets();
   Action := caFree;
-  tblProdutos.Active := false;
   frmProdutos := nil;
 end;
 
 procedure TfrmProdutos.FormCreate(Sender: TObject);
 begin
-  tblProdutos.Active := true;
+  AtivarDatasets();
 end;
 
 procedure TfrmProdutos.FormShow(Sender: TObject);
-var
-  i: Integer;
 begin
-  for i := 0 to Self.ComponentCount - 1 do
-    if Self.Components[i] is TDBEdit then
-      TDBEdit(Self.Components[i]).Field.Alignment := taLeftJustify;
+  TFormUtils.AlinharCamposDBEdit<TfrmProdutos>(Self);
+end;
+
+procedure TfrmProdutos.SetarCamposAuditoriaProduto();
+var
+  LLogin: String;
+begin
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGIN_ATUAL);
+  if tblProdutos.State = TDataSetState.dsInsert then
+  begin
+    tblProdutoscriadoPor.Value := LLogin;
+    tblProdutoscriadoEm.Value := Now();
+  end;
+  tblProdutosalteradoPor.Value := LLogin;
+  tblProdutosalteradoEm.Value := Now();
 end;
 
 procedure TfrmProdutos.tblProdutosBeforePost(DataSet: TDataSet);
 begin
-  if tblProdutos.State = TDataSetState.dsInsert then
-  begin
-    tblProdutoscriadoPor.Value := 'Marcio';
-    tblProdutoscriadoEm.Value := Now();
-  end;
-  tblProdutosalteradoPor.Value := 'Marcio';
-  tblProdutosalteradoEm.Value := Now();
+  SetarCamposAuditoriaProduto();
 end;
 
 end.

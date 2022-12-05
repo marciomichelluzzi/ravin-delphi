@@ -371,7 +371,6 @@ object frmMesas: TfrmMesas
     end
   end
   object tblMesas: TFDTable
-    BeforePost = tblMesasBeforePost
     IndexFieldNames = 'id'
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]

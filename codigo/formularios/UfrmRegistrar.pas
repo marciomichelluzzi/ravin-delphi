@@ -8,6 +8,7 @@ uses
   System.SysUtils,
   System.Variants,
   System.Classes,
+  System.Actions,
 
   FireDAC.Phys.MySQLWrapper,
 
@@ -19,7 +20,11 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  UfrmAutenticar, System.Actions, Vcl.ActnList, Vcl.ExtActns;
+  UfrmAutenticar,
+
+  Vcl.ActnList,
+  Vcl.ExtActns,
+  Vcl.Mask;
 
 type
   TfrmRegistrar = class(TForm)
@@ -30,15 +35,16 @@ type
     lblTituloAutenticar: TLabel;
     lblSubTituloAutenticar: TLabel;
     edtNome: TEdit;
-    edtCpf: TEdit;
     frmBotaoPrimarioRegistrar: TfrmBotaoPrimario;
     edtLogin: TEdit;
     edtSenha: TEdit;
     edtConfirmarSenha: TEdit;
+    mskCpf: TMaskEdit;
     procedure lblSubTituloAutenticarClick(Sender: TObject);
-    procedure frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
+    procedure Registrar();
   public
     { Public declarations }
   end;
@@ -51,28 +57,42 @@ implementation
 uses
   UusuarioDao,
   Uusuario,
-  UvalidadorUsuario, UformUtils;
+  UvalidadorUsuario,
+  UformUtils;
 
 {$R *.dfm}
 
-procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
-  (Sender: TObject);
+procedure TfrmRegistrar.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmRegistrar := nil;
+end;
+
+procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
+begin
+  TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
+end;
+
+procedure TfrmRegistrar.Registrar;
 var
   LUsuario: TUsuario;
   LDao: TUsuarioDAO;
 begin
+  LUsuario := nil;
+  LDao := nil;
+
   try
     try
       LUsuario := TUsuario.Create();
       LUsuario.login := edtLogin.Text;
       LUsuario.senha := edtSenha.Text;
-      LUsuario.pessoaId := 10000;
+      LUsuario.pessoaId := 0;
       LUsuario.criadoEm := Now();
       LUsuario.criadoPor := 'admin';
       LUsuario.alteradoEm := Now();
       LUsuario.alteradoPor := 'admin';
 
-      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text);
+      TValidadorUsuario.Validar(LUsuario, edtConfirmarSenha.Text, mskCpf.Text);
 
       LDao := TUsuarioDAO.Create();
       LDao.InserirUsuario(LUsuario);
@@ -95,20 +115,6 @@ begin
 
     FreeAndNil(LUsuario);
   end;
-
-end;
-
-procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);
-begin
-  if not Assigned(frmAutenticar) then
-  begin
-    Application.CreateForm(TfrmAutenticar, frmAutenticar);
-  end;
-
-  TFormUtils.SetarFormularioPrincipal(frmAutenticar);
-  frmAutenticar.Show();
-
-  Close();
 end;
 
 end.

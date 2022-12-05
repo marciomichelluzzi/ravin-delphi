@@ -13,6 +13,7 @@ object frmPainelGestao: TfrmPainelGestao
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   DesignSize = (
     640
     480)

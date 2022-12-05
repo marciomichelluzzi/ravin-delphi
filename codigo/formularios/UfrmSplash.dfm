@@ -15,6 +15,7 @@ object frmSplash: TfrmSplash
   OldCreateOrder = False
   Position = poScreenCenter
   Visible = True
+  OnClose = FormClose
   OnCreate = FormCreate
   OnPaint = FormPaint
   PixelsPerInch = 96

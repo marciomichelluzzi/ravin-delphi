@@ -13,11 +13,27 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
-  Vcl.Dialogs, Vcl.StdCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls,
-  Vcl.Mask;
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.ExtCtrls,
+  Vcl.DBCtrls,
+  Vcl.Mask,
+
+  Data.DB,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TfrmMesas = class(TForm)
@@ -71,12 +87,14 @@ type
     pnlMesas: TPanel;
     tblStatusMesaid: TFDAutoIncField;
     tblStatusMesanome: TStringField;
-    procedure tblMesasBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    procedure SetarCamposAuditoriaMesa();
+    procedure AtivarDatasets();
+    procedure DesativarDatasets();
   public
     { Public declarations }
   end;
@@ -88,42 +106,51 @@ implementation
 
 {$R *.dfm}
 
-uses UdmRavin;
+uses UdmRavin, UformUtils, UiniUtils;
 
-procedure TfrmMesas.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-  tblMesas.Active := false;
-  tblStatusMesa.Active := false;
-  qryPessoas.Active := false;
-  frmMesas := nil;
-end;
-
-procedure TfrmMesas.FormCreate(Sender: TObject);
+procedure TfrmMesas.AtivarDatasets;
 begin
   tblMesas.Active := true;
   tblStatusMesa.Active := true;
   qryPessoas.Active := true;
 end;
 
-procedure TfrmMesas.FormShow(Sender: TObject);
-var
-  i: Integer;
+procedure TfrmMesas.DesativarDatasets;
 begin
-  for i := 0 to Self.ComponentCount - 1 do
-    if Self.Components[i] is TDBEdit then
-      TDBEdit(Self.Components[i]).Field.Alignment := taLeftJustify;
+  tblMesas.Active := false;
+  tblStatusMesa.Active := false;
+  qryPessoas.Active := false;
 end;
 
-
-procedure TfrmMesas.tblMesasBeforePost(DataSet: TDataSet);
+procedure TfrmMesas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  DesativarDatasets();
+  Action := caFree;
+  frmMesas := nil;
+end;
+
+procedure TfrmMesas.FormCreate(Sender: TObject);
+begin
+  AtivarDatasets();
+end;
+
+procedure TfrmMesas.FormShow(Sender: TObject);
+begin
+  TFormUtils.AlinharCamposDBEdit<TfrmMesas>(Self);
+end;
+
+procedure TfrmMesas.SetarCamposAuditoriaMesa;
+var
+  LLogin: String;
+begin
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
+    TPROPRIEDADE.LOGIN_ATUAL);
   if tblMesas.State = TDataSetState.dsInsert then
   begin
-    tblMesascriadoPor.Value := 'Marcio';
+    tblMesascriadoPor.Value := LLogin;
     tblMesascriadoEm.Value := Now();
   end;
-  tblMesasalteradoPor.Value := 'Marcio';
+  tblMesasalteradoPor.Value := LLogin;
   tblMesasalteradoEm.Value := Now();
 end;
 

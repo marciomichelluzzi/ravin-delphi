@@ -16,9 +16,10 @@ uses
   Vcl.Dialogs,
   Vcl.ComCtrls,
   Vcl.StdCtrls,
+  Vcl.ExtCtrls,
 
   UfrmBotaoPrimario,
-  UfrmBotaoCancelar, Vcl.ExtCtrls;
+  UfrmBotaoCancelar;
 
 type
   TfrmListaClientes = class(TForm)
@@ -34,6 +35,7 @@ type
     procedure frmBotaoPrimariospbBotaoPrimarioClick(Sender: TObject);
     procedure frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure CarregarListaClientes();
@@ -47,19 +49,27 @@ var
 implementation
 
 uses
-  UfrmCadastroCliente;
+  UfrmCadastroCliente,
+  UformUtils;
 
 {$R *.dfm}
 
 procedure TfrmListaClientes.CarregarListaClientes;
 begin
-  //Criaria um objeto de PessoaDAO
-  //Carregaria a lista de Pessoas
-  //Varreria essa lista de pessoas
-  //Para cada pessoa, criaria um item na TListView
-  //Seta as informações do item criado
-  //Destruiria a os objetos de pessoa
-  //Destruiria a lista de pessoas
+  // Criaria um objeto de PessoaDAO
+  // Carregaria a lista de Pessoas
+  // Varreria essa lista de pessoas
+  // Para cada pessoa, criaria um item na TListView
+  // Seta as informações do item criado
+  // Destruiria a os objetos de pessoa
+  // Destruiria a lista de pessoas
+end;
+
+procedure TfrmListaClientes.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmListaClientes := nil;
 end;
 
 procedure TfrmListaClientes.FormShow(Sender: TObject);
@@ -75,22 +85,10 @@ end;
 
 procedure TfrmListaClientes.frmBotaoPrimariospbBotaoPrimarioClick
   (Sender: TObject);
- var
- LItem: TListItem;
+var
+  LItem: TListItem;
 begin
-   LItem := lvwClientes.Items.Add();
-   LItem.Caption := 'Marcio';
-   LItem.SubItems.Add('2134234324');
-   LItem.SubItems.Add('(47)9925645663');
-   LItem.SubItems.Add('Ativo');
-
-//  if (not Assigned(frmCadastroCliente)) then
-//  begin
-//    Application.CreateForm(TfrmCadastroCliente, frmCadastroCliente);
-//  end;
-//
-//  frmCadastroCliente.show();
-
+  TFormUtils.MostrarFormulario<TfrmListaClientes>(frmListaClientes, Self);
 end;
 
 end.

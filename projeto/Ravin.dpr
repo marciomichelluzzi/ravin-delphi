@@ -21,15 +21,14 @@ uses
   UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
   UiniUtils in '..\codigo\util\UiniUtils.pas',
   UvalidadorUsuario in '..\codigo\validadores\UvalidadorUsuario.pas',
-  UfrmUsuarios in '..\codigo\formularios\UfrmUsuarios.pas' {frmUsuarios},
   Ucomanda in '..\codigo\modelos\Ucomanda.pas',
   UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
   UfrmBotaoCancelar in '..\codigo\frames\UfrmBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
   UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
   UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente},
   UformUtils in '..\codigo\util\UformUtils.pas',
-  UfrmClientes in '..\codigo\formularios\UfrmClientes.pas' {frmClientes},
-  UminhaThread in '..\codigo\UminhaThread.pas';
+  UvalidaCpf in '..\codigo\validadores\UvalidaCpf.pas',
+  UpessoaDao in '..\codigo\dao\UpessoaDao.pas';
 
 {$R *.res}
 
