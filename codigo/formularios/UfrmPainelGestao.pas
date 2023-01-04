@@ -18,35 +18,42 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.pngimage,
 
-  UfrmItemMenu;
+  UfrmItemMenu, Vcl.Buttons;
 
 type
   TfrmPainelGestao = class(TForm)
-    pnlMenu: TPanel;
-    lblPainelGestaoTitulo: TLabel;
+    lblTituloDashboard: TLabel;
     Shape1: TShape;
     Shape2: TShape;
     shpQtdPedidosPorDia: TShape;
     Shape4: TShape;
     Shape5: TShape;
-    imgLogomarca: TImage;
-    lblNomeUsuario: TLabel;
-    frmMenuItemMesas: TfrmMenuItem;
-    frmMenuItemComandas: TfrmMenuItem;
-    frmMenuItemClientes: TfrmMenuItem;
-    frmMenuItemProdutos: TfrmMenuItem;
-    frmMenuItemConfiguracoes: TfrmMenuItem;
-    frmMenuItemSobre: TfrmMenuItem;
-    frmMenuItemSair: TfrmMenuItem;
-    procedure frmMenuItemSobrelblTituloClick(Sender: TObject);
-    procedure frmMenuItemSairlblTituloClick(Sender: TObject);
-    procedure frmMenuItemProdutoslblTituloClick(Sender: TObject);
-    procedure frmMenuItemMesaslblTituloClick(Sender: TObject);
-    procedure frmMenuItemComandaslblTituloClick(Sender: TObject);
+    pnlMenu: TPanel;
+    spbSair: TSpeedButton;
+    spbConfiguracoes: TSpeedButton;
+    spbProdutos: TSpeedButton;
+    spbClientes: TSpeedButton;
+    spbComandas: TSpeedButton;
+    spbMesas: TSpeedButton;
+    spbMenu: TSpeedButton;
+    pnlFundoDashboard: TPanel;
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure spbMenuClick(Sender: TObject);
+    procedure spbMesasClick(Sender: TObject);
+    procedure spbComandasClick(Sender: TObject);
+    procedure spbClientesClick(Sender: TObject);
+    procedure spbProdutosClick(Sender: TObject);
+    procedure spbSairClick(Sender: TObject);
   private
     { Private declarations }
+
+    MenuExpandido: Boolean;
+
+    function ShowObviousModal(AForm: TForm; AParent: TWinControl = nil)
+      : Integer;
+    procedure SetTransparent(const isTransparent: Boolean);
   public
     { Public declarations }
   end;
@@ -64,8 +71,7 @@ uses
   UfrmMesas,
   UfrmComandas,
   UiniUtils,
-  UfrmCadastroCliente,
-  UfrmListaClientes,
+  UfrmClientes,
   UfrmAutenticar,
   UformUtils;
 
@@ -75,27 +81,91 @@ begin
   frmPainelGestao := nil;
 end;
 
-procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.FormCreate(Sender: TObject);
 begin
-  TFormUtils.MostrarFormulario<TfrmListaClientes>(frmListaClientes);
+  MenuExpandido := true;
 end;
 
-procedure TfrmPainelGestao.frmMenuItemComandaslblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
+var
+  FDialog: TForm;
+begin
+  TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
+  // TFormUtils.MostrarFormulario<TfrmCadastroCliente>(frmCadastroCliente);
+  //
+  // FDialog := TfrmListaClientes.Create(Self);
+  // try
+  // if ShowObviousModal(FDialog) = mrOk then
+  // Caption := 'OK';
+  // finally
+  // FDialog.Free;
+  // end;
+end;
+
+function TfrmPainelGestao.ShowObviousModal(AForm: TForm;
+  AParent: TWinControl = nil): Integer;
+var
+  Layer: TForm;
+begin
+  if AParent = nil then
+    AParent := Application.MainForm;
+  Layer := TForm.Create(nil);
+  try
+    Layer.AlphaBlend := True;
+    Layer.AlphaBlendValue := 128;
+    Layer.BorderStyle := bsNone;
+    Layer.Color := clBlack;
+    with AParent, ClientOrigin do
+      SetWindowPos(Layer.Handle, HWND_TOP, X, Y, ClientWidth, ClientHeight,
+        SWP_SHOWWINDOW);
+    Result := AForm.ShowModal;
+  finally
+    Layer.Free;
+  end;
+end;
+
+procedure TfrmPainelGestao.spbClientesClick(Sender: TObject);
+var
+  FDialog: TForm;
+begin
+  TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
+  // TFormUtils.MostrarFormulario<TfrmCadastroCliente>(frmCadastroCliente);
+  //
+  // FDialog := TfrmListaClientes.Create(Self);
+  // try
+  // if ShowObviousModal(FDialog) = mrOk then
+  // Caption := 'OK';
+  // finally
+  // FDialog.Free;
+  // end;
+end;
+
+procedure TfrmPainelGestao.spbComandasClick(Sender: TObject);
 begin
   TFormUtils.MostrarFormulario<TfrmComandas>(frmComandas);
 end;
 
-procedure TfrmPainelGestao.frmMenuItemMesaslblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.spbMenuClick(Sender: TObject);
+begin
+  if MenuExpandido then
+    pnlMenu.Width := 50
+  else
+    pnlMenu.Width := 185;
+
+  MenuExpandido := not MenuExpandido;
+end;
+
+procedure TfrmPainelGestao.spbMesasClick(Sender: TObject);
 begin
   TFormUtils.MostrarFormulario<TfrmMesas>(frmMesas);
 end;
 
-procedure TfrmPainelGestao.frmMenuItemProdutoslblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.spbProdutosClick(Sender: TObject);
 begin
   TFormUtils.MostrarFormulario<TfrmProdutos>(frmProdutos);
 end;
 
-procedure TfrmPainelGestao.frmMenuItemSairlblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.spbSairClick(Sender: TObject);
 begin
   TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
     TIniUtils.VALOR_FALSO);
@@ -103,9 +173,26 @@ begin
   TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
 end;
 
-procedure TfrmPainelGestao.frmMenuItemSobrelblTituloClick(Sender: TObject);
+procedure TfrmPainelGestao.SetTransparent(const isTransparent: Boolean);
+var
+  exStyle: DWORD;
 begin
-  TFormUtils.MostrarFormulario<TfrmSobre>(frmSobre);
+  exStyle := GetWindowLongPtr(Self.Handle, GWL_EXSTYLE);
+  Win32Check(exStyle <> 0);
+
+  if (isTransparent) then
+  begin
+    exStyle := (exStyle or WS_EX_LAYERED);
+    Win32Check(SetWindowLongPtr(Self.Handle, GWL_EXSTYLE, exStyle) <> 0);
+
+    Win32Check(SetLayeredWindowAttributes(Self.Handle, 0, 127, // 50 % von 255
+      LWA_ALPHA));
+  end
+  else
+  begin
+    exStyle := (exStyle xor WS_EX_LAYERED);
+    SetWindowLong(Self.Handle, GWL_EXSTYLE, exStyle);
+  end;
 end;
 
 end.

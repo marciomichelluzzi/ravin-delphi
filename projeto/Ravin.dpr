@@ -24,11 +24,12 @@ uses
   Ucomanda in '..\codigo\modelos\Ucomanda.pas',
   UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
   UfrmBotaoCancelar in '..\codigo\frames\UfrmBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
-  UfrmListaClientes in '..\codigo\formularios\UfrmListaClientes.pas' {Form1},
-  UfrmCadastroCliente in '..\codigo\formularios\UfrmCadastroCliente.pas' {frmCadastroCliente},
+  UfrmClientes in '..\codigo\formularios\UfrmClientes.pas' {frmClientes},
   UformUtils in '..\codigo\util\UformUtils.pas',
   UvalidaCpf in '..\codigo\validadores\UvalidaCpf.pas',
-  UpessoaDao in '..\codigo\dao\UpessoaDao.pas';
+  UpessoaDao in '..\codigo\dao\UpessoaDao.pas',
+  Upessoa in '..\codigo\modelos\Upessoa.pas',
+  UfrmSucesso in '..\codigo\frames\UfrmSucesso.pas' {Frame1: TFrame};
 
 {$R *.res}
 

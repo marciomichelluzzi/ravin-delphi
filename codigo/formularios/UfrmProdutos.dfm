@@ -17,27 +17,27 @@ object frmProdutos: TfrmProdutos
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlProdutos: TPanel
+  object pnlCadastroProdutos: TPanel
     AlignWithMargins = True
     Left = 8
     Top = 8
     Width = 1008
-    Height = 752
+    Height = 417
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
-    Margins.Bottom = 8
-    Align = alClient
+    Margins.Bottom = 0
+    Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
       1008
-      752)
+      417)
     object LabelCode: TLabel
       Left = 8
-      Top = 118
+      Top = 110
       Width = 55
       Height = 19
       Caption = 'C'#243'digo:'
@@ -50,7 +50,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblAtivo: TLabel
       Left = 8
-      Top = 397
+      Top = 389
       Width = 69
       Height = 19
       Caption = 'Situa'#231#227'o:'
@@ -62,10 +62,16 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblCadastroProduto: TLabel
+      AlignWithMargins = True
       Left = 8
-      Top = 16
-      Width = 194
+      Top = 8
+      Width = 992
       Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
       Caption = 'Cadastro de Produto'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
@@ -73,10 +79,11 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
+      ExplicitWidth = 194
     end
     object lblDescricao: TLabel
       Left = 8
-      Top = 197
+      Top = 189
       Width = 76
       Height = 19
       Caption = 'Descri'#231#227'o:'
@@ -89,7 +96,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblId: TLabel
       Left = 8
-      Top = 91
+      Top = 85
       Width = 19
       Height = 19
       Caption = 'Id:'
@@ -100,22 +107,9 @@ object frmProdutos: TfrmProdutos
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object lblListaProdutos: TLabel
-      Left = 8
-      Top = 454
-      Width = 166
-      Height = 25
-      Caption = 'Lista de Produtos'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -21
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-    end
     object lblNome: TLabel
-      Left = 8
-      Top = 145
+      Left = 7
+      Top = 137
       Width = 47
       Height = 19
       Caption = 'Nome:'
@@ -128,7 +122,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblObservacoes: TLabel
       Left = 8
-      Top = 345
+      Top = 337
       Width = 97
       Height = 19
       Caption = 'Observa'#231#245'es:'
@@ -141,7 +135,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblPrecoCusto: TLabel
       Left = 8
-      Top = 240
+      Top = 232
       Width = 111
       Height = 19
       Caption = 'Pre'#231'o de custo:'
@@ -154,7 +148,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblPrecoVenda: TLabel
       Left = 8
-      Top = 267
+      Top = 259
       Width = 114
       Height = 19
       Caption = 'Pre'#231'o de venda:'
@@ -167,7 +161,7 @@ object frmProdutos: TfrmProdutos
     end
     object lblTempoPreparo: TLabel
       Left = 8
-      Top = 294
+      Top = 288
       Width = 136
       Height = 19
       Caption = 'Tempo de Preparo:'
@@ -180,7 +174,7 @@ object frmProdutos: TfrmProdutos
     end
     object cbxAtivo: TDBCheckBox
       Left = 81
-      Top = 399
+      Top = 391
       Width = 97
       Height = 17
       Caption = 'Ativo'
@@ -196,9 +190,9 @@ object frmProdutos: TfrmProdutos
     end
     object edtCodigo: TDBEdit
       AlignWithMargins = True
-      Left = 68
-      Top = 118
-      Width = 933
+      Left = 69
+      Top = 110
+      Width = 932
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
@@ -216,9 +210,9 @@ object frmProdutos: TfrmProdutos
     end
     object edtId: TDBEdit
       AlignWithMargins = True
-      Left = 32
-      Top = 91
-      Width = 969
+      Left = 33
+      Top = 83
+      Width = 968
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
@@ -238,7 +232,7 @@ object frmProdutos: TfrmProdutos
     object edtNome: TDBEdit
       AlignWithMargins = True
       Left = 60
-      Top = 145
+      Top = 137
       Width = 941
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -257,9 +251,9 @@ object frmProdutos: TfrmProdutos
     end
     object edtPrecoCusto: TDBEdit
       AlignWithMargins = True
-      Left = 123
-      Top = 240
-      Width = 878
+      Left = 125
+      Top = 232
+      Width = 876
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
@@ -277,9 +271,9 @@ object frmProdutos: TfrmProdutos
     end
     object edtPrecoVenda: TDBEdit
       AlignWithMargins = True
-      Left = 127
-      Top = 267
-      Width = 874
+      Left = 128
+      Top = 259
+      Width = 873
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
@@ -298,7 +292,7 @@ object frmProdutos: TfrmProdutos
     object edtTempoPreparo: TDBEdit
       AlignWithMargins = True
       Left = 150
-      Top = 294
+      Top = 286
       Width = 851
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -315,13 +309,100 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
       TabOrder = 6
     end
+    object memDescricao: TDBMemo
+      Left = 90
+      Top = 164
+      Width = 911
+      Height = 62
+      Anchors = [akLeft, akTop, akRight]
+      DataField = 'descricao'
+      DataSource = dsProdutos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object memObservacoes: TDBMemo
+      Left = 111
+      Top = 313
+      Width = 889
+      Height = 64
+      Anchors = [akLeft, akTop, akRight]
+      DataField = 'observacoes'
+      DataSource = dsProdutos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+    end
+    object dbnProducts: TDBNavigator
+      AlignWithMargins = True
+      Left = 8
+      Top = 41
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 8
+      DataSource = dsProdutos
+      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+      Align = alTop
+      TabOrder = 9
+    end
+  end
+  object pnlListaProdutos: TPanel
+    AlignWithMargins = True
+    Left = 8
+    Top = 433
+    Width = 1008
+    Height = 327
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 8
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 1
+    object lblListaProdutos: TLabel
+      AlignWithMargins = True
+      Left = 8
+      Top = 8
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alTop
+      Caption = 'Lista de Produtos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ExplicitWidth = 166
+    end
     object grdProducts: TDBGrid
       AlignWithMargins = True
       Left = 8
-      Top = 485
-      Width = 993
-      Height = 260
-      Anchors = [akLeft, akTop, akRight, akBottom]
+      Top = 41
+      Width = 992
+      Height = 278
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alClient
       DataSource = dsProdutos
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -330,7 +411,7 @@ object frmProdutos: TfrmProdutos
       Font.Style = []
       Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -16
@@ -434,49 +515,6 @@ object frmProdutos: TfrmProdutos
           Visible = True
         end>
     end
-    object memDescricao: TDBMemo
-      Left = 90
-      Top = 172
-      Width = 911
-      Height = 62
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'descricao'
-      DataSource = dsProdutos
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 8
-    end
-    object memObservacoes: TDBMemo
-      Left = 111
-      Top = 321
-      Width = 889
-      Height = 64
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'observacoes'
-      DataSource = dsProdutos
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 9
-    end
-    object dbnProducts: TDBNavigator
-      AlignWithMargins = True
-      Left = 8
-      Top = 44
-      Width = 992
-      Height = 25
-      DataSource = dsProdutos
-      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
-      Anchors = [akLeft, akTop, akRight]
-      TabOrder = 10
-    end
   end
   object tblProdutos: TFDTable
     BeforePost = tblProdutosBeforePost
@@ -485,7 +523,7 @@ object frmProdutos: TfrmProdutos
     UpdateOptions.AssignedValues = [uvUpdateMode]
     UpdateOptions.UpdateMode = upWhereAll
     TableName = 'ravin.produto'
-    Left = 864
+    Left = 888
     Top = 424
     object tblProdutosid: TFDAutoIncField
       FieldName = 'id'

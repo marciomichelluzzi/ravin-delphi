@@ -23009,6 +23009,7 @@ object frmRegistrar: TfrmRegistrar
           Height = 45
           Hint = 'Send email'
           Caption = 'Registrar'
+          OnClick = frmBotaoPrimarioRegistrarspbBotaoPrimarioClick
           ExplicitWidth = 257
           ExplicitHeight = 35
         end

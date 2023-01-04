@@ -11,6 +11,7 @@ object frmComandas: TfrmComandas
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -31,6 +32,8 @@ object frmComandas: TfrmComandas
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 439
+    ExplicitHeight = 764
     DesignSize = (
       593
       725)
@@ -135,6 +138,8 @@ object frmComandas: TfrmComandas
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 425
+    ExplicitHeight = 764
     DesignSize = (
       409
       725)
@@ -239,6 +244,7 @@ object frmComandas: TfrmComandas
       VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
+      ExplicitWidth = 392
     end
     object edtCodigo: TDBEdit
       AlignWithMargins = True
@@ -259,6 +265,7 @@ object frmComandas: TfrmComandas
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitWidth = 349
     end
     object edtId: TDBEdit
       AlignWithMargins = True
@@ -280,6 +287,7 @@ object frmComandas: TfrmComandas
       ParentFont = False
       ReadOnly = True
       TabOrder = 2
+      ExplicitWidth = 385
     end
     object edtValor: TDBEdit
       AlignWithMargins = True
@@ -300,6 +308,7 @@ object frmComandas: TfrmComandas
       Font.Style = []
       ParentFont = False
       TabOrder = 3
+      ExplicitWidth = 363
     end
     object lcbAtendente: TDBLookupComboBox
       Left = 57
@@ -319,6 +328,7 @@ object frmComandas: TfrmComandas
       ListSource = dtsMesas
       ParentFont = False
       TabOrder = 4
+      ExplicitWidth = 360
     end
     object lcbStatus: TDBLookupComboBox
       Left = 66
@@ -338,6 +348,7 @@ object frmComandas: TfrmComandas
       ListSource = dtsPessoas
       ParentFont = False
       TabOrder = 5
+      ExplicitWidth = 351
     end
     object dbgComandas: TDBGrid
       AlignWithMargins = True

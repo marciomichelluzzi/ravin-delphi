@@ -179,15 +179,18 @@
             <Form>frmBotaoCancelar</Form>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\codigo\formularios\UfrmListaClientes.pas">
-            <Form>Form1</Form>
-        </DCCReference>
-        <DCCReference Include="..\codigo\formularios\UfrmCadastroCliente.pas">
-            <Form>frmCadastroCliente</Form>
+        <DCCReference Include="..\codigo\formularios\UfrmClientes.pas">
+            <Form>frmClientes</Form>
         </DCCReference>
         <DCCReference Include="..\codigo\util\UformUtils.pas"/>
         <DCCReference Include="..\codigo\validadores\UvalidaCpf.pas"/>
         <DCCReference Include="..\codigo\dao\UpessoaDao.pas"/>
+        <DCCReference Include="..\codigo\modelos\Upessoa.pas"/>
+        <DCCReference Include="..\codigo\frames\UfrmSucesso.pas">
+            <Form>Frame1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

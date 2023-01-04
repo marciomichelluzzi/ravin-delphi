@@ -30,12 +30,10 @@ type
     procedure FormPaint(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    { Private declarations }
     Inicializado: Boolean;
     procedure InicializarAplicacao();
     function VerificarDeveLogar(): Boolean;
   public
-  { Public declarations }
 
   // Número máximo de dias que o usuário fica logado
   // sem precisar autenticar novamente

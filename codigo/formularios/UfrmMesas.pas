@@ -41,7 +41,6 @@ type
     dsMesas: TDataSource;
     lblCadastroMesa: TLabel;
     DBNavigatorMesas: TDBNavigator;
-    lblListaMesas: TLabel;
     lblId: TLabel;
     lblNome: TLabel;
     lblNumero: TLabel;
@@ -65,7 +64,6 @@ type
     tblMesascriadoPor: TStringField;
     tblMesasalteradoEm: TDateTimeField;
     tblMesasalteradoPor: TStringField;
-    grdMesas: TDBGrid;
     tblMesasatendenteId: TIntegerField;
     tblMesaslookupAtendenteNome: TStringField;
     qryPessoas: TFDQuery;
@@ -84,9 +82,12 @@ type
     dsStatusMesa: TDataSource;
     tblMesaslookupStatusMesa: TStringField;
     tblMesasstatusMesaId: TIntegerField;
-    pnlMesas: TPanel;
+    pnlCadastroMesas: TPanel;
     tblStatusMesaid: TFDAutoIncField;
     tblStatusMesanome: TStringField;
+    pnlListaMesas: TPanel;
+    grdMesas: TDBGrid;
+    lblListaMesas: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);

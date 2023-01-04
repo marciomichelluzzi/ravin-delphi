@@ -21,13 +21,12 @@ type
   TfrmSobre = class(TForm)
     lblTitulo: TLabel;
     lblSubTitulo: TLabel;
-    lblAlunos: TLabel;
     frmLogo: TfrmLogo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    { Private declarations }
+
   public
-    { Public declarations }
+
   end;
 
 var

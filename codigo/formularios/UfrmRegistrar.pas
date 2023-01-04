@@ -42,11 +42,11 @@ type
     mskCpf: TMaskEdit;
     procedure lblSubTituloAutenticarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(Sender: TObject);
   private
-    { Private declarations }
     procedure Registrar();
   public
-    { Public declarations }
+
   end;
 
 var
@@ -66,6 +66,12 @@ procedure TfrmRegistrar.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
   frmRegistrar := nil;
+end;
+
+procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(
+  Sender: TObject);
+begin
+  Registrar();
 end;
 
 procedure TfrmRegistrar.lblSubTituloAutenticarClick(Sender: TObject);

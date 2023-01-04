@@ -17,7 +17,9 @@ type
 
     class procedure SetarFormularioPrincipal(PNovoFormulario: TForm);
     class procedure MostrarFormulario<T: TForm>(PFormlarioNovo: TForm;
-      PFormularioAnterior: TForm = nil);
+      PFormularioAnterior: TForm = nil;
+      PSetarFormularioPrincipal: Boolean = true;
+      PFecharFormAnterior: Boolean = true);
     class procedure AlinharCamposDBEdit<T: TForm>(PFormulario: TForm);
 
   end;
@@ -41,7 +43,8 @@ begin
 end;
 
 class procedure TFormUtils.MostrarFormulario<T>(PFormlarioNovo: TForm;
-  PFormularioAnterior: TForm);
+  PFormularioAnterior: TForm; PSetarFormularioPrincipal: Boolean;
+  PFecharFormAnterior: Boolean);
 begin
   // Verifica se é necessário instanciar o novo formulário
   if not Assigned(PFormlarioNovo) then
@@ -53,9 +56,11 @@ begin
   // será também o novo MainForm da aplicação
   if Assigned(PFormularioAnterior) then
   begin
-    TFormUtils.SetarFormularioPrincipal(PFormlarioNovo);
+    if PSetarFormularioPrincipal then
+      TFormUtils.SetarFormularioPrincipal(PFormlarioNovo);
     PFormlarioNovo.Show();
-    PFormularioAnterior.Close;
+    if PFecharFormAnterior then
+      PFormularioAnterior.Close;
   end
   else
     PFormlarioNovo.ShowModal();

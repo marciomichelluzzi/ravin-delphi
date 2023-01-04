@@ -35,7 +35,6 @@ uses
 
 type
   TfrmProdutos = class(TForm)
-    grdProducts: TDBGrid;
     dbnProducts: TDBNavigator;
     edtId: TDBEdit;
     lblId: TLabel;
@@ -67,23 +66,24 @@ type
     tblProdutosalteradoEm: TDateTimeField;
     tblProdutosalteradoPor: TStringField;
     dsProdutos: TDataSource;
-    lblListaProdutos: TLabel;
     cbxAtivo: TDBCheckBox;
     lblAtivo: TLabel;
     memDescricao: TDBMemo;
     memObservacoes: TDBMemo;
-    pnlProdutos: TPanel;
+    pnlCadastroProdutos: TPanel;
+    pnlListaProdutos: TPanel;
+    lblListaProdutos: TLabel;
+    grdProducts: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure tblProdutosBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
     procedure SetarCamposAuditoriaProduto();
     procedure AtivarDatasets();
     procedure DesativarDatasets();
   public
-    { Public declarations }
+
   end;
 
 var

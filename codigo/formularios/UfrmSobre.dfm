@@ -47,19 +47,6 @@ object frmSobre: TfrmSobre
     Font.Style = []
     ParentFont = False
   end
-  object lblAlunos: TLabel
-    Left = 15
-    Top = 289
-    Width = 55
-    Height = 19
-    Caption = 'Alunos:'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   inline frmLogo: TfrmLogo
     Left = 0
     Top = 0
