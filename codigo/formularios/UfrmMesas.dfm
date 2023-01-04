@@ -20,25 +20,25 @@ object frmMesas: TfrmMesas
   object pnlCadastroMesas: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 8
+    Top = 520
     Width = 1008
-    Height = 281
+    Height = 240
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
-    Margins.Bottom = 0
-    Align = alTop
+    Margins.Bottom = 8
+    Align = alBottom
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
       1008
-      281)
+      240)
     object lblAtendente: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 140
+      Top = 100
       Width = 78
       Height = 19
       Margins.Left = 8
@@ -74,7 +74,7 @@ object frmMesas: TfrmMesas
     object lblCodigo: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 196
+      Top = 156
       Width = 55
       Height = 19
       Margins.Left = 8
@@ -90,7 +90,7 @@ object frmMesas: TfrmMesas
     object lblId: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 84
+      Top = 44
       Width = 19
       Height = 19
       Margins.Left = 8
@@ -106,7 +106,7 @@ object frmMesas: TfrmMesas
     object lblNome: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 169
+      Top = 129
       Width = 47
       Height = 19
       Margins.Left = 8
@@ -122,7 +122,7 @@ object frmMesas: TfrmMesas
     object lblNumero: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 225
+      Top = 185
       Width = 62
       Height = 19
       Margins.Left = 8
@@ -138,7 +138,7 @@ object frmMesas: TfrmMesas
     object lblQtdMaxPessoas: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 252
+      Top = 212
       Width = 234
       Height = 19
       Margins.Left = 8
@@ -154,7 +154,7 @@ object frmMesas: TfrmMesas
     object lblStatus: TLabel
       AlignWithMargins = True
       Left = 8
-      Top = 111
+      Top = 71
       Width = 53
       Height = 19
       Margins.Left = 8
@@ -170,7 +170,7 @@ object frmMesas: TfrmMesas
     object edtCodigo: TDBEdit
       AlignWithMargins = True
       Left = 66
-      Top = 194
+      Top = 154
       Width = 934
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -190,7 +190,7 @@ object frmMesas: TfrmMesas
     object edtNumero: TDBEdit
       AlignWithMargins = True
       Left = 74
-      Top = 221
+      Top = 181
       Width = 926
       Height = 23
       Anchors = [akLeft, akTop, akRight]
@@ -210,7 +210,7 @@ object frmMesas: TfrmMesas
     object edtId: TDBEdit
       AlignWithMargins = True
       Left = 32
-      Top = 82
+      Top = 42
       Width = 968
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -231,7 +231,7 @@ object frmMesas: TfrmMesas
     object edtNome: TDBEdit
       AlignWithMargins = True
       Left = 66
-      Top = 167
+      Top = 127
       Width = 934
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -251,7 +251,7 @@ object frmMesas: TfrmMesas
     object edtQtdMaxPessoas: TDBEdit
       AlignWithMargins = True
       Left = 249
-      Top = 250
+      Top = 210
       Width = 751
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -270,7 +270,7 @@ object frmMesas: TfrmMesas
     end
     object cbxAtendente: TDBLookupComboBox
       Left = 97
-      Top = 138
+      Top = 98
       Width = 903
       Height = 23
       Anchors = [akLeft, akTop, akRight]
@@ -289,7 +289,7 @@ object frmMesas: TfrmMesas
     end
     object cbxStatus: TDBLookupComboBox
       Left = 66
-      Top = 109
+      Top = 69
       Width = 934
       Height = 23
       Anchors = [akLeft, akTop, akRight]
@@ -306,37 +306,24 @@ object frmMesas: TfrmMesas
       ParentFont = False
       TabOrder = 6
     end
-    object DBNavigatorMesas: TDBNavigator
-      AlignWithMargins = True
-      Left = 8
-      Top = 41
-      Width = 992
-      Height = 25
-      Margins.Left = 8
-      Margins.Top = 0
-      Margins.Right = 8
-      Margins.Bottom = 8
-      DataSource = dsMesas
-      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
-      Align = alTop
-      TabOrder = 7
-    end
   end
   object pnlListaMesas: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 297
+    Top = 140
     Width = 1008
-    Height = 463
+    Height = 372
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
-    Margins.Bottom = 8
+    Margins.Bottom = 0
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 297
+    ExplicitHeight = 463
     object lblListaMesas: TLabel
       AlignWithMargins = True
       Left = 8
@@ -360,9 +347,9 @@ object frmMesas: TfrmMesas
     object grdMesas: TDBGrid
       AlignWithMargins = True
       Left = 8
-      Top = 41
+      Top = 74
       Width = 992
-      Height = 414
+      Height = 290
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
@@ -430,9 +417,221 @@ object frmMesas: TfrmMesas
           Visible = True
         end>
     end
+    object DBNavigatorMesas: TDBNavigator
+      AlignWithMargins = True
+      Left = 8
+      Top = 41
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      DataSource = dsMesas
+      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+      Align = alTop
+      TabOrder = 1
+    end
+  end
+  object pnlInformacoesGerenciais: TPanel
+    AlignWithMargins = True
+    Left = 8
+    Top = 8
+    Width = 1008
+    Height = 124
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 0
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+    ExplicitLeft = 13
+    object Shape3: TShape
+      Left = 8
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape6: TShape
+      Left = 118
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape7: TShape
+      Left = 228
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblInformacoesGenerenciaisTitulo: TLabel
+      AlignWithMargins = True
+      Left = 8
+      Top = 8
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
+      Caption = 'Informa'#231#245'es gerenciais'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ExplicitLeft = 40
+      ExplicitTop = 32
+    end
+    object lblTotalMesas: TLabel
+      Left = 8
+      Top = 54
+      Width = 104
+      Height = 14
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Total de mesas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblMesasDisponiveis: TLabel
+      Left = 118
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Dispon'#237'veis'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblMesasReservadas: TLabel
+      Left = 228
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Reservadas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Shape1: TShape
+      Left = 338
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblMesasOcupadas: TLabel
+      Left = 338
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Ocupadas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblTotalMesasValor: TLabel
+      Left = 8
+      Top = 81
+      Width = 104
+      Height = 20
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblMesasDisponiveisValor: TLabel
+      Left = 118
+      Top = 81
+      Width = 104
+      Height = 20
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblMesasReservadasValor: TLabel
+      Left = 228
+      Top = 81
+      Width = 104
+      Height = 19
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblMesasOcupadasValor: TLabel
+      Left = 338
+      Top = 81
+      Width = 104
+      Height = 19
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
   end
   object tblMesas: TFDTable
+    BeforePost = tblMesasBeforePost
+    OnNewRecord = tblMesasNewRecord
     IndexFieldNames = 'id'
+    OnUpdateRecord = tblMesasUpdateRecord
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
     UpdateOptions.UpdateMode = upWhereAll
@@ -627,5 +826,18 @@ object frmMesas: TfrmMesas
     DataSet = tblStatusMesa
     Left = 824
     Top = 296
+  end
+  object qryInformacoesGerenciais: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      
+        'select '#10'(SELECT count(1) FROM mesa) as '#39'Total de mesas'#39', '#10'(SELEC' +
+        'T count(1) FROM mesa where statusMesaId = 1) as '#39'Mesas livres'#39','#10 +
+        '(SELECT count(1) FROM mesa where statusMesaId = 2) as '#39'Mesas res' +
+        'ervadas'#39','#10'(SELECT count(1) FROM mesa where statusMesaId = 3) as ' +
+        #39'Mesas ocupadas'#39','#10'(SELECT count(1) FROM mesa where statusMesaId ' +
+        '= 4) as '#39'Mesas indispon'#237'veis'#39)
+    Left = 928
+    Top = 72
   end
 end

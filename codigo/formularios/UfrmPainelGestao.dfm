@@ -28,7 +28,6 @@ object frmPainelGestao: TfrmPainelGestao
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 175
     object spbSair: TSpeedButton
       AlignWithMargins = True
       Left = 0
@@ -702,78 +701,164 @@ object frmPainelGestao: TfrmPainelGestao
     BevelOuter = bvNone
     TabOrder = 1
     ExplicitLeft = 188
-    object lblTituloDashboard: TLabel
+    ExplicitTop = 8
+    object pnlInformacoesGerenciais: TPanel
+      AlignWithMargins = True
+      Left = 8
+      Top = 600
+      Width = 823
+      Height = 168
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alBottom
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 0
+      object lblInformacoesGerenciais: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 8
+        Width = 807
+        Height = 25
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alTop
+        Caption = 'Informa'#231#245'es gerenciais'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 221
+      end
+    end
+    object Panel1: TPanel
+      AlignWithMargins = True
+      Left = 8
+      Top = 140
+      Width = 823
+      Height = 452
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alClient
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitTop = 8
+      ExplicitWidth = 802
+      ExplicitHeight = 124
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 8
+        Width = 807
+        Height = 25
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alTop
+        Caption = 'Informa'#231#245'es gerenciais'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 221
+      end
+      object Shape1: TShape
+        AlignWithMargins = True
+        Left = 8
+        Top = 49
+        Width = 807
+        Height = 395
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alClient
+        Brush.Color = 16250871
+        Pen.Color = clWhite
+        Shape = stRoundRect
+        ExplicitLeft = 16
+        ExplicitTop = 52
+        ExplicitWidth = 104
+        ExplicitHeight = 73
+      end
+    end
+    object Panel2: TPanel
       AlignWithMargins = True
       Left = 8
       Top = 8
       Width = 823
-      Height = 25
+      Height = 124
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
-      Margins.Bottom = 8
+      Margins.Bottom = 0
       Align = alTop
-      Caption = 'Dashboard'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -21
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      ExplicitWidth = 104
-    end
-    object Shape1: TShape
-      Left = 6
-      Top = 44
-      Width = 104
-      Height = 73
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape2: TShape
-      Left = 116
-      Top = 44
-      Width = 104
-      Height = 73
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape4: TShape
-      AlignWithMargins = True
-      Left = 8
-      Top = 504
-      Width = 823
-      Height = 256
-      Margins.Left = 8
-      Margins.Top = 0
-      Margins.Right = 8
-      Margins.Bottom = 8
-      Align = alBottom
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape5: TShape
-      Left = 226
-      Top = 44
-      Width = 104
-      Height = 73
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object shpQtdPedidosPorDia: TShape
-      AlignWithMargins = True
-      Left = 8
-      Top = 153
-      Width = 823
-      Height = 343
-      Margins.Left = 8
-      Margins.Top = 8
-      Margins.Right = 8
-      Margins.Bottom = 8
-      Align = alBottom
-      Pen.Color = clWhite
-      Shape = stRoundRect
-      ExplicitTop = 233
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 2
+      ExplicitWidth = 802
+      object Shape3: TShape
+        Left = 8
+        Top = 44
+        Width = 104
+        Height = 73
+        Brush.Color = 16250871
+        Pen.Color = clWhite
+        Shape = stRoundRect
+      end
+      object Shape6: TShape
+        Left = 118
+        Top = 44
+        Width = 104
+        Height = 73
+        Brush.Color = 16250871
+        Pen.Color = clWhite
+        Shape = stRoundRect
+      end
+      object Shape7: TShape
+        Left = 228
+        Top = 44
+        Width = 104
+        Height = 73
+        Brush.Color = 16250871
+        Pen.Color = clWhite
+        Shape = stRoundRect
+      end
+      object Label2: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 8
+        Width = 807
+        Height = 25
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alTop
+        Caption = 'Informa'#231#245'es gerenciais'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 221
+      end
     end
   end
 end

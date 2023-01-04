@@ -74,6 +74,11 @@ type
     pnlListaProdutos: TPanel;
     lblListaProdutos: TLabel;
     grdProducts: TDBGrid;
+    Panel2: TPanel;
+    Shape3: TShape;
+    Shape6: TShape;
+    Shape7: TShape;
+    Label2: TLabel;
     procedure FormShow(Sender: TObject);
     procedure tblProdutosBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

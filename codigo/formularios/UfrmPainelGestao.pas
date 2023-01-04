@@ -22,12 +22,6 @@ uses
 
 type
   TfrmPainelGestao = class(TForm)
-    lblTituloDashboard: TLabel;
-    Shape1: TShape;
-    Shape2: TShape;
-    shpQtdPedidosPorDia: TShape;
-    Shape4: TShape;
-    Shape5: TShape;
     pnlMenu: TPanel;
     spbSair: TSpeedButton;
     spbConfiguracoes: TSpeedButton;
@@ -37,6 +31,16 @@ type
     spbMesas: TSpeedButton;
     spbMenu: TSpeedButton;
     pnlFundoDashboard: TPanel;
+    pnlInformacoesGerenciais: TPanel;
+    lblInformacoesGerenciais: TLabel;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Panel2: TPanel;
+    Shape3: TShape;
+    Shape6: TShape;
+    Shape7: TShape;
+    Label2: TLabel;
+    Shape1: TShape;
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

@@ -88,14 +88,35 @@ type
     pnlListaMesas: TPanel;
     grdMesas: TDBGrid;
     lblListaMesas: TLabel;
+    pnlInformacoesGerenciais: TPanel;
+    Shape3: TShape;
+    Shape6: TShape;
+    Shape7: TShape;
+    lblInformacoesGenerenciaisTitulo: TLabel;
+    qryInformacoesGerenciais: TFDQuery;
+    lblTotalMesas: TLabel;
+    lblMesasDisponiveis: TLabel;
+    lblMesasReservadas: TLabel;
+    Shape1: TShape;
+    lblMesasOcupadas: TLabel;
+    lblTotalMesasValor: TLabel;
+    lblMesasDisponiveisValor: TLabel;
+    lblMesasReservadasValor: TLabel;
+    lblMesasOcupadasValor: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure tblMesasBeforePost(DataSet: TDataSet);
+    procedure tblMesasNewRecord(DataSet: TDataSet);
+    procedure tblMesasUpdateRecord(ASender: TDataSet;
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
   private
     { Private declarations }
     procedure SetarCamposAuditoriaMesa();
     procedure AtivarDatasets();
     procedure DesativarDatasets();
+    procedure CarregarInformacoesGerenciais();
   public
     { Public declarations }
   end;
@@ -114,6 +135,24 @@ begin
   tblMesas.Active := true;
   tblStatusMesa.Active := true;
   qryPessoas.Active := true;
+end;
+
+procedure TfrmMesas.CarregarInformacoesGerenciais;
+begin
+  qryInformacoesGerenciais.Active := false;
+  qryInformacoesGerenciais.Active := true;
+
+  qryInformacoesGerenciais.First;
+
+  lblTotalMesasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblMesasDisponiveisValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblMesasReservadasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  lblMesasOcupadasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
+  qryInformacoesGerenciais.Active := false;
 end;
 
 procedure TfrmMesas.DesativarDatasets;
@@ -138,6 +177,7 @@ end;
 procedure TfrmMesas.FormShow(Sender: TObject);
 begin
   TFormUtils.AlinharCamposDBEdit<TfrmMesas>(Self);
+  CarregarInformacoesGerenciais();
 end;
 
 procedure TfrmMesas.SetarCamposAuditoriaMesa;
@@ -153,6 +193,23 @@ begin
   end;
   tblMesasalteradoPor.Value := LLogin;
   tblMesasalteradoEm.Value := Now();
+end;
+
+procedure TfrmMesas.tblMesasBeforePost(DataSet: TDataSet);
+begin
+  SetarCamposAuditoriaMesa();
+end;
+
+procedure TfrmMesas.tblMesasNewRecord(DataSet: TDataSet);
+begin
+  CarregarInformacoesGerenciais();
+end;
+
+procedure TfrmMesas.tblMesasUpdateRecord(ASender: TDataSet;
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
+begin
+  CarregarInformacoesGerenciais();
 end;
 
 end.

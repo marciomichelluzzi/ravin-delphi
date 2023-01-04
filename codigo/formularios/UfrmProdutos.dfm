@@ -20,24 +20,24 @@ object frmProdutos: TfrmProdutos
   object pnlCadastroProdutos: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 8
+    Top = 384
     Width = 1008
-    Height = 417
+    Height = 376
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
-    Margins.Bottom = 0
-    Align = alTop
+    Margins.Bottom = 8
+    Align = alBottom
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
       1008
-      417)
+      376)
     object LabelCode: TLabel
-      Left = 8
-      Top = 110
+      Left = 7
+      Top = 71
       Width = 55
       Height = 19
       Caption = 'C'#243'digo:'
@@ -49,8 +49,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblAtivo: TLabel
-      Left = 8
-      Top = 389
+      Left = 7
+      Top = 350
       Width = 69
       Height = 19
       Caption = 'Situa'#231#227'o:'
@@ -82,8 +82,8 @@ object frmProdutos: TfrmProdutos
       ExplicitWidth = 194
     end
     object lblDescricao: TLabel
-      Left = 8
-      Top = 189
+      Left = 7
+      Top = 150
       Width = 76
       Height = 19
       Caption = 'Descri'#231#227'o:'
@@ -95,8 +95,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblId: TLabel
-      Left = 8
-      Top = 85
+      Left = 7
+      Top = 46
       Width = 19
       Height = 19
       Caption = 'Id:'
@@ -108,8 +108,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblNome: TLabel
-      Left = 7
-      Top = 137
+      Left = 6
+      Top = 98
       Width = 47
       Height = 19
       Caption = 'Nome:'
@@ -121,8 +121,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblObservacoes: TLabel
-      Left = 8
-      Top = 337
+      Left = 7
+      Top = 298
       Width = 97
       Height = 19
       Caption = 'Observa'#231#245'es:'
@@ -134,8 +134,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblPrecoCusto: TLabel
-      Left = 8
-      Top = 232
+      Left = 7
+      Top = 193
       Width = 111
       Height = 19
       Caption = 'Pre'#231'o de custo:'
@@ -147,8 +147,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblPrecoVenda: TLabel
-      Left = 8
-      Top = 259
+      Left = 7
+      Top = 220
       Width = 114
       Height = 19
       Caption = 'Pre'#231'o de venda:'
@@ -160,8 +160,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object lblTempoPreparo: TLabel
-      Left = 8
-      Top = 288
+      Left = 7
+      Top = 249
       Width = 136
       Height = 19
       Caption = 'Tempo de Preparo:'
@@ -173,8 +173,8 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
     end
     object cbxAtivo: TDBCheckBox
-      Left = 81
-      Top = 391
+      Left = 80
+      Top = 352
       Width = 97
       Height = 17
       Caption = 'Ativo'
@@ -190,8 +190,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtCodigo: TDBEdit
       AlignWithMargins = True
-      Left = 69
-      Top = 110
+      Left = 68
+      Top = 71
       Width = 932
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -210,8 +210,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtId: TDBEdit
       AlignWithMargins = True
-      Left = 33
-      Top = 83
+      Left = 32
+      Top = 44
       Width = 968
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -231,8 +231,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtNome: TDBEdit
       AlignWithMargins = True
-      Left = 60
-      Top = 137
+      Left = 59
+      Top = 98
       Width = 941
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -251,8 +251,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtPrecoCusto: TDBEdit
       AlignWithMargins = True
-      Left = 125
-      Top = 232
+      Left = 124
+      Top = 193
       Width = 876
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -271,8 +271,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtPrecoVenda: TDBEdit
       AlignWithMargins = True
-      Left = 128
-      Top = 259
+      Left = 127
+      Top = 220
       Width = 873
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -291,8 +291,8 @@ object frmProdutos: TfrmProdutos
     end
     object edtTempoPreparo: TDBEdit
       AlignWithMargins = True
-      Left = 150
-      Top = 286
+      Left = 149
+      Top = 247
       Width = 851
       Height = 21
       Anchors = [akLeft, akTop, akRight]
@@ -310,8 +310,8 @@ object frmProdutos: TfrmProdutos
       TabOrder = 6
     end
     object memDescricao: TDBMemo
-      Left = 90
-      Top = 164
+      Left = 89
+      Top = 125
       Width = 911
       Height = 62
       Anchors = [akLeft, akTop, akRight]
@@ -326,8 +326,8 @@ object frmProdutos: TfrmProdutos
       TabOrder = 7
     end
     object memObservacoes: TDBMemo
-      Left = 111
-      Top = 313
+      Left = 110
+      Top = 274
       Width = 889
       Height = 64
       Anchors = [akLeft, akTop, akRight]
@@ -341,37 +341,25 @@ object frmProdutos: TfrmProdutos
       ParentFont = False
       TabOrder = 8
     end
-    object dbnProducts: TDBNavigator
-      AlignWithMargins = True
-      Left = 8
-      Top = 41
-      Width = 992
-      Height = 25
-      Margins.Left = 8
-      Margins.Top = 0
-      Margins.Right = 8
-      Margins.Bottom = 8
-      DataSource = dsProdutos
-      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
-      Align = alTop
-      TabOrder = 9
-    end
   end
   object pnlListaProdutos: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 433
+    Top = 140
     Width = 1008
-    Height = 327
+    Height = 236
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
-    Margins.Bottom = 8
+    Margins.Bottom = 0
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 13
+    ExplicitTop = 117
+    ExplicitHeight = 195
     object lblListaProdutos: TLabel
       AlignWithMargins = True
       Left = 8
@@ -390,14 +378,14 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 166
+      ExplicitTop = -6
     end
     object grdProducts: TDBGrid
       AlignWithMargins = True
       Left = 8
-      Top = 41
+      Top = 74
       Width = 992
-      Height = 278
+      Height = 154
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
@@ -514,6 +502,86 @@ object frmProdutos: TfrmProdutos
           Title.Caption = 'Alterado por'
           Visible = True
         end>
+    end
+    object dbnProducts: TDBNavigator
+      AlignWithMargins = True
+      Left = 8
+      Top = 41
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      DataSource = dsProdutos
+      VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+      Align = alTop
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    AlignWithMargins = True
+    Left = 8
+    Top = 8
+    Width = 1008
+    Height = 124
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 0
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+    ExplicitLeft = -16
+    ExplicitTop = -50
+    object Shape3: TShape
+      Left = 8
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape6: TShape
+      Left = 118
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape7: TShape
+      Left = 228
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Label2: TLabel
+      AlignWithMargins = True
+      Left = 8
+      Top = 8
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
+      Caption = 'Informa'#231#245'es gerenciais'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ExplicitLeft = 33
     end
   end
   object tblProdutos: TFDTable

@@ -36,7 +36,6 @@ uses
 
 type
   TfrmComandas = class(TForm)
-    lblCadastroComanda: TLabel;
     tblComandas: TFDTable;
     dtsComandas: TDataSource;
     tblComandasid: TFDAutoIncField;
@@ -95,6 +94,13 @@ type
     tblStatusComandaProduto: TFDTable;
     dtsStatusComandaProduto: TDataSource;
     tblComandaProdutoslookupStatusComandaProdutoNome: TStringField;
+    pnlInformacoesGerenciais: TPanel;
+    Shape3: TShape;
+    Shape6: TShape;
+    Shape7: TShape;
+    Label2: TLabel;
+    pnlCadastroComanda: TPanel;
+    lblCadastroComanda: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure tblComandasBeforePost(DataSet: TDataSet);

@@ -2,7 +2,7 @@ object frmComandas: TfrmComandas
   Left = 0
   Top = 0
   Caption = 'Comandas'
-  ClientHeight = 741
+  ClientHeight = 885
   ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,9 +20,9 @@ object frmComandas: TfrmComandas
   object pnlItensComanda: TPanel
     AlignWithMargins = True
     Left = 423
-    Top = 8
+    Top = 140
     Width = 593
-    Height = 725
+    Height = 737
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
@@ -32,16 +32,18 @@ object frmComandas: TfrmComandas
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 439
-    ExplicitHeight = 764
-    DesignSize = (
-      593
-      725)
+    ExplicitHeight = 593
     object lblListaProdutosComanda: TLabel
+      AlignWithMargins = True
       Left = 8
-      Top = 16
-      Width = 288
+      Top = 8
+      Width = 577
       Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
       Caption = 'Lista de produtos da comanda'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
@@ -49,13 +51,19 @@ object frmComandas: TfrmComandas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
+      ExplicitWidth = 288
     end
     object dbgComandaProdutos: TDBGrid
+      AlignWithMargins = True
       Left = 8
-      Top = 93
-      Width = 574
-      Height = 620
-      Anchors = [akLeft, akTop, akRight, akBottom]
+      Top = 82
+      Width = 577
+      Height = 647
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alClient
       DataSource = dtsComandaProdutos
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -107,21 +115,25 @@ object frmComandas: TfrmComandas
     object dbnComandaProdutos: TDBNavigator
       AlignWithMargins = True
       Left = 8
-      Top = 47
-      Width = 568
+      Top = 41
+      Width = 577
       Height = 25
+      Margins.Left = 8
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 8
       DataSource = dtsComandaProdutos
       VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
-      Anchors = [akLeft, akTop, akRight]
+      Align = alTop
       TabOrder = 1
     end
   end
   object pnlComanda: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 8
+    Top = 140
     Width = 409
-    Height = 725
+    Height = 737
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
@@ -138,55 +150,18 @@ object frmComandas: TfrmComandas
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 425
-    ExplicitHeight = 764
-    DesignSize = (
-      409
-      725)
-    object lblCadastroComanda: TLabel
-      Left = 8
-      Top = 16
-      Width = 221
-      Height = 25
-      Caption = 'Cadastro de Comandas'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -21
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblCliente: TLabel
-      Left = 8
-      Top = 148
-      Width = 54
-      Height = 19
-      Caption = 'Cliente:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lblCodigo: TLabel
-      Left = 8
-      Top = 204
-      Width = 55
-      Height = 19
-      Caption = 'C'#243'digo:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
+    ExplicitHeight = 593
     object lblListaMesas: TLabel
+      AlignWithMargins = True
       Left = 8
-      Top = 260
-      Width = 182
+      Top = 8
+      Width = 393
       Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
       Caption = 'Lista de Comandas'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
@@ -194,69 +169,34 @@ object frmComandas: TfrmComandas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-    end
-    object lblId: TLabel
-      Left = 8
-      Top = 93
-      Width = 19
-      Height = 19
-      Caption = 'Id:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lblMesa: TLabel
-      Left = 8
-      Top = 121
-      Width = 44
-      Height = 19
-      Caption = 'Mesa:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lblValor: TLabel
-      Left = 6
-      Top = 177
-      Width = 43
-      Height = 19
-      Caption = 'Valor:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentFont = False
+      ExplicitWidth = 182
     end
     object dbnMesas: TDBNavigator
       AlignWithMargins = True
-      Left = 10
-      Top = 47
-      Width = 376
+      Left = 8
+      Top = 41
+      Width = 393
       Height = 25
+      Margins.Left = 8
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 8
       DataSource = dtsComandas
       VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
-      Anchors = [akLeft, akTop, akRight]
+      Align = alTop
       TabOrder = 0
-      ExplicitWidth = 392
     end
-    object edtCodigo: TDBEdit
+    object dbgComandas: TDBGrid
       AlignWithMargins = True
-      Left = 68
-      Top = 204
-      Width = 333
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      AutoSize = False
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      DataField = 'codigo'
+      Left = 8
+      Top = 74
+      Width = 393
+      Height = 462
+      Margins.Left = 8
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alClient
       DataSource = dtsComandas
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -265,106 +205,6 @@ object frmComandas: TfrmComandas
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 349
-    end
-    object edtId: TDBEdit
-      AlignWithMargins = True
-      Left = 32
-      Top = 93
-      Width = 369
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      AutoSize = False
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      DataField = 'id'
-      DataSource = dtsComandas
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 2
-      ExplicitWidth = 385
-    end
-    object edtValor: TDBEdit
-      AlignWithMargins = True
-      Left = 54
-      Top = 177
-      Width = 347
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      AutoSize = False
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      DataField = 'valor'
-      DataSource = dtsComandas
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 3
-      ExplicitWidth = 363
-    end
-    object lcbAtendente: TDBLookupComboBox
-      Left = 57
-      Top = 120
-      Width = 344
-      Height = 23
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'mesaId'
-      DataSource = dtsComandas
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      KeyField = 'id'
-      ListField = 'nome'
-      ListSource = dtsMesas
-      ParentFont = False
-      TabOrder = 4
-      ExplicitWidth = 360
-    end
-    object lcbStatus: TDBLookupComboBox
-      Left = 66
-      Top = 148
-      Width = 335
-      Height = 23
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'clienteId'
-      DataSource = dtsComandas
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      KeyField = 'id'
-      ListField = 'nome'
-      ListSource = dtsPessoas
-      ParentFont = False
-      TabOrder = 5
-      ExplicitWidth = 351
-    end
-    object dbgComandas: TDBGrid
-      AlignWithMargins = True
-      Left = 10
-      Top = 291
-      Width = 391
-      Height = 422
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      DataSource = dtsComandas
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -16
@@ -411,6 +251,272 @@ object frmComandas: TfrmComandas
           FieldName = 'valor'
           Visible = True
         end>
+    end
+    object pnlCadastroComanda: TPanel
+      AlignWithMargins = True
+      Left = 0
+      Top = 544
+      Width = 409
+      Height = 193
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alBottom
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 2
+      DesignSize = (
+        409
+        193)
+      object lblCadastroComanda: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 16
+        Width = 393
+        Height = 25
+        Margins.Left = 8
+        Margins.Top = 16
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alTop
+        Caption = 'Cadastro de Comandas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 221
+      end
+      object lblCliente: TLabel
+        Left = 8
+        Top = 137
+        Width = 54
+        Height = 19
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblCodigo: TLabel
+        Left = 8
+        Top = 81
+        Width = 56
+        Height = 19
+        Caption = 'C'#243'digo:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblId: TLabel
+        Left = 8
+        Top = 54
+        Width = 19
+        Height = 19
+        Caption = 'Id:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblMesa: TLabel
+        Left = 8
+        Top = 166
+        Width = 44
+        Height = 19
+        Caption = 'Mesa:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblValor: TLabel
+        Left = 8
+        Top = 108
+        Width = 43
+        Height = 19
+        Caption = 'Valor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object edtCodigo: TDBEdit
+        AlignWithMargins = True
+        Left = 70
+        Top = 79
+        Width = 331
+        Height = 21
+        Anchors = [akLeft, akTop, akRight]
+        AutoSize = False
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        DataField = 'codigo'
+        DataSource = dtsComandas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+      object edtId: TDBEdit
+        AlignWithMargins = True
+        Left = 33
+        Top = 52
+        Width = 368
+        Height = 21
+        Anchors = [akLeft, akTop, akRight]
+        AutoSize = False
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        DataField = 'id'
+        DataSource = dtsComandas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 1
+      end
+      object edtValor: TDBEdit
+        AlignWithMargins = True
+        Left = 57
+        Top = 106
+        Width = 344
+        Height = 21
+        Anchors = [akLeft, akTop, akRight]
+        AutoSize = False
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        DataField = 'valor'
+        DataSource = dtsComandas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
+      object lcbAtendente: TDBLookupComboBox
+        Left = 58
+        Top = 162
+        Width = 343
+        Height = 23
+        Anchors = [akLeft, akTop, akRight]
+        DataField = 'mesaId'
+        DataSource = dtsComandas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = []
+        KeyField = 'id'
+        ListField = 'nome'
+        ListSource = dtsMesas
+        ParentFont = False
+        TabOrder = 3
+      end
+      object lcbStatus: TDBLookupComboBox
+        Left = 68
+        Top = 133
+        Width = 333
+        Height = 23
+        Anchors = [akLeft, akTop, akRight]
+        DataField = 'clienteId'
+        DataSource = dtsComandas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = []
+        KeyField = 'id'
+        ListField = 'nome'
+        ListSource = dtsPessoas
+        ParentFont = False
+        TabOrder = 4
+      end
+    end
+  end
+  object pnlInformacoesGerenciais: TPanel
+    AlignWithMargins = True
+    Left = 8
+    Top = 8
+    Width = 1008
+    Height = 124
+    Margins.Left = 8
+    Margins.Top = 8
+    Margins.Right = 8
+    Margins.Bottom = 0
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+    object Shape3: TShape
+      Left = 8
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape6: TShape
+      Left = 118
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Shape7: TShape
+      Left = 228
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Label2: TLabel
+      AlignWithMargins = True
+      Left = 8
+      Top = 8
+      Width = 992
+      Height = 25
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alTop
+      Caption = 'Informa'#231#245'es gerenciais'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ExplicitWidth = 221
     end
   end
   object tblComandas: TFDTable

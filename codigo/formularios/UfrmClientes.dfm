@@ -186,6 +186,7 @@ object frmClientes: TfrmClientes
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 13
     object lblInformacoesGerenciais: TLabel
       AlignWithMargins = True
       Left = 8
@@ -211,7 +212,7 @@ object frmClientes: TfrmClientes
       Top = 44
       Width = 104
       Height = 73
-      Brush.Color = 14671839
+      Brush.Color = 16250871
       Pen.Color = clWhite
       Shape = stRoundRect
     end
@@ -220,7 +221,7 @@ object frmClientes: TfrmClientes
       Top = 44
       Width = 104
       Height = 73
-      Brush.Color = 14671839
+      Brush.Color = 16250871
       Pen.Color = clWhite
       Shape = stRoundRect
     end
@@ -229,7 +230,7 @@ object frmClientes: TfrmClientes
       Top = 44
       Width = 104
       Height = 73
-      Brush.Color = 14671839
+      Brush.Color = 16250871
       Pen.Color = clWhite
       Shape = stRoundRect
     end
@@ -251,7 +252,6 @@ object frmClientes: TfrmClientes
     ParentBackground = False
     TabOrder = 2
     Visible = False
-    ExplicitLeft = 13
     DesignSize = (
       802
       405)
@@ -382,8 +382,8 @@ object frmClientes: TfrmClientes
       inherited pnlFundo: TPanel
         Width = 120
         Height = 45
-        ExplicitWidth = 119
-        ExplicitHeight = 47
+        ExplicitWidth = 120
+        ExplicitHeight = 45
         inherited spbBotaoPrimario: TSpeedButton
           Width = 120
           Height = 45
@@ -415,7 +415,7 @@ object frmClientes: TfrmClientes
         Width = 120
         Height = 45
         ExplicitWidth = 120
-        ExplicitHeight = 47
+        ExplicitHeight = 45
         inherited spbBotaoCancelar: TSpeedButton
           Width = 120
           Height = 45
@@ -447,8 +447,8 @@ object frmClientes: TfrmClientes
       inherited pnlFundo: TPanel
         Width = 120
         Height = 45
-        ExplicitWidth = 117
-        ExplicitHeight = 47
+        ExplicitWidth = 120
+        ExplicitHeight = 45
         inherited spbBotaoExcluir: TSpeedButton
           Width = 120
           Height = 45
