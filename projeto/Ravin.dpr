@@ -2,7 +2,6 @@ program Ravin;
 
 uses
   Vcl.Forms,
-  UfrmCartaoPainelGestao in '..\codigo\frames\UfrmCartaoPainelGestao.pas' {frmCartaoPainelControle: TFrame},
   UfrmLogomarca in '..\codigo\frames\UfrmLogomarca.pas' {frmLogo: TFrame},
   UdmRavin in '..\codigo\database\UdmRavin.pas' {dmRavin: TDataModule},
   UfrmSplash in '..\codigo\formularios\UfrmSplash.pas' {frmSplash},
@@ -15,7 +14,6 @@ uses
   Uusuario in '..\codigo\modelos\Uusuario.pas',
   UusuarioDao in '..\codigo\dao\UusuarioDao.pas',
   UfrmBotaoPrimario in '..\codigo\frames\UfrmBotaoPrimario.pas' {frmBotaoPrimario: TFrame},
-  UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame},
   UfrmAutenticar in '..\codigo\formularios\UfrmAutenticar.pas' {frmAutenticar},
   UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
   UiniUtils in '..\codigo\util\UiniUtils.pas',
@@ -27,7 +25,8 @@ uses
   UvalidaCpf in '..\codigo\validadores\UvalidaCpf.pas',
   UpessoaDao in '..\codigo\dao\UpessoaDao.pas',
   Upessoa in '..\codigo\modelos\Upessoa.pas',
-  UhackDBGrid in '..\codigo\componentes\UhackDBGrid.pas';
+  UhackDBGrid in '..\codigo\componentes\UhackDBGrid.pas',
+  UfrmBotaoSecundario in '..\codigo\frames\UfrmBotaoSecundario.pas' {frmBotaoSecundario: TFrame};
 
 {$R *.res}
 

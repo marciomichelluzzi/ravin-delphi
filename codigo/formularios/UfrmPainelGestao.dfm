@@ -727,7 +727,7 @@ object frmPainelGestao: TfrmPainelGestao
         AlignWithMargins = True
         Left = 8
         Top = 8
-        Width = 221
+        Width = 807
         Height = 25
         Margins.Left = 8
         Margins.Top = 8
@@ -741,6 +741,7 @@ object frmPainelGestao: TfrmPainelGestao
         Font.Name = 'Roboto'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 221
       end
     end
     object Panel1: TPanel
@@ -762,7 +763,7 @@ object frmPainelGestao: TfrmPainelGestao
         AlignWithMargins = True
         Left = 8
         Top = 8
-        Width = 458
+        Width = 807
         Height = 25
         Margins.Left = 8
         Margins.Top = 8
@@ -776,6 +777,7 @@ object frmPainelGestao: TfrmPainelGestao
         Font.Name = 'Roboto'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 458
       end
       object Shape1: TShape
         AlignWithMargins = True
@@ -824,8 +826,6 @@ object frmPainelGestao: TfrmPainelGestao
         Title.Font.Shadow.HorizSize = -30
         Title.Font.Shadow.VertSize = -30
         Title.Font.Shadow.Visible = False
-        Title.Text.Strings = (
-          'TChart')
         BottomAxis.Title.Caption = 'Per'#237'odo'
         BottomAxis.Title.Font.Height = -16
         BottomAxis.Title.Font.Name = 'Roboto'
@@ -910,7 +910,7 @@ object frmPainelGestao: TfrmPainelGestao
         AlignWithMargins = True
         Left = 8
         Top = 8
-        Width = 221
+        Width = 807
         Height = 25
         Margins.Left = 8
         Margins.Top = 8
@@ -924,6 +924,7 @@ object frmPainelGestao: TfrmPainelGestao
         Font.Name = 'Roboto'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 221
       end
     end
   end
