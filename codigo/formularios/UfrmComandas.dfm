@@ -32,7 +32,6 @@ object frmComandas: TfrmComandas
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 593
     object lblListaProdutosComanda: TLabel
       AlignWithMargins = True
       Left = 8
@@ -77,6 +76,7 @@ object frmComandas: TfrmComandas
       TitleFont.Height = -16
       TitleFont.Name = 'Roboto'
       TitleFont.Style = []
+      OnDrawColumnCell = dbgComandaProdutosDrawColumnCell
       Columns = <
         item
           Expanded = False
@@ -150,7 +150,6 @@ object frmComandas: TfrmComandas
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitHeight = 593
     object lblListaMesas: TLabel
       AlignWithMargins = True
       Left = 8
@@ -210,6 +209,7 @@ object frmComandas: TfrmComandas
       TitleFont.Height = -16
       TitleFont.Name = 'Roboto'
       TitleFont.Style = []
+      OnDrawColumnCell = dbgComandasDrawColumnCell
       Columns = <
         item
           Expanded = False
@@ -306,7 +306,7 @@ object frmComandas: TfrmComandas
       object lblCodigo: TLabel
         Left = 8
         Top = 81
-        Width = 56
+        Width = 55
         Height = 19
         Caption = 'C'#243'digo:'
         Font.Charset = DEFAULT_CHARSET
@@ -471,34 +471,7 @@ object frmComandas: TfrmComandas
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    object Shape3: TShape
-      Left = 8
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape6: TShape
-      Left = 118
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape7: TShape
-      Left = 228
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Label2: TLabel
+    object lblInformacoesGerenciaisTitulo: TLabel
       AlignWithMargins = True
       Left = 8
       Top = 8
@@ -518,10 +491,168 @@ object frmComandas: TfrmComandas
       ParentFont = False
       ExplicitWidth = 221
     end
+    object Shape3: TShape
+      Left = 8
+      Top = 44
+      Width = 129
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblTotalComandas: TLabel
+      Left = 8
+      Top = 54
+      Width = 129
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Total de comandas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblTotalComandasValor: TLabel
+      Left = 8
+      Top = 75
+      Width = 129
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Shape6: TShape
+      Left = 143
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblComandasPagasValor: TLabel
+      Left = 143
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Shape7: TShape
+      Left = 253
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblComandasEmAberto: TLabel
+      Left = 253
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Em Aberto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblComandasEmAbertoValor: TLabel
+      Left = 253
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 35236
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Shape1: TShape
+      Left = 363
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblComandasFechadas: TLabel
+      Left = 363
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Fechadas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblComandasFechadasValor: TLabel
+      Left = 363
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblComandasPagas: TLabel
+      Left = 143
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Pagas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
   end
   object tblComandas: TFDTable
     BeforePost = tblComandasBeforePost
+    OnNewRecord = tblComandasNewRecord
     IndexFieldNames = 'id'
+    OnUpdateRecord = tblComandasUpdateRecord
     Connection = dmRavin.cnxBancoDeDados
     TableName = 'ravin.comanda'
     Left = 656
@@ -764,5 +895,17 @@ object frmComandas: TfrmComandas
   object dtsStatusComandaProduto: TDataSource
     Left = 820
     Top = 288
+  end
+  object qryInformacoesGerenciais: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      
+        'select (SELECT count(1) FROM comanda) as '#39'Total de Comandas'#39', '#10'(' +
+        'SELECT count(1) FROM comanda where statusComandaId = 1) as '#39'Em a' +
+        'berto'#39','#10'(SELECT count(1) FROM comanda where statusComandaId = 2)' +
+        ' as '#39'Fechada'#39','#10'(SELECT count(1) FROM comanda where statusComanda' +
+        'Id = 3) as '#39'Paga'#39)
+    Left = 880
+    Top = 56
   end
 end

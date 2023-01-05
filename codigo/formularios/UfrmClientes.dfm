@@ -186,7 +186,6 @@ object frmClientes: TfrmClientes
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 13
     object lblInformacoesGerenciais: TLabel
       AlignWithMargins = True
       Left = 8
@@ -388,6 +387,7 @@ object frmClientes: TfrmClientes
           Width = 120
           Height = 45
           Caption = 'Salvar'
+          OnClick = frmBotaoSalvarRegistrospbBotaoPrimarioClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 120
@@ -460,6 +460,14 @@ object frmClientes: TfrmClientes
           ExplicitHeight = 45
         end
       end
+    end
+    object nmbId: TNumberBox
+      Left = 673
+      Top = 24
+      Width = 121
+      Height = 21
+      TabOrder = 7
+      Visible = False
     end
   end
 end

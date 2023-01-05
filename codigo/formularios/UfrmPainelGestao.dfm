@@ -16,6 +16,7 @@ object frmPainelGestao: TfrmPainelGestao
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMenu: TPanel
@@ -34,6 +35,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 300
       Width = 185
       Height = 50
+      Hint = 'Sair'
       HelpType = htKeyword
       HelpKeyword = 'Configura'#231#245'es'
       Margins.Left = 0
@@ -126,6 +128,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 250
       Width = 185
       Height = 50
+      Hint = 'Configura'#231#245'es'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -215,6 +218,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 200
       Width = 185
       Height = 50
+      Hint = 'Produtos'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -305,6 +309,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 150
       Width = 185
       Height = 50
+      Hint = 'Clientes'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -395,6 +400,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 100
       Width = 185
       Height = 50
+      Hint = 'Comandas'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -517,6 +523,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 50
       Width = 185
       Height = 50
+      Hint = 'Mesas'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -607,6 +614,7 @@ object frmPainelGestao: TfrmPainelGestao
       Top = 0
       Width = 185
       Height = 50
+      Hint = 'Abrir/Fechar Menu'
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -692,7 +700,7 @@ object frmPainelGestao: TfrmPainelGestao
       OnClick = spbMenuClick
     end
   end
-  object pnlFundoDashboard: TPanel
+  object pnlFundoPainelGestao: TPanel
     Left = 185
     Top = 0
     Width = 839
@@ -700,14 +708,12 @@ object frmPainelGestao: TfrmPainelGestao
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 188
-    ExplicitTop = 8
     object pnlInformacoesGerenciais: TPanel
       AlignWithMargins = True
       Left = 8
-      Top = 600
+      Top = 432
       Width = 823
-      Height = 168
+      Height = 336
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
@@ -743,7 +749,7 @@ object frmPainelGestao: TfrmPainelGestao
       Left = 8
       Top = 140
       Width = 823
-      Height = 452
+      Height = 284
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
@@ -753,9 +759,6 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 8
-      ExplicitWidth = 802
-      ExplicitHeight = 124
       object Label1: TLabel
         AlignWithMargins = True
         Left = 8
@@ -765,23 +768,23 @@ object frmPainelGestao: TfrmPainelGestao
         Margins.Left = 8
         Margins.Top = 8
         Margins.Right = 8
-        Margins.Bottom = 8
+        Margins.Bottom = 0
         Align = alTop
-        Caption = 'Informa'#231#245'es gerenciais'
+        Caption = 'Quantidade Vendida por M'#234's (ultimo 12 meses)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGreen
         Font.Height = -21
         Font.Name = 'Roboto'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 221
+        ExplicitWidth = 447
       end
       object Shape1: TShape
         AlignWithMargins = True
         Left = 8
-        Top = 49
+        Top = 41
         Width = 807
-        Height = 395
+        Height = 235
         Margins.Left = 8
         Margins.Top = 8
         Margins.Right = 8
@@ -790,10 +793,77 @@ object frmPainelGestao: TfrmPainelGestao
         Brush.Color = 16250871
         Pen.Color = clWhite
         Shape = stRoundRect
-        ExplicitLeft = 16
-        ExplicitTop = 52
-        ExplicitWidth = 104
-        ExplicitHeight = 73
+        ExplicitLeft = 3
+        ExplicitTop = 49
+        ExplicitHeight = 227
+      end
+      object Chart1: TChart
+        AlignWithMargins = True
+        Left = 30
+        Top = 63
+        Width = 763
+        Height = 191
+        Margins.Left = 30
+        Margins.Top = 30
+        Margins.Right = 30
+        Margins.Bottom = 30
+        AllowPanning = pmNone
+        Border.Color = 16250871
+        Legend.LegendStyle = lsValues
+        Legend.TextStyle = ltsPlain
+        Legend.Title.Font.Height = -16
+        Legend.Title.Font.Name = 'Roboto'
+        Legend.Title.Text.Strings = (
+          'Per'#237'odos')
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = 8421440
+        Title.Font.Height = -16
+        Title.Font.Name = 'Roboto'
+        Title.Font.Style = [fsBold]
+        Title.Font.Quality = fqNormal
+        Title.Font.Emboss.HorizSize = -30
+        Title.Font.Emboss.VertSize = -30
+        Title.Font.Shadow.HorizSize = -30
+        Title.Font.Shadow.VertSize = -30
+        Title.Font.Shadow.Visible = False
+        BottomAxis.Title.Caption = 'Per'#237'odo'
+        BottomAxis.Title.Font.Height = -16
+        BottomAxis.Title.Font.Name = 'Roboto'
+        LeftAxis.Title.Caption = 'Valor'
+        LeftAxis.Title.Font.Height = -16
+        LeftAxis.Title.Font.Name = 'Roboto'
+        LeftAxis.Title.Color = 8421440
+        Panning.MouseWheel = pmwNone
+        Shadow.Color = clGray
+        View3D = False
+        View3DOptions.HorizOffset = 41
+        View3DOptions.Zoom = 1
+        Zoom.Allow = False
+        Align = alClient
+        BevelOuter = bvNone
+        Color = 16250871
+        TabOrder = 0
+        ExplicitTop = 71
+        ExplicitHeight = 183
+        DefaultCanvas = 'TGDIPlusCanvas'
+        PrintMargins = (
+          15
+          38
+          15
+          38)
+        ColorPaletteIndex = 13
+        object SerieQuantidadeVendida: TBarSeries
+          ColorEachPoint = True
+          Marks.Font.Height = -13
+          Marks.Font.Name = 'Roboto'
+          Marks.Style = smsValue
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Bar'
+          YValues.Order = loNone
+          Data = {0000000000}
+          Detail = {0000000000}
+        end
       end
     end
     object Panel2: TPanel
@@ -811,7 +881,6 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
-      ExplicitWidth = 802
       object Shape3: TShape
         Left = 8
         Top = 44
@@ -859,6 +928,31 @@ object frmPainelGestao: TfrmPainelGestao
         ParentFont = False
         ExplicitWidth = 221
       end
+    end
+  end
+  object qryQuantidadeVendida: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      
+        'SELECT DATE_FORMAT(criadoEm,'#39'%m/%Y'#39') AS '#39'Periodo'#39', sum(comanda.v' +
+        'alor) AS '#39'Valor'#39' FROM comanda GROUP BY YEAR(criadoEm), MONTH(cri' +
+        'adoEm) LIMIT 0, 12')
+    Left = 807
+    Top = 147
+    object qryQuantidadeVendidaPeriodo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Periodo'
+      Origin = 'Periodo'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 7
+    end
+    object qryQuantidadeVendidaValor: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'Valor'
+      Origin = 'Valor'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

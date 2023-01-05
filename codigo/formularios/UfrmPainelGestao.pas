@@ -18,7 +18,11 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.pngimage,
 
-  UfrmItemMenu, Vcl.Buttons;
+  UfrmItemMenu, Vcl.Buttons, VclTee.TeeGDIPlus, VclTee.TeEngine,
+  VclTee.TeeProcs, VclTee.Chart, VclTee.Series, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmPainelGestao = class(TForm)
@@ -30,7 +34,7 @@ type
     spbComandas: TSpeedButton;
     spbMesas: TSpeedButton;
     spbMenu: TSpeedButton;
-    pnlFundoDashboard: TPanel;
+    pnlFundoPainelGestao: TPanel;
     pnlInformacoesGerenciais: TPanel;
     lblInformacoesGerenciais: TLabel;
     Panel1: TPanel;
@@ -41,6 +45,11 @@ type
     Shape7: TShape;
     Label2: TLabel;
     Shape1: TShape;
+    Chart1: TChart;
+    qryQuantidadeVendida: TFDQuery;
+    qryQuantidadeVendidaPeriodo: TStringField;
+    qryQuantidadeVendidaValor: TFloatField;
+    SerieQuantidadeVendida: TBarSeries;
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -50,16 +59,12 @@ type
     procedure spbClientesClick(Sender: TObject);
     procedure spbProdutosClick(Sender: TObject);
     procedure spbSairClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
-    { Private declarations }
-
     MenuExpandido: Boolean;
-
-    function ShowObviousModal(AForm: TForm; AParent: TWinControl = nil)
-      : Integer;
-    procedure SetTransparent(const isTransparent: Boolean);
+    procedure CarregarGraficoQuantidadeVendida();
   public
-    { Public declarations }
+
   end;
 
 var
@@ -77,7 +82,26 @@ uses
   UiniUtils,
   UfrmClientes,
   UfrmAutenticar,
-  UformUtils;
+  UformUtils, UdmRavin;
+
+procedure TfrmPainelGestao.CarregarGraficoQuantidadeVendida;
+var
+  LChartSerie: TBarSeries;
+begin
+  qryQuantidadeVendida.Active := false;
+  qryQuantidadeVendida.Active := true;
+
+  qryQuantidadeVendida.First;
+
+  while not qryQuantidadeVendida.Eof do
+  begin
+    Chart1.Series[0].Add(qryQuantidadeVendida.Fields[1].AsFloat,
+      qryQuantidadeVendida.Fields[0].AsString);
+    qryQuantidadeVendida.Next();
+  end;
+
+  qryQuantidadeVendida.Active := false;
+end;
 
 procedure TfrmPainelGestao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -90,42 +114,16 @@ begin
   MenuExpandido := true;
 end;
 
+procedure TfrmPainelGestao.FormShow(Sender: TObject);
+begin
+  CarregarGraficoQuantidadeVendida();
+end;
+
 procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
 var
   FDialog: TForm;
 begin
   TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
-  // TFormUtils.MostrarFormulario<TfrmCadastroCliente>(frmCadastroCliente);
-  //
-  // FDialog := TfrmListaClientes.Create(Self);
-  // try
-  // if ShowObviousModal(FDialog) = mrOk then
-  // Caption := 'OK';
-  // finally
-  // FDialog.Free;
-  // end;
-end;
-
-function TfrmPainelGestao.ShowObviousModal(AForm: TForm;
-  AParent: TWinControl = nil): Integer;
-var
-  Layer: TForm;
-begin
-  if AParent = nil then
-    AParent := Application.MainForm;
-  Layer := TForm.Create(nil);
-  try
-    Layer.AlphaBlend := True;
-    Layer.AlphaBlendValue := 128;
-    Layer.BorderStyle := bsNone;
-    Layer.Color := clBlack;
-    with AParent, ClientOrigin do
-      SetWindowPos(Layer.Handle, HWND_TOP, X, Y, ClientWidth, ClientHeight,
-        SWP_SHOWWINDOW);
-    Result := AForm.ShowModal;
-  finally
-    Layer.Free;
-  end;
 end;
 
 procedure TfrmPainelGestao.spbClientesClick(Sender: TObject);
@@ -133,15 +131,6 @@ var
   FDialog: TForm;
 begin
   TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
-  // TFormUtils.MostrarFormulario<TfrmCadastroCliente>(frmCadastroCliente);
-  //
-  // FDialog := TfrmListaClientes.Create(Self);
-  // try
-  // if ShowObviousModal(FDialog) = mrOk then
-  // Caption := 'OK';
-  // finally
-  // FDialog.Free;
-  // end;
 end;
 
 procedure TfrmPainelGestao.spbComandasClick(Sender: TObject);
@@ -175,28 +164,6 @@ begin
     TIniUtils.VALOR_FALSO);
 
   TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
-end;
-
-procedure TfrmPainelGestao.SetTransparent(const isTransparent: Boolean);
-var
-  exStyle: DWORD;
-begin
-  exStyle := GetWindowLongPtr(Self.Handle, GWL_EXSTYLE);
-  Win32Check(exStyle <> 0);
-
-  if (isTransparent) then
-  begin
-    exStyle := (exStyle or WS_EX_LAYERED);
-    Win32Check(SetWindowLongPtr(Self.Handle, GWL_EXSTYLE, exStyle) <> 0);
-
-    Win32Check(SetLayeredWindowAttributes(Self.Handle, 0, 127, // 50 % von 255
-      LWA_ALPHA));
-  end
-  else
-  begin
-    exStyle := (exStyle xor WS_EX_LAYERED);
-    SetWindowLong(Self.Handle, GWL_EXSTYLE, exStyle);
-  end;
 end;
 
 end.

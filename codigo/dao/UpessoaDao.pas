@@ -14,6 +14,9 @@ type
 
   private
 
+    procedure Inserir(PPessoa: TPessoa);
+    procedure Atualizar(PPessoa: TPessoa);
+
   protected
 
   public
@@ -21,6 +24,7 @@ type
     function CarregarListaClientes(): TList<TPessoa>;
     function CarregarClientePorId(PClienteId: Integer): TPessoa;
     procedure DeletarClientePorCPF(PClienteCpf: String);
+    procedure SalvarCliente(PCliente: TPessoa);
 
   end;
 
@@ -29,6 +33,37 @@ implementation
 { TPessoaDAO }
 
 uses UdmRavin;
+
+procedure TPessoaDAO.Atualizar(PPessoa: TPessoa);
+var
+  LQuery: TFDQuery;
+begin
+  try
+    LQuery := TFDQuery.Create(nil);
+    LQuery.Connection := dmRavin.cnxBancoDeDados;
+    LQuery.SQL.Text := 'UPDATE pessoa SET ' +
+      ' nome = :NOME, cpf = :CPF, dataNascimento = :DATANASCIMENTO, telefone = :TELEFONE, '
+      + ' tipoPessoa = :TIPOPESSOA, ativo = :ATIVO, criadoEm = :CRIADOEM, ' +
+      ' criadoPor = :CRIADOPOR, alteradoEm = :ALTERADOEM, alteradoPor = :ALTERADOPOR '
+      + ' WHERE id = :ID';
+    LQuery.ParamByName('NOME').AsString := PPessoa.Nome;
+    LQuery.ParamByName('CPF').AsString := PPessoa.Cpf;
+    LQuery.ParamByName('DATANASCIMENTO').AsDate := PPessoa.DataNascimento;
+    LQuery.ParamByName('TELEFONE').AsInteger := PPessoa.Telefone;
+    LQuery.ParamByName('TIPOPESSOA').AsString := PPessoa.TipoPessoa;
+    LQuery.ParamByName('ATIVO').AsBoolean := PPessoa.Ativo;
+    LQuery.ParamByName('CRIADOEM').AsDateTime := PPessoa.criadoEm;
+    LQuery.ParamByName('CRIADOPOR').AsString := PPessoa.criadoPor;
+    LQuery.ParamByName('ALTERADOEM').AsDateTime := PPessoa.alteradoEm;
+    LQuery.ParamByName('ALTERADOPOR').AsString := PPessoa.alteradoPor;
+
+    LQuery.ParamByName('ID').AsInteger := PPessoa.Id;
+    LQuery.ExecSQL();
+  finally
+    FreeAndNil(LQuery);
+  end;
+
+end;
 
 function TPessoaDAO.CarregarClientePorId(PClienteId: Integer): TPessoa;
 var
@@ -118,6 +153,38 @@ begin
   LQuery.ExecSQL();
 
   FreeAndNil(LQuery);
+end;
+
+procedure TPessoaDAO.Inserir(PPessoa: TPessoa);
+var
+  LQuery: TFDQuery;
+begin
+  LQuery := TFDQuery.Create(nil);
+  LQuery.Connection := dmRavin.cnxBancoDeDados;
+  LQuery.SQL.Text := 'INSERT INTO pessoa ' +
+    '(nome, cpf, dataNascimento, telefone, tipoPessoa, ativo, criadoEm, criadoPor, alteradoEm, alteradoPor) '
+    + ' VALUES (:NOME, :CPF, :DATANASCIMENTO, :TELEFONE, :TIPOPESSOA, :ATIVO, :CRIADOEM, :CRIADOPOR, :ALTERADOEM, :ALTERADOPOR)';
+  LQuery.ParamByName('NOME').AsString := PPessoa.Nome;
+  LQuery.ParamByName('CPF').AsString := PPessoa.Cpf;
+  LQuery.ParamByName('DATANASCIMENTO').AsDate := PPessoa.DataNascimento;
+  LQuery.ParamByName('TELEFONE').AsInteger := PPessoa.Telefone;
+  LQuery.ParamByName('TIPOPESSOA').AsString := PPessoa.TipoPessoa;
+  LQuery.ParamByName('ATIVO').AsBoolean := PPessoa.Ativo;
+  LQuery.ParamByName('CRIADOEM').AsDateTime := PPessoa.criadoEm;
+  LQuery.ParamByName('CRIADOPOR').AsString := PPessoa.criadoPor;
+  LQuery.ParamByName('ALTERADOEM').AsDateTime := PPessoa.alteradoEm;
+  LQuery.ParamByName('ALTERADOPOR').AsString := PPessoa.alteradoPor;
+  LQuery.ExecSQL();
+
+  FreeAndNil(LQuery);
+end;
+
+procedure TPessoaDAO.SalvarCliente(PCliente: TPessoa);
+begin
+  if PCliente.Id = 0 then
+    Inserir(PCliente)
+  else
+    Atualizar(PCliente);
 end;
 
 end.

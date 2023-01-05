@@ -357,9 +357,6 @@ object frmProdutos: TfrmProdutos
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 13
-    ExplicitTop = 117
-    ExplicitHeight = 195
     object lblListaProdutos: TLabel
       AlignWithMargins = True
       Left = 8
@@ -378,9 +375,9 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitTop = -6
+      ExplicitWidth = 166
     end
-    object grdProducts: TDBGrid
+    object grdProdutos: TDBGrid
       AlignWithMargins = True
       Left = 8
       Top = 74
@@ -405,6 +402,7 @@ object frmProdutos: TfrmProdutos
       TitleFont.Height = -16
       TitleFont.Name = 'Roboto'
       TitleFont.Style = []
+      OnDrawColumnCell = grdProdutosDrawColumnCell
       Columns = <
         item
           Alignment = taLeftJustify
@@ -503,7 +501,7 @@ object frmProdutos: TfrmProdutos
           Visible = True
         end>
     end
-    object dbnProducts: TDBNavigator
+    object dbnProdutos: TDBNavigator
       AlignWithMargins = True
       Left = 8
       Top = 41
@@ -519,7 +517,7 @@ object frmProdutos: TfrmProdutos
       TabOrder = 1
     end
   end
-  object Panel2: TPanel
+  object pnlInformacoesGerenciais: TPanel
     AlignWithMargins = True
     Left = 8
     Top = 8
@@ -534,35 +532,7 @@ object frmProdutos: TfrmProdutos
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = -16
-    ExplicitTop = -50
-    object Shape3: TShape
-      Left = 8
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape6: TShape
-      Left = 118
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
-    object Shape7: TShape
-      Left = 228
-      Top = 44
-      Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
-    end
+    ExplicitLeft = 3
     object Label2: TLabel
       AlignWithMargins = True
       Left = 8
@@ -581,15 +551,133 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 33
+      ExplicitWidth = 221
+    end
+    object shpTotalProduos: TShape
+      Left = 8
+      Top = 44
+      Width = 129
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object shpProdutosDisponiveis: TShape
+      Left = 143
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblProdutosDisponiveis: TLabel
+      Left = 143
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Dispon'#237'veis'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblProdutosDisponiveisValor: TLabel
+      Left = 143
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object shpProdutosIndisponiveis: TShape
+      Left = 253
+      Top = 44
+      Width = 104
+      Height = 73
+      Brush.Color = 16250871
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object lblProdutosIndisponiveis: TLabel
+      Left = 253
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Indispon'#237'veis'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblProdutosIndisponiveisValor: TLabel
+      Left = 253
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblTotalProdutos: TLabel
+      Left = 8
+      Top = 54
+      Width = 129
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Total de produtos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblTotalProdutosValor: TLabel
+      Left = 8
+      Top = 75
+      Width = 129
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object tblProdutos: TFDTable
     BeforePost = tblProdutosBeforePost
+    OnNewRecord = tblProdutosNewRecord
     IndexFieldNames = 'id'
+    OnUpdateRecord = tblProdutosUpdateRecord
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
-    UpdateOptions.UpdateMode = upWhereAll
     TableName = 'ravin.produto'
     Left = 888
     Top = 424
@@ -670,5 +758,17 @@ object frmProdutos: TfrmProdutos
     DataSet = tblProdutos
     Left = 952
     Top = 424
+  end
+  object qryInformacoesGerenciais: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      'SELECT'
+      '(SELECT count(1) from produto) as '#39'Total de Produtos'#39','
+      '(SELECT count(1) from produto where ativo = 1) as '#39'Dispon'#237'veis'#39','
+      
+        '(SELECT count(1) from produto where ativo = 0) as '#39'Indispon'#237'veis' +
+        #39)
+    Left = 632
+    Top = 56
   end
 end

@@ -14,6 +14,12 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.ExtCtrls,
+  Vcl.DBCtrls,
+  Vcl.StdCtrls,
+  Vcl.Mask,
 
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
@@ -24,18 +30,11 @@ uses
   FireDAC.Stan.Async,
   FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
-
-  Vcl.Grids,
-  Vcl.DBGrids,
-  Vcl.ExtCtrls,
-  Vcl.DBCtrls,
-  Vcl.StdCtrls,
-  Vcl.Mask;
+  FireDAC.Comp.Client;
 
 type
   TfrmProdutos = class(TForm)
-    dbnProducts: TDBNavigator;
+    dbnProdutos: TDBNavigator;
     edtId: TDBEdit;
     lblId: TLabel;
     lblNome: TLabel;
@@ -73,20 +72,34 @@ type
     pnlCadastroProdutos: TPanel;
     pnlListaProdutos: TPanel;
     lblListaProdutos: TLabel;
-    grdProducts: TDBGrid;
-    Panel2: TPanel;
-    Shape3: TShape;
-    Shape6: TShape;
-    Shape7: TShape;
+    grdProdutos: TDBGrid;
+    pnlInformacoesGerenciais: TPanel;
     Label2: TLabel;
+    shpTotalProduos: TShape;
+    shpProdutosDisponiveis: TShape;
+    lblProdutosDisponiveis: TLabel;
+    lblProdutosDisponiveisValor: TLabel;
+    shpProdutosIndisponiveis: TShape;
+    lblProdutosIndisponiveis: TLabel;
+    lblProdutosIndisponiveisValor: TLabel;
+    lblTotalProdutos: TLabel;
+    lblTotalProdutosValor: TLabel;
+    qryInformacoesGerenciais: TFDQuery;
     procedure FormShow(Sender: TObject);
     procedure tblProdutosBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure grdProdutosDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure tblProdutosNewRecord(DataSet: TDataSet);
+    procedure tblProdutosUpdateRecord(ASender: TDataSet;
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
   private
     procedure SetarCamposAuditoriaProduto();
     procedure AtivarDatasets();
     procedure DesativarDatasets();
+    procedure CarregarInformacoesGerenciais();
   public
 
   end;
@@ -101,11 +114,28 @@ implementation
 uses
   UdmRavin,
   UformUtils,
-  UiniUtils;
+  UiniUtils,
+  UhackDBGrid;
 
 procedure TfrmProdutos.AtivarDatasets;
 begin
   tblProdutos.Active := true;
+end;
+
+procedure TfrmProdutos.CarregarInformacoesGerenciais;
+begin
+  qryInformacoesGerenciais.Active := false;
+  qryInformacoesGerenciais.Active := true;
+
+  qryInformacoesGerenciais.First;
+
+  lblTotalProdutosValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblProdutosDisponiveisValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblProdutosIndisponiveisValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  qryInformacoesGerenciais.Active := false;
 end;
 
 procedure TfrmProdutos.DesativarDatasets;
@@ -123,11 +153,19 @@ end;
 procedure TfrmProdutos.FormCreate(Sender: TObject);
 begin
   AtivarDatasets();
+  CarregarInformacoesGerenciais();
 end;
 
 procedure TfrmProdutos.FormShow(Sender: TObject);
 begin
   TFormUtils.AlinharCamposDBEdit<TfrmProdutos>(Self);
+end;
+
+procedure TfrmProdutos.grdProdutosDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdProdutos), State, Rect,
+    DataCol, Column);
 end;
 
 procedure TfrmProdutos.SetarCamposAuditoriaProduto();
@@ -148,6 +186,18 @@ end;
 procedure TfrmProdutos.tblProdutosBeforePost(DataSet: TDataSet);
 begin
   SetarCamposAuditoriaProduto();
+end;
+
+procedure TfrmProdutos.tblProdutosNewRecord(DataSet: TDataSet);
+begin
+  CarregarInformacoesGerenciais();
+end;
+
+procedure TfrmProdutos.tblProdutosUpdateRecord(ASender: TDataSet;
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
+begin
+  CarregarInformacoesGerenciais();
 end;
 
 end.

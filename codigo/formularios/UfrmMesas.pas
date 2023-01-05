@@ -111,6 +111,8 @@ type
     procedure tblMesasUpdateRecord(ASender: TDataSet;
       ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
       AOptions: TFDUpdateRowOptions);
+    procedure grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
     procedure SetarCamposAuditoriaMesa();
@@ -128,7 +130,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdmRavin, UformUtils, UiniUtils;
+uses UdmRavin, UformUtils, UiniUtils, UhackDBGrid;
 
 procedure TfrmMesas.AtivarDatasets;
 begin
@@ -178,6 +180,13 @@ procedure TfrmMesas.FormShow(Sender: TObject);
 begin
   TFormUtils.AlinharCamposDBEdit<TfrmMesas>(Self);
   CarregarInformacoesGerenciais();
+end;
+
+procedure TfrmMesas.grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdMesas), State, Rect,
+    DataCol, Column);
 end;
 
 procedure TfrmMesas.SetarCamposAuditoriaMesa;

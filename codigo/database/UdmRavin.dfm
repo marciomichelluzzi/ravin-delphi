@@ -5,10 +5,13 @@ object dmRavin: TdmRavin
   Width = 603
   object cnxBancoDeDados: TFDConnection
     Params.Strings = (
-      'Server='
-      'Port='
+      'Server=localhost'
+      'User_Name=root'
+      'Database=ravin'
+      'Password=root'
       'DriverID=MySQL')
     UpdateOptions.AssignedValues = [uvUpdateMode]
+    Connected = True
     AfterConnect = cnxBancoDeDadosAfterConnect
     BeforeConnect = cnxBancoDeDadosBeforeConnect
     Left = 40

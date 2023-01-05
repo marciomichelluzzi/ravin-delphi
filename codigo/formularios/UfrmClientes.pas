@@ -18,11 +18,13 @@ uses
   Vcl.ComCtrls,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
+  Vcl.Mask,
 
   UfrmBotaoPrimario,
   UfrmBotaoCancelar,
+  UfrmBotaoExcluir,
 
-  Upessoa, UfrmBotaoExcluir, Vcl.Mask;
+  Upessoa, Vcl.NumberBox;
 
 type
   TfrmClientes = class(TForm)
@@ -45,6 +47,7 @@ type
     frmBotaoSalvarRegistro: TfrmBotaoPrimario;
     frmBotaoCancelarCadastro: TfrmBotaoCancelar;
     frmBotaoExcluirRegistro: TfrmBotaoExcluir;
+    nmbId: TNumberBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
@@ -53,11 +56,19 @@ type
     procedure frmBotaoCancelar1spbBotaoCancelarClick(Sender: TObject);
     procedure frmBotaoInserirspbBotaoPrimarioClick(Sender: TObject);
     procedure frmBotaoExcluirRegistrospbBotaoExcluirClick(Sender: TObject);
+    procedure frmBotaoSalvarRegistrospbBotaoPrimarioClick(Sender: TObject);
   private
     procedure CarregarListaClientes();
-    procedure CarregarDadosRegistro(PClienteId: Integer);
+    procedure CarregarCliente(PClienteId: Integer);
     procedure DesalocarClientes(var PListaClientes: TList<TPessoa>);
     procedure SetarCamposCadastroCliente(PCliente: TPessoa);
+    procedure LimparCamposCadastroCliente();
+    procedure MostrarCadastroCliente();
+    procedure MostrarListaClientes();
+    procedure ExcluirCliente();
+    procedure SalvarCliente();
+    procedure CarregarInformacoesGerenciais();
+    procedure SetarCamposAuditoriaComanda();
   public
 
   end;
@@ -69,11 +80,11 @@ implementation
 
 uses
   UformUtils,
-  UpessoaDao;
+  UpessoaDao, UiniUtils;
 
 {$R *.dfm}
 
-procedure TfrmClientes.CarregarDadosRegistro(PClienteId: Integer);
+procedure TfrmClientes.CarregarCliente(PClienteId: Integer);
 var
   LPessoa: TPessoa;
   LPessoaDAO: TPessoaDAO;
@@ -101,6 +112,11 @@ begin
       FreeAndNil(LPessoa);
     end;
   end;
+end;
+
+procedure TfrmClientes.CarregarInformacoesGerenciais;
+begin
+
 end;
 
 procedure TfrmClientes.CarregarListaClientes;
@@ -156,31 +172,7 @@ begin
   FreeAndNil(PListaClientes);
 end;
 
-procedure TfrmClientes.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-  frmClientes := nil;
-end;
-
-procedure TfrmClientes.FormShow(Sender: TObject);
-begin
-  pnlListaClientes.Visible := true;
-  CarregarListaClientes();
-end;
-
-procedure TfrmClientes.frmBotaoCancelar1spbBotaoCancelarClick(Sender: TObject);
-begin
-  pnlListaClientes.Visible := true;
-  pnlCadastroCliente.Visible := false;
-end;
-
-procedure TfrmClientes.frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
-begin
-  Self.Close();
-end;
-
-procedure TfrmClientes.frmBotaoExcluirRegistrospbBotaoExcluirClick
-  (Sender: TObject);
+procedure TfrmClientes.ExcluirCliente;
 var
   LPessoaDAO: TPessoaDAO;
 begin
@@ -191,10 +183,7 @@ begin
 
       ShowMessage('Cliente excluído com sucesso');
 
-      CarregarListaClientes();
-
-      pnlListaClientes.Visible := true;
-      pnlCadastroCliente.Visible := false;
+      MostrarListaClientes();
 
     except
       on E: Exception do
@@ -206,22 +195,121 @@ begin
   end;
 end;
 
+procedure TfrmClientes.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  frmClientes := nil;
+end;
+
+procedure TfrmClientes.FormShow(Sender: TObject);
+begin
+  MostrarListaClientes();
+end;
+
+procedure TfrmClientes.frmBotaoCancelar1spbBotaoCancelarClick(Sender: TObject);
+begin
+  MostrarListaClientes();
+end;
+
+procedure TfrmClientes.frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
+begin
+  Self.Close();
+end;
+
+procedure TfrmClientes.frmBotaoExcluirRegistrospbBotaoExcluirClick
+  (Sender: TObject);
+begin
+  ExcluirCliente();
+end;
+
 procedure TfrmClientes.frmBotaoInserirspbBotaoPrimarioClick(Sender: TObject);
 begin
-  pnlCadastroCliente.Visible := true;
-  pnlListaClientes.Visible := false;
+  MostrarCadastroCliente();
+end;
+
+procedure TfrmClientes.frmBotaoSalvarRegistrospbBotaoPrimarioClick
+  (Sender: TObject);
+begin
+  SalvarCliente();
+end;
+
+procedure TfrmClientes.LimparCamposCadastroCliente;
+begin
+  nmbId.ValueInt := 0;
+  edtNome.Text := '';
+  mskCpf.Text := '';
+  edtTelefone.Text := '';
+  dtpDataNascimento.DateTime := Now();
 end;
 
 procedure TfrmClientes.lvwClientesSelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 begin
+  CarregarCliente(Integer(Item.Data));
+  MostrarCadastroCliente();
+end;
+
+procedure TfrmClientes.MostrarCadastroCliente;
+begin
   pnlCadastroCliente.Visible := true;
+  pnlInformacoesGerenciais.Visible := false;
   pnlListaClientes.Visible := false;
-  CarregarDadosRegistro(Integer(Item.Data));
+end;
+
+procedure TfrmClientes.MostrarListaClientes;
+begin
+  CarregarListaClientes();
+  pnlListaClientes.Visible := true;
+  pnlInformacoesGerenciais.Visible := true;
+  pnlCadastroCliente.Visible := false;
+end;
+
+procedure TfrmClientes.SalvarCliente;
+var
+  LCliente: TPessoa;
+  LPessoaDAO: TPessoaDAO;
+begin
+  try
+    try
+      LPessoaDAO := TPessoaDAO.Create();
+      LCliente := TPessoa.Create();
+
+      LCliente.id := nmbId.ValueInt;
+      LCliente.nome := edtNome.Text;
+      LCliente.tipoPessoa := 'C';
+      LCliente.dataNascimento := dtpDataNascimento.Date;
+      LCliente.cpf := mskCpf.Text;
+      LCliente.ativo := true;
+      LCliente.alteradoEm := Now();
+      LCliente.alteradoPor := 'admin';
+
+      if LCliente.id = 0 then
+      begin
+        LCliente.criadoEm := Now();
+        LCliente.criadoPor := 'admin';
+      end;
+
+      LPessoaDAO.SalvarCliente(LCliente);
+      ShowMessage('Cliente salvo com sucesso');
+      MostrarListaClientes();
+    except
+      on E: Exception do
+        ShowMessage(E.Message);
+    end;
+  finally
+    FreeAndNil(LPessoaDAO);
+    FreeAndNil(LCliente);
+  end;
+end;
+
+procedure TfrmClientes.SetarCamposAuditoriaComanda;
+begin
+
 end;
 
 procedure TfrmClientes.SetarCamposCadastroCliente(PCliente: TPessoa);
 begin
+  nmbId.ValueInt := PCliente.id;
   edtNome.Text := PCliente.nome;
   mskCpf.Text := PCliente.cpf;
   edtTelefone.Text := IntToStr(PCliente.telefone);

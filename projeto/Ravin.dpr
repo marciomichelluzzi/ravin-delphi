@@ -29,7 +29,8 @@ uses
   UvalidaCpf in '..\codigo\validadores\UvalidaCpf.pas',
   UpessoaDao in '..\codigo\dao\UpessoaDao.pas',
   Upessoa in '..\codigo\modelos\Upessoa.pas',
-  UfrmSucesso in '..\codigo\frames\UfrmSucesso.pas' {Frame1: TFrame};
+  UfrmSucesso in '..\codigo\frames\UfrmSucesso.pas' {Frame1: TFrame},
+  UhackDBGrid in '..\codigo\componentes\UhackDBGrid.pas';
 
 {$R *.res}
 

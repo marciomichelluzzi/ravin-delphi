@@ -322,8 +322,6 @@ object frmMesas: TfrmMesas
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 297
-    ExplicitHeight = 463
     object lblListaMesas: TLabel
       AlignWithMargins = True
       Left = 8
@@ -368,6 +366,7 @@ object frmMesas: TfrmMesas
       TitleFont.Height = -16
       TitleFont.Name = 'Roboto'
       TitleFont.Style = []
+      OnDrawColumnCell = grdMesasDrawColumnCell
       Columns = <
         item
           Expanded = False
@@ -448,7 +447,6 @@ object frmMesas: TfrmMesas
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 13
     object Shape3: TShape
       Left = 8
       Top = 44
@@ -494,8 +492,7 @@ object frmMesas: TfrmMesas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 40
-      ExplicitTop = 32
+      ExplicitWidth = 221
     end
     object lblTotalMesas: TLabel
       Left = 8
@@ -509,7 +506,7 @@ object frmMesas: TfrmMesas
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblMesasDisponiveis: TLabel
@@ -524,7 +521,7 @@ object frmMesas: TfrmMesas
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblMesasReservadas: TLabel
@@ -539,7 +536,7 @@ object frmMesas: TfrmMesas
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object Shape1: TShape
@@ -563,65 +560,65 @@ object frmMesas: TfrmMesas
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblTotalMesasValor: TLabel
       Left = 8
-      Top = 81
+      Top = 75
       Width = 104
-      Height = 20
+      Height = 30
       Alignment = taCenter
       AutoSize = False
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
+      Font.Color = clBlack
+      Font.Height = -27
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblMesasDisponiveisValor: TLabel
       Left = 118
-      Top = 81
+      Top = 75
       Width = 104
-      Height = 20
+      Height = 30
       Alignment = taCenter
       AutoSize = False
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
-      Font.Height = -16
+      Font.Height = -27
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblMesasReservadasValor: TLabel
       Left = 228
-      Top = 81
+      Top = 75
       Width = 104
-      Height = 19
+      Height = 30
       Alignment = taCenter
       AutoSize = False
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
+      Font.Color = 35236
+      Font.Height = -27
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblMesasOcupadasValor: TLabel
       Left = 338
-      Top = 81
+      Top = 75
       Width = 104
-      Height = 19
+      Height = 30
       Alignment = taCenter
       AutoSize = False
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
+      Font.Color = clRed
+      Font.Height = -27
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
@@ -634,7 +631,6 @@ object frmMesas: TfrmMesas
     OnUpdateRecord = tblMesasUpdateRecord
     Connection = dmRavin.cnxBancoDeDados
     UpdateOptions.AssignedValues = [uvUpdateMode]
-    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.KeyFields = 'id'
     TableName = 'ravin.mesa'
     Left = 760

@@ -14,6 +14,11 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Vcl.DBCtrls,
+  Vcl.Mask,
+  Vcl.Grids,
+  Vcl.DBGrids,
 
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
@@ -26,13 +31,7 @@ uses
   FireDAC.DApt,
   Data.DB,
   FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
-
-  Vcl.DBCtrls,
-  Vcl.Mask,
-  Vcl.ExtCtrls,
-  Vcl.Grids,
-  Vcl.DBGrids;
+  FireDAC.Comp.Client;
 
 type
   TfrmComandas = class(TForm)
@@ -95,25 +94,44 @@ type
     dtsStatusComandaProduto: TDataSource;
     tblComandaProdutoslookupStatusComandaProdutoNome: TStringField;
     pnlInformacoesGerenciais: TPanel;
-    Shape3: TShape;
-    Shape6: TShape;
-    Shape7: TShape;
-    Label2: TLabel;
+    lblInformacoesGerenciaisTitulo: TLabel;
     pnlCadastroComanda: TPanel;
     lblCadastroComanda: TLabel;
+    qryInformacoesGerenciais: TFDQuery;
+    Shape3: TShape;
+    lblTotalComandas: TLabel;
+    lblTotalComandasValor: TLabel;
+    lblComandasPagas: TLabel;
+    Shape6: TShape;
+    lblComandasPagasValor: TLabel;
+    Shape7: TShape;
+    lblComandasEmAberto: TLabel;
+    lblComandasEmAbertoValor: TLabel;
+    Shape1: TShape;
+    lblComandasFechadas: TLabel;
+    lblComandasFechadasValor: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure tblComandasBeforePost(DataSet: TDataSet);
     procedure tblComandaProdutosBeforePost(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
+    procedure tblComandasUpdateRecord(ASender: TDataSet;
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
+    procedure tblComandasNewRecord(DataSet: TDataSet);
+    procedure dbgComandasDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure dbgComandaProdutosDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
   private
-    { Private declarations }
     procedure SetarCamposAuditoriaComanda();
     procedure SetarCamposAuditoriaComandaProduto();
     procedure AtivarDatasets();
     procedure DesativarDatasets();
+    procedure CarregarInformacoesGerenciais();
   public
-    { Public declarations }
+
   end;
 
 var
@@ -126,7 +144,7 @@ implementation
 uses
   UdmRavin,
   UiniUtils,
-  UformUtils;
+  UformUtils, UhackDBGrid;
 
 procedure TfrmComandas.AtivarDatasets;
 begin
@@ -137,6 +155,38 @@ begin
   tblPessoas.Active := true;
   tblStatusComanda.Active := true;
   tblStatusComandaProduto.Active := true;
+end;
+
+procedure TfrmComandas.CarregarInformacoesGerenciais;
+begin
+  qryInformacoesGerenciais.Active := false;
+  qryInformacoesGerenciais.Active := true;
+
+  qryInformacoesGerenciais.First;
+
+  lblTotalComandasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblComandasEmAbertoValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblComandasFechadasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  lblComandasPagasValor.Caption :=
+    IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
+  qryInformacoesGerenciais.Active := false;
+end;
+
+procedure TfrmComandas.dbgComandaProdutosDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandaProdutos), State,
+    Rect, DataCol, Column);
+end;
+
+procedure TfrmComandas.dbgComandasDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandas), State, Rect,
+    DataCol, Column);
 end;
 
 procedure TfrmComandas.DesativarDatasets;
@@ -165,6 +215,7 @@ end;
 procedure TfrmComandas.FormShow(Sender: TObject);
 begin
   TFormUtils.AlinharCamposDBEdit<TfrmComandas>(Self);
+  CarregarInformacoesGerenciais();
 end;
 
 procedure TfrmComandas.SetarCamposAuditoriaComanda();
@@ -205,6 +256,18 @@ end;
 procedure TfrmComandas.tblComandasBeforePost(DataSet: TDataSet);
 begin
   SetarCamposAuditoriaComanda();
+end;
+
+procedure TfrmComandas.tblComandasNewRecord(DataSet: TDataSet);
+begin
+  CarregarInformacoesGerenciais();
+end;
+
+procedure TfrmComandas.tblComandasUpdateRecord(ASender: TDataSet;
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
+begin
+  CarregarInformacoesGerenciais();
 end;
 
 end.
