@@ -13,8 +13,7 @@ type
   protected
 
   public
-    class procedure Validar(PUsuario: TUsuario; PSenhaConfirmacao: String;
-      PCpf: String);
+    class procedure Validar(PUsuario: TUsuario; PSenhaConfirmacao: String; PCpf: String);
   end;
 
 implementation
@@ -23,21 +22,8 @@ implementation
 
 uses UvalidaCpf;
 
-class procedure TValidadorUsuario.Validar(PUsuario: TUsuario;
-  PSenhaConfirmacao: String; PCpf: String);
+class procedure TValidadorUsuario.Validar(PUsuario: TUsuario; PSenhaConfirmacao: String; PCpf: String);
 begin
-
-  // Nome não pode ser vazio
-  // Login não pode ser vazio
-  // CPF é vazio
-  // Quantidade de caracteres do login
-  // Só numeros no CPF
-  // Nome não pode aceitar numero
-  // Validar caracteres especiais nos campos
-  // CPF não pode ser vazio
-  // Senha = Confirmação Senha
-  // CPF é valido
-
   if not isCPF(PCpf) then
   begin
     raise Exception.Create('CPF inválido');

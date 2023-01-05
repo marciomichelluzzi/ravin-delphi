@@ -15,10 +15,9 @@ var
   s, i, r, peso: integer;
 begin
   // length - retorna o tamanho da string (CPF é um número formado por 11 dígitos)
-  if ((CPF = '00000000000') or (CPF = '11111111111') or (CPF = '22222222222') or
-    (CPF = '33333333333') or (CPF = '44444444444') or (CPF = '55555555555') or
-    (CPF = '66666666666') or (CPF = '77777777777') or (CPF = '88888888888') or
-    (CPF = '99999999999') or (length(CPF) <> 11)) then
+  if ((CPF = '00000000000') or (CPF = '11111111111') or (CPF = '22222222222') or (CPF = '33333333333') or (CPF = '44444444444') or
+    (CPF = '55555555555') or (CPF = '66666666666') or (CPF = '77777777777') or (CPF = '88888888888') or (CPF = '99999999999') or (length(CPF) <> 11))
+  then
   begin
     isCPF := false;
     exit;
@@ -67,8 +66,7 @@ end;
 
 function imprimeCPF(CPF: string): string;
 begin
-  imprimeCPF := copy(CPF, 1, 3) + '.' + copy(CPF, 4, 3) + '.' + copy(CPF, 7, 3)
-    + '-' + copy(CPF, 10, 2);
+  imprimeCPF := copy(CPF, 1, 3) + '.' + copy(CPF, 4, 3) + '.' + copy(CPF, 7, 3) + '-' + copy(CPF, 10, 2);
 end;
 
 end.

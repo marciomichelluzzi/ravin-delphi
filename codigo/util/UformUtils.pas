@@ -16,9 +16,7 @@ type
   public
 
     class procedure SetarFormularioPrincipal(PNovoFormulario: TForm);
-    class procedure MostrarFormulario<T: TForm>(PFormlarioNovo: TForm;
-      PFormularioAnterior: TForm = nil;
-      PSetarFormularioPrincipal: Boolean = true;
+    class procedure MostrarFormulario<T: TForm>(PFormlarioNovo: TForm; PFormularioAnterior: TForm = nil; PSetarFormularioPrincipal: Boolean = true;
       PFecharFormAnterior: Boolean = true);
     class procedure AlinharCamposDBEdit<T: TForm>(PFormulario: TForm);
 
@@ -42,8 +40,7 @@ begin
       TDBEdit(PFormulario.Components[i]).Field.Alignment := taLeftJustify;
 end;
 
-class procedure TFormUtils.MostrarFormulario<T>(PFormlarioNovo: TForm;
-  PFormularioAnterior: TForm; PSetarFormularioPrincipal: Boolean;
+class procedure TFormUtils.MostrarFormulario<T>(PFormlarioNovo: TForm; PFormularioAnterior: TForm; PSetarFormularioPrincipal: Boolean;
   PFecharFormAnterior: Boolean);
 begin
   // Verifica se é necessário instanciar o novo formulário

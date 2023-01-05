@@ -1200,6 +1200,7 @@ object frmLogo: TfrmLogo
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      ExplicitWidth = 100
     end
   end
 end

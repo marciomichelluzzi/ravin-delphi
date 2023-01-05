@@ -80,8 +80,7 @@ var
   LDeveLogar: Boolean;
 begin
   // Carregando se o usuário está logado
-  LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGADO);
+  LLogado := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO);
 
   LDeveLogar := VerificarDeveLogar();
 
@@ -110,11 +109,9 @@ var
   LDataString: String;
   LDataUltimoLogin: TDateTime;
   LDataExpiracaoLogin: TDateTime;
-  LExisteDataUltimoLogin: Boolean;
 begin
   // Carregando a datahora do ultimo login do usuário
-  LDataString := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN);
+  LDataString := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN);
 
   try
     // Converte a data de String para DateTime

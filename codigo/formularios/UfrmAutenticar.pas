@@ -90,15 +90,12 @@ begin
         begin
 
           // Registrando a data do ultimo login do usuário
-          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-            TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN, DateTimeToStr(Now));
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.DATAHORA_ULTIMO_LOGIN, DateTimeToStr(Now));
 
           // Registrar que o usuário efetuou o login com sucesso
-          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-            TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO, TIniUtils.VALOR_VERDADEIRO);
 
-          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS,
-            TPROPRIEDADE.LOGIN_ATUAL, LLogin);
+          TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGIN_ATUAL, LLogin);
 
           // Mostrando o forma de Painel de Gestão
           TFormUtils.MostrarFormulario<TfrmPainelGestao>(frmPainelGestao, Self);
@@ -130,8 +127,7 @@ begin
   frmAutenticar := nil;
 end;
 
-procedure TfrmAutenticar.frmBotaoPrimarioAutenticarspbBotaoPrimarioClick
-  (Sender: TObject);
+procedure TfrmAutenticar.frmBotaoPrimarioAutenticarspbBotaoPrimarioClick(Sender: TObject);
 begin
   Autenticar();
 end;

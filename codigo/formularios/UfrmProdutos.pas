@@ -89,12 +89,9 @@ type
     procedure tblProdutosBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure grdProdutosDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure grdProdutosDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure tblProdutosNewRecord(DataSet: TDataSet);
-    procedure tblProdutosUpdateRecord(ASender: TDataSet;
-      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
-      AOptions: TFDUpdateRowOptions);
+    procedure tblProdutosUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction; AOptions: TFDUpdateRowOptions);
   private
     procedure SetarCamposAuditoriaProduto();
     procedure AtivarDatasets();
@@ -129,12 +126,9 @@ begin
 
   qryInformacoesGerenciais.First;
 
-  lblTotalProdutosValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
-  lblProdutosDisponiveisValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
-  lblProdutosIndisponiveisValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  lblTotalProdutosValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblProdutosDisponiveisValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblProdutosIndisponiveisValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
   qryInformacoesGerenciais.Active := false;
 end;
 
@@ -161,26 +155,23 @@ begin
   TFormUtils.AlinharCamposDBEdit<TfrmProdutos>(Self);
 end;
 
-procedure TfrmProdutos.grdProdutosDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+procedure TfrmProdutos.grdProdutosDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdProdutos), State, Rect,
-    DataCol, Column);
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdProdutos), State, Rect, DataCol, Column);
 end;
 
 procedure TfrmProdutos.SetarCamposAuditoriaProduto();
 var
   LLogin: String;
 begin
-  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGIN_ATUAL);
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGIN_ATUAL);
   if tblProdutos.State = TDataSetState.dsInsert then
   begin
-    tblProdutoscriadoPor.Value := LLogin;
-    tblProdutoscriadoEm.Value := Now();
+    tblProdutoscriadoPor.AsString := LLogin;
+    tblProdutoscriadoEm.AsDateTime := Now();
   end;
-  tblProdutosalteradoPor.Value := LLogin;
-  tblProdutosalteradoEm.Value := Now();
+  tblProdutosalteradoPor.AsString := LLogin;
+  tblProdutosalteradoEm.AsDateTime := Now();
 end;
 
 procedure TfrmProdutos.tblProdutosBeforePost(DataSet: TDataSet);
@@ -193,8 +184,7 @@ begin
   CarregarInformacoesGerenciais();
 end;
 
-procedure TfrmProdutos.tblProdutosUpdateRecord(ASender: TDataSet;
-  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+procedure TfrmProdutos.tblProdutosUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
   AOptions: TFDUpdateRowOptions);
 begin
   CarregarInformacoesGerenciais();

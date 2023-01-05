@@ -68,8 +68,7 @@ begin
   frmRegistrar := nil;
 end;
 
-procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(
-  Sender: TObject);
+procedure TfrmRegistrar.frmBotaoPrimarioRegistrarspbBotaoPrimarioClick(Sender: TObject);
 begin
   Registrar();
 end;

@@ -115,23 +115,19 @@ type
     procedure tblComandasBeforePost(DataSet: TDataSet);
     procedure tblComandaProdutosBeforePost(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
-    procedure tblComandasUpdateRecord(ASender: TDataSet;
-      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
-      AOptions: TFDUpdateRowOptions);
+    procedure tblComandasUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction; AOptions: TFDUpdateRowOptions);
     procedure tblComandasNewRecord(DataSet: TDataSet);
-    procedure dbgComandasDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure dbgComandaProdutosDrawColumnCell(Sender: TObject;
-      const Rect: TRect; DataCol: Integer; Column: TColumn;
-      State: TGridDrawState);
+    procedure dbgComandasDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure dbgComandaProdutosDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
+    { Private declarations }
     procedure SetarCamposAuditoriaComanda();
     procedure SetarCamposAuditoriaComandaProduto();
     procedure AtivarDatasets();
     procedure DesativarDatasets();
     procedure CarregarInformacoesGerenciais();
   public
-
+    { Public declarations }
   end;
 
 var
@@ -164,29 +160,21 @@ begin
 
   qryInformacoesGerenciais.First;
 
-  lblTotalComandasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
-  lblComandasEmAbertoValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
-  lblComandasFechadasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
-  lblComandasPagasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
+  lblTotalComandasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblComandasEmAbertoValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblComandasFechadasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  lblComandasPagasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
   qryInformacoesGerenciais.Active := false;
 end;
 
-procedure TfrmComandas.dbgComandaProdutosDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+procedure TfrmComandas.dbgComandaProdutosDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandaProdutos), State,
-    Rect, DataCol, Column);
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandaProdutos), State, Rect, DataCol, Column);
 end;
 
-procedure TfrmComandas.dbgComandasDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+procedure TfrmComandas.dbgComandasDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandas), State, Rect,
-    DataCol, Column);
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(dbgComandas), State, Rect, DataCol, Column);
 end;
 
 procedure TfrmComandas.DesativarDatasets;
@@ -222,30 +210,28 @@ procedure TfrmComandas.SetarCamposAuditoriaComanda();
 var
   LLogin: String;
 begin
-  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGIN_ATUAL);
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGIN_ATUAL);
   if tblComandas.State = TDataSetState.dsInsert then
   begin
-    tblComandascriadoPor.Value := LLogin;
-    tblComandascriadoEm.Value := Now();
+    tblComandascriadoPor.AsString := LLogin;
+    tblComandascriadoEm.AsDateTime := Now();
   end;
-  tblComandasalteradoPor.Value := LLogin;
-  tblComandasalteradoEm.Value := Now();
+  tblComandasalteradoPor.AsString := LLogin;
+  tblComandasalteradoEm.AsDateTime := Now();
 end;
 
 procedure TfrmComandas.SetarCamposAuditoriaComandaProduto();
 var
   LLogin: String;
 begin
-  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGIN_ATUAL);
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGIN_ATUAL);
   if tblComandaProdutos.State = TDataSetState.dsInsert then
   begin
-    tblComandaProdutoscriadoPor.Value := LLogin;
-    tblComandaProdutoscriadoEm.Value := Now();
+    tblComandaProdutoscriadoPor.AsString := LLogin;
+    tblComandaProdutoscriadoEm.AsDateTime := Now();
   end;
-  tblComandaProdutosalteradoPor.Value := LLogin;
-  tblComandaProdutosalteradoEm.Value := Now();
+  tblComandaProdutosalteradoPor.AsString := LLogin;
+  tblComandaProdutosalteradoEm.AsDateTime := Now();
 end;
 
 procedure TfrmComandas.tblComandaProdutosBeforePost(DataSet: TDataSet);
@@ -263,8 +249,7 @@ begin
   CarregarInformacoesGerenciais();
 end;
 
-procedure TfrmComandas.tblComandasUpdateRecord(ASender: TDataSet;
-  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+procedure TfrmComandas.tblComandasUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
   AOptions: TFDUpdateRowOptions);
 begin
   CarregarInformacoesGerenciais();

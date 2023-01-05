@@ -108,11 +108,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure tblMesasBeforePost(DataSet: TDataSet);
     procedure tblMesasNewRecord(DataSet: TDataSet);
-    procedure tblMesasUpdateRecord(ASender: TDataSet;
-      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
-      AOptions: TFDUpdateRowOptions);
-    procedure grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure tblMesasUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction; AOptions: TFDUpdateRowOptions);
+    procedure grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
     procedure SetarCamposAuditoriaMesa();
@@ -146,14 +143,10 @@ begin
 
   qryInformacoesGerenciais.First;
 
-  lblTotalMesasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
-  lblMesasDisponiveisValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
-  lblMesasReservadasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
-  lblMesasOcupadasValor.Caption :=
-    IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
+  lblTotalMesasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblMesasDisponiveisValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblMesasReservadasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  lblMesasOcupadasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[3].AsInteger);
   qryInformacoesGerenciais.Active := false;
 end;
 
@@ -182,26 +175,23 @@ begin
   CarregarInformacoesGerenciais();
 end;
 
-procedure TfrmMesas.grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+procedure TfrmMesas.grdMesasDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdMesas), State, Rect,
-    DataCol, Column);
+  UhackDBGrid.SetarLinhaSelecionada(THackDBGrid(grdMesas), State, Rect, DataCol, Column);
 end;
 
 procedure TfrmMesas.SetarCamposAuditoriaMesa;
 var
   LLogin: String;
 begin
-  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS,
-    TPROPRIEDADE.LOGIN_ATUAL);
+  LLogin := TIniUtils.lerPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGIN_ATUAL);
   if tblMesas.State = TDataSetState.dsInsert then
   begin
-    tblMesascriadoPor.Value := LLogin;
-    tblMesascriadoEm.Value := Now();
+    tblMesascriadoPor.AsString := LLogin;
+    tblMesascriadoEm.AsDateTime := Now();
   end;
-  tblMesasalteradoPor.Value := LLogin;
-  tblMesasalteradoEm.Value := Now();
+  tblMesasalteradoPor.AsString := LLogin;
+  tblMesasalteradoEm.AsDateTime := Now();
 end;
 
 procedure TfrmMesas.tblMesasBeforePost(DataSet: TDataSet);
@@ -214,9 +204,7 @@ begin
   CarregarInformacoesGerenciais();
 end;
 
-procedure TfrmMesas.tblMesasUpdateRecord(ASender: TDataSet;
-  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
-  AOptions: TFDUpdateRowOptions);
+procedure TfrmMesas.tblMesasUpdateRecord(ASender: TDataSet; ARequest: TFDUpdateRequest; var AAction: TFDErrorAction; AOptions: TFDUpdateRowOptions);
 begin
   CarregarInformacoesGerenciais();
 end;

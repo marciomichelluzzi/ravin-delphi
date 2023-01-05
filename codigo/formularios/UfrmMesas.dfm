@@ -326,7 +326,7 @@ object frmMesas: TfrmMesas
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 992
+      Width = 143
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -340,7 +340,6 @@ object frmMesas: TfrmMesas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 143
     end
     object grdMesas: TDBGrid
       AlignWithMargins = True
@@ -478,7 +477,7 @@ object frmMesas: TfrmMesas
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 992
+      Width = 221
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -492,7 +491,6 @@ object frmMesas: TfrmMesas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 221
     end
     object lblTotalMesas: TLabel
       Left = 8

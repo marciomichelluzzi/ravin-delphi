@@ -19,12 +19,13 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Mask,
+  Vcl.NumberBox,
 
   UfrmBotaoPrimario,
   UfrmBotaoCancelar,
   UfrmBotaoExcluir,
 
-  Upessoa, Vcl.NumberBox;
+  Upessoa;
 
 type
   TfrmClientes = class(TForm)
@@ -51,13 +52,13 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
-    procedure lvwClientesSelectItem(Sender: TObject; Item: TListItem;
-      Selected: Boolean);
+    procedure lvwClientesSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
     procedure frmBotaoCancelar1spbBotaoCancelarClick(Sender: TObject);
     procedure frmBotaoInserirspbBotaoPrimarioClick(Sender: TObject);
     procedure frmBotaoExcluirRegistrospbBotaoExcluirClick(Sender: TObject);
     procedure frmBotaoSalvarRegistrospbBotaoPrimarioClick(Sender: TObject);
   private
+    { Private declarations }
     procedure CarregarListaClientes();
     procedure CarregarCliente(PClienteId: Integer);
     procedure DesalocarClientes(var PListaClientes: TList<TPessoa>);
@@ -67,10 +68,8 @@ type
     procedure MostrarListaClientes();
     procedure ExcluirCliente();
     procedure SalvarCliente();
-    procedure CarregarInformacoesGerenciais();
-    procedure SetarCamposAuditoriaComanda();
   public
-
+    { Public declarations }
   end;
 
 var
@@ -80,7 +79,8 @@ implementation
 
 uses
   UformUtils,
-  UpessoaDao, UiniUtils;
+  UpessoaDao,
+  UiniUtils;
 
 {$R *.dfm}
 
@@ -112,11 +112,6 @@ begin
       FreeAndNil(LPessoa);
     end;
   end;
-end;
-
-procedure TfrmClientes.CarregarInformacoesGerenciais;
-begin
-
 end;
 
 procedure TfrmClientes.CarregarListaClientes;
@@ -187,8 +182,7 @@ begin
 
     except
       on E: Exception do
-        ShowMessage
-          ('Você não pode excluir esse cliente pois ele já tem um histórico de comandas no sistema');
+        ShowMessage('Você não pode excluir esse cliente pois ele já tem um histórico de comandas no sistema');
     end;
   finally
     FreeAndNil(LPessoaDAO);
@@ -216,19 +210,18 @@ begin
   Self.Close();
 end;
 
-procedure TfrmClientes.frmBotaoExcluirRegistrospbBotaoExcluirClick
-  (Sender: TObject);
+procedure TfrmClientes.frmBotaoExcluirRegistrospbBotaoExcluirClick(Sender: TObject);
 begin
   ExcluirCliente();
 end;
 
 procedure TfrmClientes.frmBotaoInserirspbBotaoPrimarioClick(Sender: TObject);
 begin
+  LimparCamposCadastroCliente();
   MostrarCadastroCliente();
 end;
 
-procedure TfrmClientes.frmBotaoSalvarRegistrospbBotaoPrimarioClick
-  (Sender: TObject);
+procedure TfrmClientes.frmBotaoSalvarRegistrospbBotaoPrimarioClick(Sender: TObject);
 begin
   SalvarCliente();
 end;
@@ -242,8 +235,7 @@ begin
   dtpDataNascimento.DateTime := Now();
 end;
 
-procedure TfrmClientes.lvwClientesSelectItem(Sender: TObject; Item: TListItem;
-  Selected: Boolean);
+procedure TfrmClientes.lvwClientesSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   CarregarCliente(Integer(Item.Data));
   MostrarCadastroCliente();
@@ -300,11 +292,6 @@ begin
     FreeAndNil(LPessoaDAO);
     FreeAndNil(LCliente);
   end;
-end;
-
-procedure TfrmClientes.SetarCamposAuditoriaComanda;
-begin
-
 end;
 
 procedure TfrmClientes.SetarCamposCadastroCliente(PCliente: TPessoa);

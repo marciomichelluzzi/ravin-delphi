@@ -17,12 +17,26 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   Vcl.Imaging.pngimage,
+  Vcl.Buttons,
 
-  UfrmItemMenu, Vcl.Buttons, VclTee.TeeGDIPlus, VclTee.TeEngine,
-  VclTee.TeeProcs, VclTee.Chart, VclTee.Series, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  VclTee.TeeGDIPlus,
+  VclTee.TeEngine,
+  VclTee.TeeProcs,
+  VclTee.Chart,
+  VclTee.Series,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TfrmPainelGestao = class(TForm)
@@ -85,8 +99,6 @@ uses
   UformUtils, UdmRavin;
 
 procedure TfrmPainelGestao.CarregarGraficoQuantidadeVendida;
-var
-  LChartSerie: TBarSeries;
 begin
   qryQuantidadeVendida.Active := false;
   qryQuantidadeVendida.Active := true;
@@ -95,8 +107,7 @@ begin
 
   while not qryQuantidadeVendida.Eof do
   begin
-    Chart1.Series[0].Add(qryQuantidadeVendida.Fields[1].AsFloat,
-      qryQuantidadeVendida.Fields[0].AsString);
+    Chart1.Series[0].Add(qryQuantidadeVendida.Fields[1].AsFloat, qryQuantidadeVendida.Fields[0].AsString);
     qryQuantidadeVendida.Next();
   end;
 
@@ -120,15 +131,11 @@ begin
 end;
 
 procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
-var
-  FDialog: TForm;
 begin
   TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
 end;
 
 procedure TfrmPainelGestao.spbClientesClick(Sender: TObject);
-var
-  FDialog: TForm;
 begin
   TFormUtils.MostrarFormulario<TfrmClientes>(frmClientes);
 end;
@@ -160,8 +167,7 @@ end;
 
 procedure TfrmPainelGestao.spbSairClick(Sender: TObject);
 begin
-  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO,
-    TIniUtils.VALOR_FALSO);
+  TIniUtils.gravarPropriedade(TSECAO.INFORMACOES_GERAIS, TPROPRIEDADE.LOGADO, TIniUtils.VALOR_FALSO);
 
   TFormUtils.MostrarFormulario<TfrmAutenticar>(frmAutenticar, Self);
 end;

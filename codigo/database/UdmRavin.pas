@@ -60,8 +60,7 @@ var
   LCaminhoBaseDados: String;
   LCriarBaseDados: Boolean;
 begin
-  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO,
-    TPROPRIEDADE.CAMINHO_BANCO);
+  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.CAMINHO_BANCO);
   LCriarBaseDados := not FileExists(LCaminhoBaseDados, true);
 
   If LCriarBaseDados then
@@ -76,26 +75,19 @@ var
   LCaminhoBaseDados: String;
   LCriarBaseDados: Boolean;
 begin
-  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO,
-    TPROPRIEDADE.CAMINHO_BANCO);
+  LCaminhoBaseDados := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.CAMINHO_BANCO);
   LCriarBaseDados := not FileExists(LCaminhoBaseDados, true);
   with cnxBancoDeDados do
   begin
-    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-      TPROPRIEDADE.SERVIDOR_BANCO);
-    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-      TPROPRIEDADE.USUARIO_BANCO);
-    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-      TPROPRIEDADE.SENHA_BANCO);
-    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-      TPROPRIEDADE.DRIVER_ID);
-    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-      TPROPRIEDADE.PORTA_BANCO);
+    Params.Values['Server'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.SERVIDOR_BANCO);
+    Params.Values['User_Name'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.USUARIO_BANCO);
+    Params.Values['Password'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.SENHA_BANCO);
+    Params.Values['DriverID'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.DRIVER_ID);
+    Params.Values['Port'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.PORTA_BANCO);
 
     if not LCriarBaseDados then
     begin
-      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.BANCO,
-        TPROPRIEDADE.NOME_BANCO);
+      Params.Values['Database'] := TIniUtils.lerPropriedade(TSECAO.BANCO, TPROPRIEDADE.NOME_BANCO);
     end;
   end;
 end;
@@ -103,8 +95,7 @@ end;
 procedure TdmRavin.CriarTabelas;
 begin
   try
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource
-      ('createTables.sql', 'ravin'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('createTables.sql', 'ravin'));
   except
     on E: Exception do
       ShowMessage(E.Message);
@@ -115,8 +106,7 @@ procedure TdmRavin.InserirDados;
 begin
   try
     cnxBancoDeDados.StartTransaction();
-    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource
-      ('insertValues.sql', 'ravin'));
+    cnxBancoDeDados.ExecSQL(TResourceUtils.carregarArquivoResource('insertValues.sql', 'ravin'));
     cnxBancoDeDados.Commit();
   except
     on E: Exception do
@@ -129,8 +119,7 @@ end;
 
 procedure TdmRavin.DataModuleCreate(Sender: TObject);
 begin
-  drvBancoDeDados.VendorLib := TPath.Combine(TPath.GetDocumentsPath,
-    'ravin\libmysql.dll');
+  drvBancoDeDados.VendorLib := TPath.Combine(TPath.GetDocumentsPath, 'ravin\libmysql.dll');
   if not cnxBancoDeDados.Connected then
   begin
     cnxBancoDeDados.Connected := true;

@@ -36,7 +36,7 @@ object frmComandas: TfrmComandas
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 577
+      Width = 288
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -50,7 +50,6 @@ object frmComandas: TfrmComandas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 288
     end
     object dbgComandaProdutos: TDBGrid
       AlignWithMargins = True
@@ -475,7 +474,7 @@ object frmComandas: TfrmComandas
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 992
+      Width = 221
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -489,7 +488,6 @@ object frmComandas: TfrmComandas
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 221
     end
     object Shape3: TShape
       Left = 8

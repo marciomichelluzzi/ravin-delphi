@@ -4,7 +4,9 @@ interface
 
 uses
   System.SysUtils,
+  Data.DB,
   Uusuario,
+  FireDAC.Stan.Param,
   FireDAC.Comp.Client,
   System.Generics.Collections;
 
@@ -15,8 +17,7 @@ type
   protected
 
   public
-    function BuscarUsuarioPorLoginSenha(PLogin: String; PSenha: String)
-      : TUsuario;
+    function BuscarUsuarioPorLoginSenha(PLogin: String; PSenha: String): TUsuario;
     function BuscarTodosUsuarios(): TList<TUsuario>;
     procedure InserirUsuario(PUsuario: TUsuario);
   end;
@@ -60,21 +61,19 @@ begin
     LQuery.Next;
   end;
 
-  Result:= LLista;
+  Result := LLista;
 
   FreeAndNil(LQuery);
 end;
 
-function TUsuarioDAO.BuscarUsuarioPorLoginSenha(PLogin, PSenha: String)
-  : TUsuario;
+function TUsuarioDAO.BuscarUsuarioPorLoginSenha(PLogin, PSenha: String): TUsuario;
 var
   LQuery: TFDQuery;
   LUsuario: TUsuario;
 begin
   LQuery := TFDQuery.Create(nil);
   LQuery.Connection := dmRavin.cnxBancoDeDados;
-  LQuery.SQL.Text := ' SELECT * FROM usuario ' +
-    ' WHERE login = :login AND senha = :senha ';
+  LQuery.SQL.Text := ' SELECT * FROM usuario ' + ' WHERE login = :login AND senha = :senha ';
   LQuery.ParamByName('login').AsString := PLogin;
   LQuery.ParamByName('senha').AsString := PSenha;
   LQuery.Open();
@@ -107,11 +106,11 @@ begin
   with LQuery do
   begin
     Connection := dmRavin.cnxBancoDeDados;
-    SQL.Add(' INSERT INTO usuario ');
-    SQL.Add(' (login, senha, pessoaId, criadoEm, ');
-    SQL.Add(' criadoPor, alteradoEm, alteradoPor) ');
-    SQL.Add(' VALUES (:login, :senha, :pessoaId, ');
-    SQL.Add(' :criadoEm, :criadoPor, :alteradoEm, :alteradoPor)');
+    SQL.add(' INSERT INTO usuario ');
+    SQL.add(' (login, senha, pessoaId, criadoEm, ');
+    SQL.add(' criadoPor, alteradoEm, alteradoPor) ');
+    SQL.add(' VALUES (:login, :senha, :pessoaId, ');
+    SQL.add(' :criadoEm, :criadoPor, :alteradoEm, :alteradoPor)');
 
     ParamByName('login').AsString := PUsuario.login;
     ParamByName('senha').AsString := PUsuario.senha;

@@ -361,7 +361,7 @@ object frmProdutos: TfrmProdutos
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 992
+      Width = 166
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -375,7 +375,6 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 166
     end
     object grdProdutos: TDBGrid
       AlignWithMargins = True
@@ -532,12 +531,11 @@ object frmProdutos: TfrmProdutos
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 3
     object Label2: TLabel
       AlignWithMargins = True
       Left = 8
       Top = 8
-      Width = 992
+      Width = 221
       Height = 25
       Margins.Left = 8
       Margins.Top = 8
@@ -551,7 +549,6 @@ object frmProdutos: TfrmProdutos
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 221
     end
     object shpTotalProduos: TShape
       Left = 8

@@ -6,6 +6,7 @@ uses
   System.SysUtils,
   System.Generics.Collections,
 
+  FireDAC.Stan.Param,
   FireDAC.Comp.Client,
   Upessoa;
 
@@ -41,11 +42,9 @@ begin
   try
     LQuery := TFDQuery.Create(nil);
     LQuery.Connection := dmRavin.cnxBancoDeDados;
-    LQuery.SQL.Text := 'UPDATE pessoa SET ' +
-      ' nome = :NOME, cpf = :CPF, dataNascimento = :DATANASCIMENTO, telefone = :TELEFONE, '
-      + ' tipoPessoa = :TIPOPESSOA, ativo = :ATIVO, criadoEm = :CRIADOEM, ' +
-      ' criadoPor = :CRIADOPOR, alteradoEm = :ALTERADOEM, alteradoPor = :ALTERADOPOR '
-      + ' WHERE id = :ID';
+    LQuery.SQL.Text := 'UPDATE pessoa SET ' + ' nome = :NOME, cpf = :CPF, dataNascimento = :DATANASCIMENTO, telefone = :TELEFONE, ' +
+      ' tipoPessoa = :TIPOPESSOA, ativo = :ATIVO, criadoEm = :CRIADOEM, ' +
+      ' criadoPor = :CRIADOPOR, alteradoEm = :ALTERADOEM, alteradoPor = :ALTERADOPOR ' + ' WHERE id = :ID';
     LQuery.ParamByName('NOME').AsString := PPessoa.Nome;
     LQuery.ParamByName('CPF').AsString := PPessoa.Cpf;
     LQuery.ParamByName('DATANASCIMENTO').AsDate := PPessoa.DataNascimento;
@@ -72,8 +71,7 @@ var
 begin
   LQuery := TFDQuery.Create(nil);
   LQuery.Connection := dmRavin.cnxBancoDeDados;
-  LQuery.SQL.Text := ' SELECT * FROM pessoa ' +
-    ' WHERE tipoPessoa = ''C'' and id = :ID ';
+  LQuery.SQL.Text := ' SELECT * FROM pessoa ' + ' WHERE tipoPessoa = ''C'' and id = :ID ';
   LQuery.ParamByName('ID').AsInteger := PClienteId;
   LQuery.Open();
 
@@ -161,8 +159,7 @@ var
 begin
   LQuery := TFDQuery.Create(nil);
   LQuery.Connection := dmRavin.cnxBancoDeDados;
-  LQuery.SQL.Text := 'INSERT INTO pessoa ' +
-    '(nome, cpf, dataNascimento, telefone, tipoPessoa, ativo, criadoEm, criadoPor, alteradoEm, alteradoPor) '
+  LQuery.SQL.Text := 'INSERT INTO pessoa ' + '(nome, cpf, dataNascimento, telefone, tipoPessoa, ativo, criadoEm, criadoPor, alteradoEm, alteradoPor) '
     + ' VALUES (:NOME, :CPF, :DATANASCIMENTO, :TELEFONE, :TIPOPESSOA, :ATIVO, :CRIADOEM, :CRIADOPOR, :ALTERADOEM, :ALTERADOPOR)';
   LQuery.ParamByName('NOME').AsString := PPessoa.Nome;
   LQuery.ParamByName('CPF').AsString := PPessoa.Cpf;

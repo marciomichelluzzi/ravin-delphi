@@ -4,7 +4,6 @@ uses
   Vcl.Forms,
   UfrmCartaoPainelGestao in '..\codigo\frames\UfrmCartaoPainelGestao.pas' {frmCartaoPainelControle: TFrame},
   UfrmLogomarca in '..\codigo\frames\UfrmLogomarca.pas' {frmLogo: TFrame},
-  UfrmItemMenu in '..\codigo\frames\UfrmItemMenu.pas' {frmMenuItem: TFrame},
   UdmRavin in '..\codigo\database\UdmRavin.pas' {dmRavin: TDataModule},
   UfrmSplash in '..\codigo\formularios\UfrmSplash.pas' {frmSplash},
   UfrmMesas in '..\codigo\formularios\UfrmMesas.pas' {frmMesas},
@@ -21,7 +20,6 @@ uses
   UfrmRegistrar in '..\codigo\formularios\UfrmRegistrar.pas' {frmRegistrar},
   UiniUtils in '..\codigo\util\UiniUtils.pas',
   UvalidadorUsuario in '..\codigo\validadores\UvalidadorUsuario.pas',
-  Ucomanda in '..\codigo\modelos\Ucomanda.pas',
   UfrmBotaoExcluir in '..\codigo\frames\UfrmBotaoExcluir.pas' {frmBotaoExcluir: TFrame},
   UfrmBotaoCancelar in '..\codigo\frames\UfrmBotaoCancelar.pas' {frmBotaoCancelar: TFrame},
   UfrmClientes in '..\codigo\formularios\UfrmClientes.pas' {frmClientes},
@@ -29,7 +27,6 @@ uses
   UvalidaCpf in '..\codigo\validadores\UvalidaCpf.pas',
   UpessoaDao in '..\codigo\dao\UpessoaDao.pas',
   Upessoa in '..\codigo\modelos\Upessoa.pas',
-  UfrmSucesso in '..\codigo\frames\UfrmSucesso.pas' {Frame1: TFrame},
   UhackDBGrid in '..\codigo\componentes\UhackDBGrid.pas';
 
 {$R *.res}
