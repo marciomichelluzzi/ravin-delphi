@@ -1,15 +1,8 @@
-﻿[Shape7]
-Coordinates=186,568,59,36
-
-[pnlMenu]
+﻿[pnlMenu]
 Coordinates=559,364,64,58
 
 [frmComandas.dtsPessoas]
 Coordinates=498,364,165,36
-
-[Chart1]
-Coordinates=322,364,53,58
-Visible=True
 
 [spbComandas]
 Coordinates=79,568,97,36
@@ -17,17 +10,8 @@ Coordinates=79,568,97,36
 [frmComandas.tblComandas]
 Coordinates=403,10,174,344
 
-[Shape1]
-Coordinates=10,568,59,36
-
-[Shape3]
-Coordinates=883,500,59,36
-
 [spbClientes]
 Coordinates=791,500,82,36
-
-[Shape6]
-Coordinates=722,500,59,36
 
 [frmComandas.dtsComandaProdutos]
 Coordinates=0,0,222,36
@@ -46,9 +30,6 @@ Coordinates=10,500,249,58
 
 [spbProdutos]
 Coordinates=542,500,87,36
-
-[Label2]
-Coordinates=259,364,53,58
 
 [spbConfiguracoes]
 Coordinates=414,500,118,36
@@ -71,26 +52,14 @@ Coordinates=174,10,219,344
 [frmComandas.tblProdutos]
 Coordinates=10,432,164,58
 
-[Label1]
-Coordinates=743,10,53,58
-
 [spbSair]
 Coordinates=346,500,58,36
 
 [frmComandas.qryInformacoesGerenciais]
 Coordinates=740,432,249,58
 
-[Panel2]
-Coordinates=871,10,55,58
-
 [frmComandas.dtsProdutos]
 Coordinates=498,441,167,36
-
-[pnlInformacoesGerenciais]
-Coordinates=385,364,164,58
-
-[lblInformacoesGerenciais]
-Coordinates=184,432,160,58
 
 [pnlFundoPainelGestao]
 Coordinates=633,364,145,58
@@ -100,9 +69,6 @@ Coordinates=269,500,67,36
 
 [frmComandas.dtsStatusComanda]
 Coordinates=721,309,208,36
-
-[Panel1]
-Coordinates=806,10,55,58
 
 [qryQuantidadeVendida]
 Coordinates=587,10,146,102
@@ -124,4 +90,38 @@ Coordinates=10,10,154,344
 
 []
 Coordinates=572,915,142,36
+
+[pnlQuantidadeComandas]
+Coordinates=385,364,164,58
+
+[pnlInformacoesGerenciais]
+Coordinates=871,10,55,58
+
+[pnlQuantidadeVendida]
+Coordinates=806,10,55,58
+
+[lblInformacoesGerenciaisTitulo]
+Coordinates=259,364,53,58
+
+[lblQuantidadeComandasTitulo]
+Coordinates=184,432,160,58
+
+[chtQuantidadeVendida]
+Coordinates=322,364,53,58
+Visible=True
+
+[lblQuantidadeVendidaTitulo]
+Coordinates=743,10,53,58
+
+[shpQuantidadeVendida]
+Coordinates=10,568,59,36
+
+[shpQuantidadeComandasAberto]
+Coordinates=722,500,59,36
+
+[shpTotalMesasDisponiveis]
+Coordinates=883,500,59,36
+
+[shpQuantidadeMesasReservadas]
+Coordinates=186,568,59,36
 

@@ -708,12 +708,12 @@ object frmPainelGestao: TfrmPainelGestao
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    object pnlInformacoesGerenciais: TPanel
+    object pnlQuantidadeComandas: TPanel
       AlignWithMargins = True
       Left = 8
-      Top = 432
+      Top = 376
       Width = 823
-      Height = 336
+      Height = 392
       Margins.Left = 8
       Margins.Top = 8
       Margins.Right = 8
@@ -723,7 +723,7 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      object lblInformacoesGerenciais: TLabel
+      object lblQuantidadeComandasTitulo: TLabel
         AlignWithMargins = True
         Left = 8
         Top = 8
@@ -734,59 +734,23 @@ object frmPainelGestao: TfrmPainelGestao
         Margins.Right = 8
         Margins.Bottom = 8
         Align = alTop
-        Caption = 'Informa'#231#245'es gerenciais'
+        Caption = 'Quantidade de comandas ('#250'ltimos 12 meses)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGreen
         Font.Height = -21
         Font.Name = 'Roboto'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 221
+        ExplicitWidth = 428
       end
-    end
-    object Panel1: TPanel
-      AlignWithMargins = True
-      Left = 8
-      Top = 140
-      Width = 823
-      Height = 284
-      Margins.Left = 8
-      Margins.Top = 8
-      Margins.Right = 8
-      Margins.Bottom = 0
-      Align = alClient
-      BevelOuter = bvNone
-      Color = clWhite
-      ParentBackground = False
-      TabOrder = 1
-      object Label1: TLabel
-        AlignWithMargins = True
-        Left = 8
-        Top = 8
-        Width = 807
-        Height = 25
-        Margins.Left = 8
-        Margins.Top = 8
-        Margins.Right = 8
-        Margins.Bottom = 0
-        Align = alTop
-        Caption = 'Quantidade Vendida por M'#234's (ultimos 12 meses)'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clGreen
-        Font.Height = -21
-        Font.Name = 'Roboto'
-        Font.Style = []
-        ParentFont = False
-        ExplicitWidth = 458
-      end
-      object Shape1: TShape
+      object shpQuantidadeComandasFundo: TShape
         AlignWithMargins = True
         Left = 8
         Top = 41
         Width = 807
-        Height = 235
+        Height = 343
         Margins.Left = 8
-        Margins.Top = 8
+        Margins.Top = 0
         Margins.Right = 8
         Margins.Bottom = 8
         Align = alClient
@@ -797,12 +761,12 @@ object frmPainelGestao: TfrmPainelGestao
         ExplicitTop = 49
         ExplicitHeight = 227
       end
-      object Chart1: TChart
+      object chtQuantidadeComandas: TChart
         AlignWithMargins = True
         Left = 30
-        Top = 63
+        Top = 71
         Width = 763
-        Height = 191
+        Height = 291
         Margins.Left = 30
         Margins.Top = 30
         Margins.Right = 30
@@ -843,6 +807,7 @@ object frmPainelGestao: TfrmPainelGestao
         BevelOuter = bvNone
         Color = 16250871
         TabOrder = 0
+        ExplicitHeight = 306
         DefaultCanvas = 'TGDIPlusCanvas'
         PrintMargins = (
           15
@@ -850,7 +815,7 @@ object frmPainelGestao: TfrmPainelGestao
           15
           38)
         ColorPaletteIndex = 13
-        object SerieQuantidadeVendida: TBarSeries
+        object barQuantidadeComandas: TBarSeries
           ColorEachPoint = True
           Marks.Font.Height = -13
           Marks.Font.Name = 'Roboto'
@@ -864,7 +829,127 @@ object frmPainelGestao: TfrmPainelGestao
         end
       end
     end
-    object Panel2: TPanel
+    object pnlQuantidadeVendida: TPanel
+      AlignWithMargins = True
+      Left = 8
+      Top = 140
+      Width = 823
+      Height = 228
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alClient
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitHeight = 284
+      object lblQuantidadeVendidaTitulo: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 8
+        Width = 807
+        Height = 25
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 0
+        Align = alTop
+        Caption = 'Valores de vendas ('#250'ltimos 12 meses)'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 358
+      end
+      object shpQuantidadeVendida: TShape
+        AlignWithMargins = True
+        Left = 8
+        Top = 41
+        Width = 807
+        Height = 179
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
+        Align = alClient
+        Brush.Color = 16250871
+        Pen.Color = clWhite
+        Shape = stRoundRect
+        ExplicitHeight = 224
+      end
+      object chtQuantidadeVendida: TChart
+        AlignWithMargins = True
+        Left = 30
+        Top = 63
+        Width = 763
+        Height = 135
+        Margins.Left = 30
+        Margins.Top = 30
+        Margins.Right = 30
+        Margins.Bottom = 30
+        AllowPanning = pmNone
+        Border.Color = 16250871
+        Legend.LegendStyle = lsValues
+        Legend.TextStyle = ltsPlain
+        Legend.Title.Font.Height = -16
+        Legend.Title.Font.Name = 'Roboto'
+        Legend.Title.Text.Strings = (
+          'Per'#237'odos')
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = 8421440
+        Title.Font.Height = -16
+        Title.Font.Name = 'Roboto'
+        Title.Font.Style = [fsBold]
+        Title.Font.Quality = fqNormal
+        Title.Font.Emboss.HorizSize = -30
+        Title.Font.Emboss.VertSize = -30
+        Title.Font.Shadow.HorizSize = -30
+        Title.Font.Shadow.VertSize = -30
+        Title.Font.Shadow.Visible = False
+        BottomAxis.Title.Caption = 'Per'#237'odo'
+        BottomAxis.Title.Font.Height = -16
+        BottomAxis.Title.Font.Name = 'Roboto'
+        LeftAxis.Title.Caption = 'Valor'
+        LeftAxis.Title.Font.Height = -16
+        LeftAxis.Title.Font.Name = 'Roboto'
+        LeftAxis.Title.Color = 8421440
+        Panning.MouseWheel = pmwNone
+        Shadow.Color = clGray
+        View3D = False
+        View3DOptions.HorizOffset = 41
+        View3DOptions.Zoom = 1
+        Zoom.Allow = False
+        Align = alClient
+        BevelOuter = bvNone
+        Color = 16250871
+        TabOrder = 0
+        ExplicitHeight = 191
+        DefaultCanvas = 'TGDIPlusCanvas'
+        PrintMargins = (
+          15
+          38
+          15
+          38)
+        ColorPaletteIndex = 13
+        object barQuantidadeVendida: TBarSeries
+          ColorEachPoint = True
+          Marks.Font.Height = -13
+          Marks.Font.Name = 'Roboto'
+          Marks.Style = smsValue
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Bar'
+          YValues.Order = loNone
+          Data = {0000000000}
+          Detail = {0000000000}
+        end
+      end
+    end
+    object pnlInformacoesGerenciais: TPanel
       AlignWithMargins = True
       Left = 8
       Top = 8
@@ -879,34 +964,35 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
-      object Shape3: TShape
+      ExplicitLeft = 11
+      object shpTotalMesasDisponiveis: TShape
         Left = 8
         Top = 44
-        Width = 104
+        Width = 153
         Height = 73
         Brush.Color = 16250871
         Pen.Color = clWhite
         Shape = stRoundRect
       end
-      object Shape6: TShape
-        Left = 118
-        Top = 44
-        Width = 104
+      object shpQuantidadeComandasAberto: TShape
+        Left = 167
+        Top = 48
+        Width = 138
         Height = 73
         Brush.Color = 16250871
         Pen.Color = clWhite
         Shape = stRoundRect
       end
-      object Shape7: TShape
-        Left = 228
-        Top = 44
-        Width = 104
+      object shpQuantidadeMesasReservadas: TShape
+        Left = 311
+        Top = 48
+        Width = 134
         Height = 73
         Brush.Color = 16250871
         Pen.Color = clWhite
         Shape = stRoundRect
       end
-      object Label2: TLabel
+      object lblInformacoesGerenciaisTitulo: TLabel
         AlignWithMargins = True
         Left = 8
         Top = 8
@@ -925,6 +1011,96 @@ object frmPainelGestao: TfrmPainelGestao
         Font.Style = []
         ParentFont = False
         ExplicitWidth = 221
+      end
+      object lblTotalMesasDisponiveis: TLabel
+        Left = 8
+        Top = 54
+        Width = 153
+        Height = 15
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'Total mesas dispon'#237'veis'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblTotalMesasDisponiveisValor: TLabel
+        Left = 8
+        Top = 75
+        Width = 153
+        Height = 30
+        Alignment = taCenter
+        AutoSize = False
+        Caption = '0'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblQuantidadeComandasAberto: TLabel
+        Left = 167
+        Top = 54
+        Width = 138
+        Height = 15
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'Comandas em aberto'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblQuantidadeComandasAbertoValor: TLabel
+        Left = 167
+        Top = 75
+        Width = 138
+        Height = 30
+        Alignment = taCenter
+        AutoSize = False
+        Caption = '0'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblQuantidadeMesasReservadas: TLabel
+        Left = 311
+        Top = 54
+        Width = 134
+        Height = 15
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'Mesas reservadas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblQuantidadeMesasReservadasValor: TLabel
+        Left = 311
+        Top = 75
+        Width = 134
+        Height = 30
+        Alignment = taCenter
+        AutoSize = False
+        Caption = '0'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
     end
   end
@@ -952,5 +1128,46 @@ object frmPainelGestao: TfrmPainelGestao
       ProviderFlags = []
       ReadOnly = True
     end
+  end
+  object qryQuantidadeComandas: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      
+        'SELECT DATE_FORMAT(criadoEm,'#39'%m/%Y'#39') AS '#39'Periodo'#39', count(1) AS '#39 +
+        'Comandas'#39' FROM comanda GROUP BY YEAR(criadoEm), MONTH(criadoEm) ' +
+        'LIMIT 0, 12')
+    Left = 847
+    Top = 443
+    object StringField1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Periodo'
+      Origin = 'Periodo'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 7
+    end
+    object qryQuantidadeComandasComandas: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'Comandas'
+      Origin = 'Comandas'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object qryInformacoesGerenciais: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      'SELECT'
+      
+        '(SELECT count(1) FROM mesa WHERE statusMesaId = 1) as '#39'Quantidad' +
+        'e Mesas dispon'#237'veis'#39','
+      
+        '(SELECT count(1) FROM comanda WHERE statusComandaId = 1) as '#39'Qua' +
+        'ntidade Comandas em aberto'#39','
+      
+        '(SELECT count(1) FROM mesa WHERE statusMesaId = 2) as '#39'Quantidad' +
+        'e de Mesas reservadas'#39)
+    Left = 807
+    Top = 43
   end
 end

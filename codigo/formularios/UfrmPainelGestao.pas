@@ -49,21 +49,34 @@ type
     spbMesas: TSpeedButton;
     spbMenu: TSpeedButton;
     pnlFundoPainelGestao: TPanel;
+    pnlQuantidadeComandas: TPanel;
+    lblQuantidadeComandasTitulo: TLabel;
+    pnlQuantidadeVendida: TPanel;
+    lblQuantidadeVendidaTitulo: TLabel;
     pnlInformacoesGerenciais: TPanel;
-    lblInformacoesGerenciais: TLabel;
-    Panel1: TPanel;
-    Label1: TLabel;
-    Panel2: TPanel;
-    Shape3: TShape;
-    Shape6: TShape;
-    Shape7: TShape;
-    Label2: TLabel;
-    Shape1: TShape;
-    Chart1: TChart;
+    shpTotalMesasDisponiveis: TShape;
+    shpQuantidadeComandasAberto: TShape;
+    shpQuantidadeMesasReservadas: TShape;
+    lblInformacoesGerenciaisTitulo: TLabel;
+    shpQuantidadeVendida: TShape;
+    chtQuantidadeVendida: TChart;
     qryQuantidadeVendida: TFDQuery;
     qryQuantidadeVendidaPeriodo: TStringField;
     qryQuantidadeVendidaValor: TFloatField;
-    SerieQuantidadeVendida: TBarSeries;
+    barQuantidadeVendida: TBarSeries;
+    shpQuantidadeComandasFundo: TShape;
+    chtQuantidadeComandas: TChart;
+    barQuantidadeComandas: TBarSeries;
+    qryQuantidadeComandas: TFDQuery;
+    StringField1: TStringField;
+    qryQuantidadeComandasComandas: TLargeintField;
+    qryInformacoesGerenciais: TFDQuery;
+    lblTotalMesasDisponiveis: TLabel;
+    lblTotalMesasDisponiveisValor: TLabel;
+    lblQuantidadeComandasAberto: TLabel;
+    lblQuantidadeComandasAbertoValor: TLabel;
+    lblQuantidadeMesasReservadas: TLabel;
+    lblQuantidadeMesasReservadasValor: TLabel;
     procedure frmMenuItemClienteslblTituloClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -77,6 +90,8 @@ type
   private
     MenuExpandido: Boolean;
     procedure CarregarGraficoQuantidadeVendida();
+    procedure CarregarGraficoQuantidadeComandas();
+    procedure CarregarInformacoesGerenciais();
   public
 
   end;
@@ -98,6 +113,22 @@ uses
   UfrmAutenticar,
   UformUtils, UdmRavin;
 
+procedure TfrmPainelGestao.CarregarGraficoQuantidadeComandas;
+begin
+  qryQuantidadeComandas.Active := false;
+  qryQuantidadeComandas.Active := true;
+
+  qryQuantidadeComandas.First;
+
+  while not qryQuantidadeComandas.Eof do
+  begin
+    chtQuantidadeComandas.Series[0].Add(qryQuantidadeComandas.Fields[1].AsFloat, qryQuantidadeComandas.Fields[0].AsString);
+    qryQuantidadeComandas.Next();
+  end;
+
+  qryQuantidadeComandas.Active := false;
+end;
+
 procedure TfrmPainelGestao.CarregarGraficoQuantidadeVendida;
 begin
   qryQuantidadeVendida.Active := false;
@@ -107,11 +138,24 @@ begin
 
   while not qryQuantidadeVendida.Eof do
   begin
-    Chart1.Series[0].Add(qryQuantidadeVendida.Fields[1].AsFloat, qryQuantidadeVendida.Fields[0].AsString);
+    chtQuantidadeVendida.Series[0].Add(qryQuantidadeVendida.Fields[1].AsFloat, qryQuantidadeVendida.Fields[0].AsString);
     qryQuantidadeVendida.Next();
   end;
 
   qryQuantidadeVendida.Active := false;
+end;
+
+procedure TfrmPainelGestao.CarregarInformacoesGerenciais;
+begin
+  qryInformacoesGerenciais.Active := false;
+  qryInformacoesGerenciais.Active := true;
+
+  qryInformacoesGerenciais.First;
+
+  lblTotalMesasDisponiveisValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblQuantidadeComandasAbertoValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  lblQuantidadeMesasReservadasValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[2].AsInteger);
+  qryInformacoesGerenciais.Active := false;
 end;
 
 procedure TfrmPainelGestao.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -128,6 +172,8 @@ end;
 procedure TfrmPainelGestao.FormShow(Sender: TObject);
 begin
   CarregarGraficoQuantidadeVendida();
+  CarregarGraficoQuantidadeComandas();
+  CarregarInformacoesGerenciais();
 end;
 
 procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);
