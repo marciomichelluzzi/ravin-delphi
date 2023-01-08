@@ -86,7 +86,7 @@ type
     procedure spbClientesClick(Sender: TObject);
     procedure spbProdutosClick(Sender: TObject);
     procedure spbSairClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     MenuExpandido: Boolean;
     procedure CarregarGraficoQuantidadeVendida();
@@ -158,6 +158,13 @@ begin
   qryInformacoesGerenciais.Active := false;
 end;
 
+procedure TfrmPainelGestao.FormActivate(Sender: TObject);
+begin
+  CarregarGraficoQuantidadeVendida();
+  CarregarGraficoQuantidadeComandas();
+  CarregarInformacoesGerenciais();
+end;
+
 procedure TfrmPainelGestao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
@@ -167,13 +174,6 @@ end;
 procedure TfrmPainelGestao.FormCreate(Sender: TObject);
 begin
   MenuExpandido := true;
-end;
-
-procedure TfrmPainelGestao.FormShow(Sender: TObject);
-begin
-  CarregarGraficoQuantidadeVendida();
-  CarregarGraficoQuantidadeComandas();
-  CarregarInformacoesGerenciais();
 end;
 
 procedure TfrmPainelGestao.frmMenuItemClienteslblTituloClick(Sender: TObject);

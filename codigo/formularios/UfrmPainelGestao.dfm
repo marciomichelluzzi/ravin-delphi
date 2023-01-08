@@ -14,9 +14,9 @@ object frmPainelGestao: TfrmPainelGestao
   OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
+  OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMenu: TPanel
@@ -790,6 +790,8 @@ object frmPainelGestao: TfrmPainelGestao
         Title.Font.Shadow.HorizSize = -30
         Title.Font.Shadow.VertSize = -30
         Title.Font.Shadow.Visible = False
+        Title.Text.Strings = (
+          'TChart')
         BottomAxis.Title.Caption = 'Per'#237'odo'
         BottomAxis.Title.Font.Height = -16
         BottomAxis.Title.Font.Name = 'Roboto'
@@ -807,7 +809,6 @@ object frmPainelGestao: TfrmPainelGestao
         BevelOuter = bvNone
         Color = 16250871
         TabOrder = 0
-        ExplicitHeight = 306
         DefaultCanvas = 'TGDIPlusCanvas'
         PrintMargins = (
           15
@@ -844,7 +845,6 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 284
       object lblQuantidadeVendidaTitulo: TLabel
         AlignWithMargins = True
         Left = 8
@@ -910,6 +910,8 @@ object frmPainelGestao: TfrmPainelGestao
         Title.Font.Shadow.HorizSize = -30
         Title.Font.Shadow.VertSize = -30
         Title.Font.Shadow.Visible = False
+        Title.Text.Strings = (
+          'TChart')
         BottomAxis.Title.Caption = 'Per'#237'odo'
         BottomAxis.Title.Font.Height = -16
         BottomAxis.Title.Font.Name = 'Roboto'
@@ -927,7 +929,6 @@ object frmPainelGestao: TfrmPainelGestao
         BevelOuter = bvNone
         Color = 16250871
         TabOrder = 0
-        ExplicitHeight = 191
         DefaultCanvas = 'TGDIPlusCanvas'
         PrintMargins = (
           15
@@ -964,7 +965,6 @@ object frmPainelGestao: TfrmPainelGestao
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 11
       object shpTotalMesasDisponiveis: TShape
         Left = 8
         Top = 44
@@ -976,7 +976,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object shpQuantidadeComandasAberto: TShape
         Left = 167
-        Top = 48
+        Top = 44
         Width = 138
         Height = 73
         Brush.Color = 16250871
@@ -985,7 +985,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object shpQuantidadeMesasReservadas: TShape
         Left = 311
-        Top = 48
+        Top = 44
         Width = 134
         Height = 73
         Brush.Color = 16250871
@@ -1014,7 +1014,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblTotalMesasDisponiveis: TLabel
         Left = 8
-        Top = 54
+        Top = 50
         Width = 153
         Height = 15
         Alignment = taCenter
@@ -1029,7 +1029,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblTotalMesasDisponiveisValor: TLabel
         Left = 8
-        Top = 75
+        Top = 71
         Width = 153
         Height = 30
         Alignment = taCenter
@@ -1044,7 +1044,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblQuantidadeComandasAberto: TLabel
         Left = 167
-        Top = 54
+        Top = 50
         Width = 138
         Height = 15
         Alignment = taCenter
@@ -1059,7 +1059,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblQuantidadeComandasAbertoValor: TLabel
         Left = 167
-        Top = 75
+        Top = 71
         Width = 138
         Height = 30
         Alignment = taCenter
@@ -1074,7 +1074,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblQuantidadeMesasReservadas: TLabel
         Left = 311
-        Top = 54
+        Top = 50
         Width = 134
         Height = 15
         Alignment = taCenter
@@ -1089,7 +1089,7 @@ object frmPainelGestao: TfrmPainelGestao
       end
       object lblQuantidadeMesasReservadasValor: TLabel
         Left = 311
-        Top = 75
+        Top = 71
         Width = 134
         Height = 30
         Alignment = taCenter

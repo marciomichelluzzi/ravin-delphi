@@ -224,14 +224,65 @@ object frmClientes: TfrmClientes
       Pen.Color = clWhite
       Shape = stRoundRect
     end
-    object Shape2: TShape
-      Left = 228
-      Top = 44
+    object lblClientesInativos: TLabel
+      Left = 118
+      Top = 54
       Width = 104
-      Height = 73
-      Brush.Color = 16250871
-      Pen.Color = clWhite
-      Shape = stRoundRect
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Inativos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblClientesInativosValor: TLabel
+      Left = 118
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblClientesAtivos: TLabel
+      Left = 8
+      Top = 54
+      Width = 104
+      Height = 15
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Ativos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblClientesAtivosValor: TLabel
+      Left = 8
+      Top = 75
+      Width = 104
+      Height = 30
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -27
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object pnlCadastroCliente: TPanel
@@ -469,5 +520,32 @@ object frmClientes: TfrmClientes
       TabOrder = 7
       Visible = False
     end
+    object cbxAtivo: TCheckBox
+      Left = 8
+      Top = 194
+      Width = 786
+      Height = 17
+      Caption = 'Ativo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+    end
+  end
+  object qryInformacoesGerenciais: TFDQuery
+    Connection = dmRavin.cnxBancoDeDados
+    SQL.Strings = (
+      'SELECT'
+      
+        '(SELECT count(1) FROM pessoa WHERE ativo = 0) as '#39'Clientes Inati' +
+        'vos'#39','
+      
+        '(SELECT count(1) FROM pessoa WHERE ativo = 1) as '#39'Clientes Ativo' +
+        's'#39)
+    Left = 590
+    Top = 27
   end
 end

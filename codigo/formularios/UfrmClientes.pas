@@ -25,7 +25,20 @@ uses
   UfrmBotaoCancelar,
   UfrmBotaoExcluir,
 
-  Upessoa;
+  Upessoa,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.WinXCtrls;
 
 type
   TfrmClientes = class(TForm)
@@ -38,7 +51,6 @@ type
     lblInformacoesGerenciais: TLabel;
     Shape1: TShape;
     Shape5: TShape;
-    Shape2: TShape;
     pnlCadastroCliente: TPanel;
     lblCadastroCliente: TLabel;
     edtNome: TEdit;
@@ -49,6 +61,12 @@ type
     frmBotaoCancelarCadastro: TfrmBotaoCancelar;
     frmBotaoExcluirRegistro: TfrmBotaoExcluir;
     nmbId: TNumberBox;
+    qryInformacoesGerenciais: TFDQuery;
+    lblClientesInativos: TLabel;
+    lblClientesInativosValor: TLabel;
+    lblClientesAtivos: TLabel;
+    lblClientesAtivosValor: TLabel;
+    cbxAtivo: TCheckBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmBotaoCancelarspbBotaoCancelarClick(Sender: TObject);
@@ -68,6 +86,7 @@ type
     procedure MostrarListaClientes();
     procedure ExcluirCliente();
     procedure SalvarCliente();
+    procedure CarregarInformacoesGerenciais();
   public
     { Public declarations }
   end;
@@ -114,6 +133,18 @@ begin
   end;
 end;
 
+procedure TfrmClientes.CarregarInformacoesGerenciais;
+begin
+  qryInformacoesGerenciais.Active := false;
+  qryInformacoesGerenciais.Active := true;
+
+  qryInformacoesGerenciais.First;
+
+  lblClientesInativosValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[0].AsInteger);
+  lblClientesAtivosValor.Caption := IntToStr(qryInformacoesGerenciais.Fields[1].AsInteger);
+  qryInformacoesGerenciais.Active := false;
+end;
+
 procedure TfrmClientes.CarregarListaClientes;
 var
   I: Integer;
@@ -137,6 +168,12 @@ begin
         LItem.Data := TObject(LCliente.id);
         LItem.SubItems.add(LCliente.cpf);
         LItem.SubItems.add(IntToStr(LCliente.telefone));
+
+        if LCliente.ativo then
+          LItem.SubItems.add('Ativo')
+        else
+          LItem.SubItems.add('Inativo');
+
       end;
 
       DesalocarClientes(LListaClientes)
@@ -251,6 +288,7 @@ end;
 procedure TfrmClientes.MostrarListaClientes;
 begin
   CarregarListaClientes();
+  CarregarInformacoesGerenciais();
   pnlListaClientes.Visible := true;
   pnlInformacoesGerenciais.Visible := true;
   pnlCadastroCliente.Visible := false;
@@ -271,7 +309,7 @@ begin
       LCliente.tipoPessoa := 'C';
       LCliente.dataNascimento := dtpDataNascimento.Date;
       LCliente.cpf := mskCpf.Text;
-      LCliente.ativo := true;
+      LCliente.ativo := cbxAtivo.Checked;
       LCliente.alteradoEm := Now();
       LCliente.alteradoPor := 'admin';
 
@@ -301,6 +339,7 @@ begin
   mskCpf.Text := PCliente.cpf;
   edtTelefone.Text := IntToStr(PCliente.telefone);
   dtpDataNascimento.DateTime := PCliente.dataNascimento;
+  cbxAtivo.Checked := PCliente.ativo;
 end;
 
 end.
